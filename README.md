@@ -31,7 +31,9 @@ The specification follows the requirement level keywords defined in [RFC 2119](h
 ### 2.1 Functional Requirements
 
 #### 2.1.1 MUST have user interface
+
 The system MUST provide instantaneous feedback on current activity
+
 The system MUST have a user interface with viewable calory and step count.
 
 ### 2.2 Interfaces
@@ -43,8 +45,11 @@ The system MUST have a user interface with viewable calory and step count.
 ### 2.4 Design Constraints
 
 #### 2.4.1 MUST use atleast predefined hardware
+
 The system MUST use T-Watch V2 or V3
+
 The system MUST use raspberry pi 2, 3 or 3+
+
 The system MAY use other hardware 
 
 ### 2.5 Software-system Attributes
