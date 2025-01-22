@@ -62,38 +62,55 @@ This subsection contains the functional requirements for the Hiking Application 
 
 ### LilyGo application: Start & stop hiking sessions
 
-The system SHALL allow user to start a hiking session  
+The system MUST allow user to start a hiking session  
 
-The system SHALL allow user to stop a hiking session  
+The system MUST allow user to stop a hiking session  
+
+The system MAY allow user to continue stopped hiking session
+
+### LilyGo application: Recording multiple hiking sessions
+
+The system MAY allow user to record multiple hiking sessions to smartwatch memory 
 
 ### LilyGo application: Record steps count and convert into travelled distance during the session
 
-While hiking session is active the system SHALL record steps count  
+While hiking session is active, the system MUST record steps count  
 
-While hiking session is active the system SHALL display step count on display  
-
-While hiking session is active the system SHALL convert steps count into travelled distance after each step  
-
+While hiking session is active, the system MUST convert steps count into travelled distance after each step  
 
 ### LilyGo application: Display this data on a smartwatch screen
 
-While hiking session is active the system SHALL display step count on display  
+While hiking session is active, the system MUST display step count on display  
 
-While hiking session is active the system SHALL display travelled distance on display  
+While hiking session is active, the system MUST display travelled distance on display  
+
+While hiking session is not active, the system MAY display step count and travelled distance for last session on display
 
 ### Synchronize and store data with RPi via Bluetooth
 
+The smartwatch application MUST be capable of sending hiking data via Bluetooth to the web application on RPi  
 
+The smartwatch application MUST be able to connect to RPi with hard coded MAC address
+
+The smartwatch application MAY be able to connect to RPi with Bluetooth discovery
+
+The smartwatch application MAY be able to connect to RPi with Wi-Fi discovery
 
 ### Calculate estimated amount of calories burned during the session on RPi
 
-The system SHALL calculate estimated amount of calories based on travelled distance
+The system MUST calculate estimated amount of calories based on travelled distance
 
+### Web application: Initialize Web UI and show last session statistics (travelled distance, step count and burned calories)
 
-### Initialize Web UI and show last session statistics (travelled distance, step count and burned calories)
+The system MUST display travelled distance, step count and burned calories for last session  
 
+The system MUST contain a list of past sessions  
 
+The system will display a list of past sessions that MUST contain date, travelled distance, step count and burned calories for each session  
 
+The system MAY provide detail view for a chosen session where additional session information is presented
+
+The system MAY provide delete feature for removing past sessions from persistent memory
 
 ### MUST have user interface
 
