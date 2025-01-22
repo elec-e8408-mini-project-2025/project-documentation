@@ -10,6 +10,12 @@ We want to make the raspberry pi as manageable as possible. This means support f
 User:<added later>
 Password:<added later>
 
+### Installing Raspbian (debian based)
+
+Use Raspberry Pi Imager.
+
+https://www.raspberrypi.com/documentation/computers/getting-started.html
+
 ### SSH 
 
 Should be preinstalled:
