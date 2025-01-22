@@ -58,7 +58,42 @@ The specification follows the requirement level keywords defined in [RFC 2119](h
 # Specific Requirements
 
 ## Functional Requirements
-This subsection contains the functional requirements for the Hiking Application 
+This subsection contains the functional requirements for the Hiking Application prototype. As the prototype consists of both LilyGo - application and the Web application to present tracking data, the functional requirements gather requirements for both of these.  
+
+### LilyGo application: Start & stop hiking sessions
+
+The system SHALL allow user to start a hiking session  
+
+The system SHALL allow user to stop a hiking session  
+
+### LilyGo application: Record steps count and convert into travelled distance during the session
+
+While hiking session is active the system SHALL record steps count  
+
+While hiking session is active the system SHALL display step count on display  
+
+While hiking session is active the system SHALL convert steps count into travelled distance after each step  
+
+
+### LilyGo application: Display this data on a smartwatch screen
+
+While hiking session is active the system SHALL display step count on display  
+
+While hiking session is active the system SHALL display travelled distance on display  
+
+### Synchronize and store data with RPi via Bluetooth
+
+
+
+### Calculate estimated amount of calories burned during the session on RPi
+
+The system SHALL calculate estimated amount of calories based on travelled distance
+
+
+### Initialize Web UI and show last session statistics (travelled distance, step count and burned calories)
+
+
+
 
 ### MUST have user interface
 
