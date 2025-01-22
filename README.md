@@ -5,6 +5,7 @@ header-includes:
   - \usepackage{caption}
   - \captionsetup[figure]{font=scriptsize}  # This sets the font size for figure captions.
 numbersections: true
+# To render document use `quarto render README.md --to pdf`
 ---
 
 **Course:** ELEC-E8408 Embedded Systems Development, Aalto University  
