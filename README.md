@@ -53,7 +53,7 @@ The specification follows the requirement level keywords defined in [RFC 2119](h
 
 ## Context Diagram and Overview
 
-<Context Diagram place holder>
+![Initial Consept Overview](dev-doc/consept-overview.png "Initial Consept Overview")
 
 # Specific Requirements
 
