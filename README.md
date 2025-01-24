@@ -131,11 +131,11 @@ The system MAY provide delete feature for removing past sessions from persistent
 
 ## System interfaces
 
-This subsection expands and defines the frontends of the Web Application and LilyGO functionalities defined in [Functional Requirements](#Functional Requirements).
+This subsection expands and defines the frontends of the Web Application and LilyGO functionalities defined in [Functional Requirements](#functional-requirements).
 
 The [User interfaces](#User interfaces) section lists the characteristics between the software and the user. 
 
-The [Hardware interfaces](#user interfaces) section lists the characteristics between the hardware and the software.
+The [Hardware interfaces](#user interfaces) section lists the characteristics between hardware and software.
 
 The [Software interfaces](#Software interfaces) section lists the characteristics between different software and applications within the system.
 
@@ -176,6 +176,8 @@ The LilyGO application SHOULD use the BMA423 using the pinout defined by LilyGO 
 - Interrupt: 39 pin
 
 The WebUI HTML layout MUST fit in a computer screen. 
+
+The WebUI HTML layout MAY fit in a mobile phone screen. 
 
 ### Software interfaces
 
