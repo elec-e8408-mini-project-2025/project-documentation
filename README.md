@@ -46,8 +46,8 @@ The system consists of two hardware components: the Raspberry Pi and the LilyGo 
 
 ### Abbreviations and Definitions
 
-|     Abbreviation or Word      |      Definition     |
-| ----------------------------- | -------------------------------------------------------------. |
+|     Abbreviation or Word      |      Definition                                                |
+| ----------------------------- | -------------------------------------------------------------- |
 | System                        | The whole system including Rpi, LilyGo and relevant interfaces |
 | RPi                           | Raspberry Pi V3+                                               |
 | LilyGo                        | Lilygo T-Watch V2                                              |
