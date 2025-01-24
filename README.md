@@ -29,15 +29,32 @@ numbersections: true
 
 {{< pagebreak >}}
 
-# Introduction
+# Overview
 
-## Purpose
+## Scope
 
 The purpose of this document is to list and provide context and considerations for the Hiking Band product. 
 
-The document MAY provide overview level of the used integration methods for the system. However, the main scope of the specifications SHOULD be targeted towards the actual use case. 
+The system consists of two hardware components: the Raspberry Pi and the LilyGo watch. The system includes interactable interfaces, hardware, protocols and functionalities which are required for the system to function. This document defines the requirements in well detail to give a broad understanding of the product and its use case. This document SHOULD be used within software development, integration and testing of the whole system. 
 
-## Definitions, acronyms and abbreviations
+## References
+
+
+
+## Definitions
+
+
+### Abbreviations and Definitions
+
+|     Abbreviation or Word      |      Definition     |
+| ----------------------------- | -------------------------------------------------------------. |
+| System                        | The whole system including Rpi, LilyGo and relevant interfaces |
+| RPi                           | Raspberry Pi V3+                                               |
+| LilyGo                        | Lilygo T-Watch V2                                              |
+| LilyGo application            | The firmware and applications running on the LilyGo            |
+| Web application               | The Web-based application running on the RPi                   |
+
+### Keywords
 
 The specification follows the requirement level keywords defined in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119):
 
