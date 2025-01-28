@@ -161,7 +161,7 @@ The Web UI interface user MUST be able to interact with the functionalities:
 
 The Web UI interface SHOULD follow the given interface layout:
 
-<Place holder for the WebApplication layout>
+![Web UI views](/dev-doc/web_ui_view.png "concept of web view")
 
 ### Hardware interfaces
 
