@@ -210,11 +210,20 @@ The RPi MUST be able to connect to a local network OR host its own access point 
 
 - The system MUST use raspberry pi 2, 3 or 3+
 
-- The system MAY use other hardware 
+- The system MAY use other hardware
+
+- If the clock runs out of sync due to power loss the system SHALL synchronize its time when syncing to the RPi
 
 ## Software-system Attributes
 
-### MUST be able to log reliably
+### Reliability
 
-- The system MUST log and save the current activity in periodically
+- The system MUST log and save the current activity in periodically (15s)
+- The system MUST NOT miss 2 consecutive loggings
+
+### Security
+
+- The LilyGo watch SHALL only send hiking data to a paired device
+- The LilyGo watch SHALL only be discoverable during pairing with the RPi
+- The RPi SHALL periodically check if the watch is within range, the LilyGo SHALL NOT attempt to connect to the RPi automatically
 
