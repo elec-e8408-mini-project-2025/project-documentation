@@ -152,7 +152,7 @@ The LilyGO interface user MUST be able to interact with the functionalities:
 
 The LilyGO interface SHOULD follow the given interface layout:
 
-<Place holder for the LilyGO layout>
+The [LilyGo Views](/dev-doc/app_views.png "concept of app views")
 
 The Web UI interface user MUST be able to interact with the functionalities:
 
