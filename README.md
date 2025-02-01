@@ -39,9 +39,23 @@ The system consists of two hardware components: the Raspberry Pi and the LilyGo 
 
 ## References
 
+This Software Requirement Specification shall be used in conjuction with the following publications:
+- RFC-2119
 
 
 ## Definitions
+
+**1.user:** the person, or persons, who operate or interract directly with the product. 
+
+**2.hiking session:** an event during which activity data such as step count, travelled distance and average speed are recorded on the LilyGO smartwatch. The event begins when user pushes "Start" button and ends when user presses "End" button in hiking session view
+
+**3.step count:** An approximation of taken steps computed by a step algorithm based on BMA423 accelerometer data
+
+**4.distance:** An approximation of travelled distance based on the product of a predefined length of average step and the step count
+
+**5.average speed:** An average based on the duration of the hiking session and travelled distance
+
+
 
 
 ### Abbreviations and Definitions
@@ -56,7 +70,7 @@ The system consists of two hardware components: the Raspberry Pi and the LilyGo 
 
 ### Keywords
 
-The specification follows the requirement level keywords defined in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119):
+The specification follows the requirement level keywords defined in [RFC-2119](https://datatracker.ietf.org/doc/html/rfc2119):
 
 |     Keyword      |      Description for the specification     |
 | ---------------- | ------------------------------------------ |
@@ -85,15 +99,29 @@ The system MUST allow user to stop a hiking session
 
 The system MAY allow user to continue stopped hiking session
 
+The system MAY prevent starting a new hiking session, if real-time clock of the smartwatch is compromized. In this case, the smartwatch must be first synchronized with RPi to synchronize the real-time clock. 
+
 ### LilyGo application: Recording multiple hiking sessions
 
-The system MAY allow user to record multiple hiking sessions to smartwatch memory 
+The system MUST allow user to record multiple hiking sessions to smartwatch memory 
+
+The system MUST store at minimum 5 last sessions in persistent memory of the smartwatch
+
+The system MAY support storing more than 5 last sessions on the smartwatch
+
+The system MAY warn user if memory capacity is full (max number of sessions have been stored to persistent memory)
+
+The system MAY ask user to override older sessions  
+
+The system MAY prohibit starting new session before memory capacity is released  
+
+The system MAY override the older session when persistent memory is full
 
 ### LilyGo application: Record steps count and convert into travelled distance during the session
 
 While hiking session is active, the system MUST record steps count  
 
-While hiking session is active, the system MUST convert steps count into travelled distance after each step  
+While hiking session is active, the system MUST convert steps count into travelled distance every time data is rendered on touchscreen
 
 ### LilyGo application: Display this data on a smartwatch screen
 
@@ -101,17 +129,29 @@ While hiking session is active, the system MUST display step count on display
 
 While hiking session is active, the system MUST display travelled distance on display  
 
-While hiking session is not active, the system MAY display step count and travelled distance for last session on display
+While hiking session is active, the system MAY display average speed on display
+
+While the hiking session is active the step count and travelled distance MUST update regularly 
+
+The update frequency of hiking session information MAY be optimized with best effort based on hardware constraints
+
+While hiking session is not active, the touchscreen MAY display step count and travelled distance for last session on display
+
+While hiking sessin is active, the smartwatch touchscreen MAY display the current date (YYYY-MM-DD) 
 
 ### Synchronize and store data with RPi via Bluetooth
 
-The smartwatch application MUST be capable of sending hiking data via Bluetooth to the web application on RPi  
+The smartwatch application MUST be capable of sending step count and travelled distance via Bluetooth to the web application on RPi  
 
-The smartwatch application MUST be able to connect to RPi with hard coded MAC address
+The smartwatch application MAY also send date of hike and average speed for each recorded hiking session
 
-The smartwatch application MAY be able to connect to RPi with Bluetooth discovery
+The smartwatch application MUST be able to connect to RPi with MAC address that is hard coded to RPi
 
-The smartwatch application MAY be able to connect to RPi with Wi-Fi discovery
+The smartwatch application MAY be able to connect to RPi with LilyGo enabling Bluetooth discovery
+
+The smartwatch application MAY be able connect to RPi by configured Wi-Fi connection
+
+The smartwatch application MAY be able to find RPi with Wi-Fi discovery
 
 ### Calculate estimated amount of calories burned during the session on RPi
 
@@ -123,7 +163,9 @@ The system MUST display travelled distance, step count and burned calories for l
 
 The system MUST contain a list of past sessions  
 
-The system MUST display a list of past sessions including date, travelled distance, step count and burned calories for each session  
+The displayed list of past sessions MUST contain travelled distance, step count and burned calories for each session  
+
+The displayed list of past sessions MAY contain date for each session
 
 The system MAY provide detail view for a chosen session where additional session information is presented
 
