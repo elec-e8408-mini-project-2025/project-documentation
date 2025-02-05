@@ -243,6 +243,18 @@ The system MAY provide detail view for a chosen session where additional session
 
 The system MAY provide delete feature for removing past sessions from persistent memory
 
+## User characteristics
+
+## Constraints
+
+## Asuumptions and dependencies
+
+## Apportioning of requirements
+
+
+# Section 3? 
+
+
 ## Performance Requirements
 
 ### MUST have acceptably long data synchronization
