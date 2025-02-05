@@ -88,9 +88,79 @@ The specification follows the requirement level keywords defined in [RFC-2119](h
 
 ![Initial Consept Overview](dev-doc/consept-overview.png "Initial Consept Overview")
 
-# Specific Requirements
+# Overall description
 
-## Functional Requirements
+## Product perspective
+
+### System interfaces
+
+This subsection expands and defines the frontends of the Web Application and LilyGO functionalities defined in [Functional Requirements](#functional-requirements).
+
+The [User interfaces](#User interfaces) section lists the characteristics between the software and the user. 
+
+The [Hardware interfaces](#user interfaces) section lists the characteristics between hardware and software.
+
+The [Software interfaces](#Software interfaces) section lists the characteristics between different software and applications within the system.
+
+### User interfaces
+
+The LilyGO interface user MUST be able to interact with the functionalities:
+
+- "start a hiking session"
+- "stop a hiking session"
+- "display step count on display"
+- "display travelled distance on display"
+- "record step count"
+- Enable BlueTooth capabilities 
+
+The LilyGO interface SHOULD follow the given interface layout:
+
+![LilyGo Views](/dev-doc/app_views.png "concept of app views")
+
+The Web UI interface user MUST be able to interact with the functionalities:
+
+- "display a list of past sessions"
+- "display the last session"
+
+The Web UI interface SHOULD follow the given interface layout:
+
+![Web UI views](/dev-doc/web_ui_view.png "concept of web view")
+
+### Hardware interfaces
+
+The LilyGO application MUST use the touchScreen FT6336 using the pinout defined by LilyGO hardware:
+
+- SDA: 23 pin
+- SCL: 32 pin
+- Interrupt: 38 pin
+
+The LilyGO application SHOULD use the BMA423 using the pinout defined by LilyGO hardware:
+
+- Interrupt: 39 pin
+
+The WebUI HTML layout MUST fit in a computer screen. 
+
+The WebUI HTML layout MAY fit in a mobile phone screen. 
+
+### Software interfaces
+
+The LilyGO application SHOULD use LilyWatch maintained TTGO_TWatch_Library for the pin definitions and driver implementation 
+
+The Web application SHOULD use SQLite to store synchronized data locally on the RPi
+
+The Web application SHOULD use SQLite to store its information
+
+### Communications interfaces
+
+The synchronization SHOULD be able to happen only after initial setup between RPi and LilyGO
+
+The synchronization via BlueTooth between RPi and LilyGO MUST happen via BlueTooth v4.2 or below
+
+The WebUI MUST use http protocol within a local TCP/IP network.
+
+The RPi MUST be able to connect to a local network OR host its own access point to view the WebUI
+
+## Product functions
 This subsection contains the functional requirements for the Hiking Application prototype. As the prototype consists of both LilyGo - application and the Web application to present tracking data, the functional requirements gather requirements for both of these.  
 
 ### LilyGo application: Start & stop hiking sessions
@@ -172,75 +242,6 @@ The displayed list of past sessions MAY contain date for each session
 The system MAY provide detail view for a chosen session where additional session information is presented
 
 The system MAY provide delete feature for removing past sessions from persistent memory
-
-## System interfaces
-
-This subsection expands and defines the frontends of the Web Application and LilyGO functionalities defined in [Functional Requirements](#functional-requirements).
-
-The [User interfaces](#User interfaces) section lists the characteristics between the software and the user. 
-
-The [Hardware interfaces](#user interfaces) section lists the characteristics between hardware and software.
-
-The [Software interfaces](#Software interfaces) section lists the characteristics between different software and applications within the system.
-
-### User interfaces
-
-The LilyGO interface user MUST be able to interact with the functionalities:
-
-- "start a hiking session"
-- "stop a hiking session"
-- "display step count on display"
-- "display travelled distance on display"
-- "record step count"
-- Enable BlueTooth capabilities 
-
-The LilyGO interface SHOULD follow the given interface layout:
-
-![LilyGo Views](/dev-doc/app_views.png "concept of app views")
-
-The Web UI interface user MUST be able to interact with the functionalities:
-
-- "display a list of past sessions"
-- "display the last session"
-
-The Web UI interface SHOULD follow the given interface layout:
-
-![Web UI views](/dev-doc/web_ui_view.png "concept of web view")
-
-### Hardware interfaces
-
-The LilyGO application MUST use the touchScreen FT6336 using the pinout defined by LilyGO hardware:
-
-- SDA: 23 pin
-- SCL: 32 pin
-- Interrupt: 38 pin
-
-The LilyGO application SHOULD use the BMA423 using the pinout defined by LilyGO hardware:
-
-- Interrupt: 39 pin
-
-The WebUI HTML layout MUST fit in a computer screen. 
-
-The WebUI HTML layout MAY fit in a mobile phone screen. 
-
-### Software interfaces
-
-The LilyGO application SHOULD use LilyWatch maintained TTGO_TWatch_Library for the pin definitions and driver implementation 
-
-The Web application SHOULD use SQLite to store synchronized data locally on the RPi
-
-The Web application SHOULD use SQLite to store its information
-
-### Communications interfaces
-
-The synchronization SHOULD be able to happen only after initial setup between RPi and LilyGO
-
-The synchronization via BlueTooth between RPi and LilyGO MUST happen via BlueTooth v4.2 or below
-
-The WebUI MUST use http protocol within a local TCP/IP network.
-
-The RPi MUST be able to connect to a local network OR host its own access point to view the WebUI
-
 
 ## Performance Requirements
 
