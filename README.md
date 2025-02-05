@@ -247,7 +247,25 @@ The system MAY provide delete feature for removing past sessions from persistent
 
 ## Constraints
 
+### System interfaces
+
+### User interfaces
+
+### Hardware interfaces
+
+### Software interfaces
+
+### Communications interfaces
+
+### Memory
+
+### Operations
+
+### Site adaptation requirements
+
 ## Asuumptions and dependencies
+
+- The clock is synchronized regularly between trips
 
 ## Apportioning of requirements
 
@@ -263,7 +281,7 @@ The system MAY provide delete feature for removing past sessions from persistent
 
 ### MUST use atleast predefined hardware
 
-- The system MUST use T-Watch V2 or V3
+- The system MUST use T-Watch V2
 
 - The system MUST use raspberry pi 2, 3 or 3+
 
