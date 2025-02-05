@@ -29,7 +29,9 @@ numbersections: true
 
 {{< pagebreak >}}
 
-# Overview
+# Introduction
+
+## Purpose
 
 ## Scope
 
@@ -55,7 +57,7 @@ This Software Requirement Specification shall be used in conjuction with the fol
 
 **5.average speed:** An average based on the duration of the hiking session and travelled distance
 
-
+## Overview
 
 
 ### Abbreviations and Definitions
