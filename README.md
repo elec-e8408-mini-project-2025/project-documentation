@@ -115,7 +115,7 @@ The system MAY ask user to override older sessions
 
 The system MAY prohibit starting new session before memory capacity is released  
 
-The system MAY override the older session when persistent memory is full
+The system MAY override the oldest stored session when persistent memory is full
 
 ### LilyGo application: Record steps count and convert into travelled distance during the session
 
