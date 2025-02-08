@@ -56,15 +56,21 @@ The system consists of two hardware components: the Raspberry Pi and the LilyGo 
 
 ## Definitions, acronyms and abbreviations
 
-**1.user:** the person, or persons, who operate or interract directly with the product. 
+**1.user:** the person, or persons, who operate or interract directly with the product.  
 
-**2.hiking session:** an event during which activity data such as step count, travelled distance and average speed are recorded on the LilyGO smartwatch. The event begins when user pushes "Start" button and ends when user presses "End" button in hiking session view
+**2.hiking session:** an event during which activity data such as step count, travelled distance and average speed are recorded on the LilyGO smartwatch. The event begins when user pushes "Start" button and ends when user presses "End" button in hiking session view  
 
-**3.step count:** An approximation of taken steps computed by a step algorithm based on BMA423 accelerometer data
+**3.step:** An act or movement of putting one leg in front of the other in walking or running  
 
-**4.distance:** An approximation of travelled distance based on the product of a predefined length of average step and the step count
+**4.step count:** An approximation of taken steps computed by a step algorithm based on BMA423 accelerometer data  
 
-**5.average speed:** An average based on the duration of the hiking session and travelled distance
+**5.distance:** An approximation of travelled distance that MUST be based either on an approximation of the length of an average step or on GPS data  
+
+**6.duration:** A count of seconds from the moment counting steps began, based on the RTC module of LilyGO  
+
+**7.average speed:** An average based on the duration of the hiking session and travelled distance  
+
+**8.burned calories:** an approximation of calories burned. The approximation MUST be based on count of steps and MAY additionally be based on average speed during the trip.  
 
 ## Overview
 
@@ -78,6 +84,12 @@ The system consists of two hardware components: the Raspberry Pi and the LilyGo 
 | LilyGo                        | Lilygo T-Watch V2                                              |
 | LilyGo application            | The firmware and applications running on the LilyGo            |
 | Web application               | The Web-based application running on the RPi                   |
+
+
+
+### Unites of measure
+
+The step
 
 ### Keywords
 
@@ -172,9 +184,9 @@ The LilyGO application SHOULD use the BMA423 using the pinout defined by LilyGO 
 
 - Interrupt: 39 pin
 
-The WebUI HTML layout MUST fit in a computer screen. 
+The WebUI HTML layout MUST be viewable in a web browser on Rapsberry Pi. In this context viewable means that the user MUST be able to read all information rendered on a web page
 
-The WebUI HTML layout MAY fit in a mobile phone screen. 
+The WebUI HTML layout MAY be viewable on a mobile phone screen. 
 
 ### Software interfaces
 
