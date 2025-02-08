@@ -80,6 +80,7 @@ The system consists of two hardware components: the Raspberry Pi and the LilyGo 
 |     Abbreviation or Word      |      Definition                                                |
 | ----------------------------- | -------------------------------------------------------------- |
 | System                        | The whole system including Rpi, LilyGo and relevant interfaces |
+| Hiking Band System | System |
 | RPi                           | Raspberry Pi V3+                                               |
 | LilyGo                        | Lilygo T-Watch V2                                              |
 | LilyGo application            | The firmware and applications running on the LilyGo            |
@@ -290,6 +291,16 @@ The system MAY provide detail view for a chosen session where additional session
 The system MAY provide delete feature for removing past sessions from persistent memory
 
 ## User characteristics
+
+This SRS details the requirements for the proof-of-concept (poc) version of the system under design (SUD). The system SHOULD be in a stage in which users with intermediate technical skills with Smartwatches, Bluetooth technology and Raspberry Pi product family can use the product indepentently with the help of the project documentation.  
+
+With the help of the documentation the user must be able to know how to 
+
+- clone source code from remote repository (GitHub)
+- how to set up virtual environment and install dependencies
+- how to flash firmware on LilyGO T-Watch
+
+
 
 ## Constraints
 
