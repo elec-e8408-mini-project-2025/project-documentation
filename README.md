@@ -16,36 +16,45 @@ numbersections: true
 
 **Table of Contents**
 
-1. [Introduction](#introduction)
+1. [Introduction](#introduction)  
     i. [Purpose](#purpose)
-    ii. [Definitions, acronyms, abbreviations](#definitions-acronyms-and-abbreviations)
-    iii. [Context Diagram and Overview](#context-diagram-and-overview)
-2. [Specific Requirements](#specific-requirements)
-    i. [Functional Requirements](#functional-requirements)
-    ii. [Interfaces](#interfaces)
-    iii. [Performance Requirements](#performance-requirements)
-    iv. [Design Constraints](#design-constraints)
-    v. [Software-system Attributes](#software-system-attributes)
+    ii. [Scope](#scope)
+    iii. [Definitions, acronyms, abbreviations](#definitions-acronyms-and-abbreviations)
+    iv. [References](#references)
+    v. [Context Diagram and Overview](#context-diagram-and-overview)
+2. [Overall description](#overall-description)
+    i. [Product Perspective](#product-perspective)
+    ii. [Product functions](#product-functions)
+    iii. [User characteristics](#user-characteristics)
+    iv. [Constraints](#constraints)
+    v. [Assumptions and dependencies](#asuumptions-and-dependencies)
+    vi. [Apportioning of requirements](#apportioning-of-requirements)
+3. [Specific Requirements](#specific-requirements)
+    i. [Performance requirements](#performance-requirements)
+    ii. [Design constraints](#design-constraints)
+    iii. [Software-system attribtues](#software-system-attributes)
 
 {{< pagebreak >}}
 
 # Introduction
 
+This chapter highlights the purpose and scope of this document, introduces the essential definitions, acronyms and abbreviations and the relevant references. 
+
 ## Purpose
+
+The purpose of this document is to list and provide context and considerations for the Hiking Band product system. This document SHOULD be used within software development, integration and testing of the whole system.  
+
+The core audiences for this documents are the product development team and the course instructors, who both review this document and review the final system in based on the requirement specification of this document. The final product MUST match this documentation. 
+
 
 ## Scope
 
-The purpose of this document is to list and provide context and considerations for the Hiking Band product. 
+The LilyGo Hiking band system includes a LilyGO T-Watch smartwatch application for recording hiking trips and a separate application for storing trip information into persistent storage and for displaying trip information on a Web Application.  
 
-The system consists of two hardware components: the Raspberry Pi and the LilyGo watch. The system includes interactable interfaces, hardware, protocols and functionalities which are required for the system to function. This document defines the requirements in well detail to give a broad understanding of the product and its use case. This document SHOULD be used within software development, integration and testing of the whole system. 
-
-## References
-
-This Software Requirement Specification shall be used in conjuction with the following publications:
-- RFC-2119
+The system consists of two hardware components: the Raspberry Pi and the LilyGo watch. The system includes interactable interfaces, hardware, protocols and functionalities which are required for the system to function. This document defines the requirements in well detail to give a broad understanding of the product and its use case. 
 
 
-## Definitions
+## Definitions, acronyms and abbreviations
 
 **1.user:** the person, or persons, who operate or interract directly with the product. 
 
@@ -84,7 +93,28 @@ The specification follows the requirement level keywords defined in [RFC-2119](h
 
 
 
+## References
+
+This Software Requirement Specification shall be used in conjuction with the following publications:
+
+[1] IEEE 830:1998 IEEE Recommended Practice for Software Requirements Specifications. https://ieeexplore.ieee.org/document/720574
+
+[2] RFC-2119. Key words for use in RFCs to Indicate Requirement Levels. Published in March, 1997. Available at: https://datatracker.ietf.org/doc/html/rfc2119
+
+The development team should familiarize with the following documents:
+
+[i.] LilyGo T-Watch. LilyGo T-Watch GitHub repository. Available at: https://github.com/Xinyuan-LilyGO/TTGO_TWatch_Library
+
+[ii.] ESPRESIF documentation. ESP32 Arduino Core's documentation. Available at: https://docs.espressif.com/projects/arduino-esp32/en/latest/
+
+
+
+
 ## Context Diagram and Overview
+
+This document follows the SRS structure detailed in IEEE 830 section 5 [1]. Section 2 of this document lays out the over all description and section 3 the specific requirements, as detailed in IEEE 830. 
+
+The image below details an overview of the system concept. 
 
 ![Initial Consept Overview](dev-doc/consept-overview.png "Initial Consept Overview")
 
@@ -96,11 +126,11 @@ The specification follows the requirement level keywords defined in [RFC-2119](h
 
 This subsection expands and defines the frontends of the Web Application and LilyGO functionalities defined in [Functional Requirements](#functional-requirements).
 
-The [User interfaces](#User interfaces) section lists the characteristics between the software and the user. 
+The [User interfaces](#user-interfaces) section lists the characteristics between the software and the user. 
 
-The [Hardware interfaces](#user interfaces) section lists the characteristics between hardware and software.
+The [Hardware interfaces](#hardware-interfaces) section lists the characteristics between hardware and software.
 
-The [Software interfaces](#Software interfaces) section lists the characteristics between different software and applications within the system.
+The [Software interfaces](#software-interfaces) section lists the characteristics between different software and applications within the system.
 
 ### User interfaces
 
@@ -116,6 +146,10 @@ The LilyGO interface user MUST be able to interact with the functionalities:
 The LilyGO interface SHOULD follow the given interface layout:
 
 ![LilyGo Views](/dev-doc/app_views.png "concept of app views")
+
+
+> Note: the GUI of the final product may not be a one to one match with the early visualization draft represented here. It will however meet the requirements for functionalities.
+
 
 The Web UI interface user MUST be able to interact with the functionalities:
 
@@ -270,7 +304,7 @@ The system MAY provide delete feature for removing past sessions from persistent
 ## Apportioning of requirements
 
 
-# Section 3? 
+# Specific Requirements
 
 
 ## Performance Requirements
