@@ -27,7 +27,7 @@ numbersections: true
     ii. [Product functions](#product-functions)
     iii. [User characteristics](#user-characteristics)
     iv. [Constraints](#constraints)
-    v. [Assumptions and dependencies](#asuumptions-and-dependencies)
+    v. [Assumptions and dependencies](#assumptions-and-dependencies)
     vi. [Apportioning of requirements](#apportioning-of-requirements)
 3. [Specific Requirements](#specific-requirements)
     i. [Performance requirements](#performance-requirements)
@@ -356,11 +356,15 @@ With the help of the documentation the user must be able to know how to
 
 ## Assumptions and dependencies
 
-- The clock is synchronized regularly between trips, at most 5 trips without synchronization
-- The clocl is kept above a minimum threshhold of battery to keep the time from desynchronizing in normal operations
-- If the battery has gone below the threshold the RPi is close for synchronizing the system clock
+- The LilyGo hiking application requires LilyGO T-Watch V2
+- The Web Application requires Python 3.10 or higher
+- The web application is only guaranteed to work on Raspberry Pi3 
+- The clock is either recharged or synchronized regularly between trips to ensure that the real-time clock module is operational. If the clock runs out of battery life, user may not be able to record new hiking sessions. 
+
 
 ## Apportioning of requirements
+
+The proof-of-concept (PoC) SHALL include all requirements that have been defined with keywords MUST or SHALL according to RFC-2119 [2]. All requirements marked with key word MAY are not guaranteed to be implemented in the PoC release. 
 
 
 # Specific Requirements
