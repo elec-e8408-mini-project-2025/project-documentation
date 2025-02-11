@@ -80,7 +80,7 @@ The system consists of two hardware components: the Raspberry Pi and the LilyGo 
 |     Abbreviation or Word      |      Definition                                                |
 | ----------------------------- | -------------------------------------------------------------- |
 | System                        | The whole system including Rpi, LilyGo and relevant interfaces |
-| Hiking Band System | System |
+| Hiking Band System            | System                                                         |
 | RPi                           | Raspberry Pi V3+                                               |
 | LilyGo                        | Lilygo T-Watch V2                                              |
 | LilyGo application            | The firmware and applications running on the LilyGo            |
@@ -306,23 +306,59 @@ With the help of the documentation the user must be able to know how to
 
 ### System interfaces
 
+- The TWatch has a touchscreen that works as the user interface
+- The RPi has a monitor, mouse and keyboard setup that works as a user interface
+- The interface between the RPi and TWatch is a Bluetooth connection
+
 ### User interfaces
+
+#### TWatch touchscreen interfaces.
+
+- Default interface, has navigation buttons for viewing past sessions, opening the settings menu and moving to the session screen.
+- Settings interface, has buttons for configuring the bluetooth connection
+- Past sessions interface, contains the current past 5 sessions
+- Session interface, has the start and stop session buttons. Shows the current stats for the session.
+
+#### WebUI interfaces
+
+- Home screen shows top and average values of trips and the last trip you have done
+- View with a list of all trips, every trip can be deleted from this view
+- Configuration view where the setup for the BT connection is and with what intervalls the RPi tries to connect to it
 
 ### Hardware interfaces
 
+- WebUI software will run on a RPi 3 and utilize a standard monitor, mouse and keyboard setup.
+- The hiking app will use a TWatch v2. If modified a bit it can also use the versions v1 and v3, if the GPS is disabled.
+
 ### Software interfaces
+
+- No external softwares required
 
 ### Communications interfaces
 
+- The WebUI can be viewed by connecting to the RPi with RealVNC Viewer over the same network using standard network protocols
+- The RPi and the TWatch communicate over Bluetooth using a JSON format
+
 ### Memory
+
+- The TWatch will only save 5 trips before it starts rewriting the previous information
+- The trips will be saved in flash memory
 
 ### Operations
 
+- The user will have to first setup the connection between the RPi and the TWatch before being able to synchronize them
+- The user will have to synchronize the Watch after the battery runs low enough that the system clock becomes unreliable
+- The user will have to synchronize the Watch before they run out of space for trips that have not been synchronized
+
 ### Site adaptation requirements
 
-## Asuumptions and dependencies
+- The current scope of the project does not see it being used anywhere else, so no additional requirements are necessary
 
-- The clock is synchronized regularly between trips
+## Assumptions and dependencies
+
+- The clock is synchronized regularly between trips, at most 5 trips without synchronization
+- The clocl is kept above a minimum threshhold of battery to keep the time from desynchronizing in normal operations
+- If the battery has gone below the threshold the RPi is close for synchronizing the system clock
 
 ## Apportioning of requirements
 
