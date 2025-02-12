@@ -130,17 +130,18 @@ This Software Requirements Specification (SRS) document is structured to provide
 
 ### Content of the SRS
 
-This SRS has three sections:
-1. **Introduction:** This section provides an overview of the entire SRS. It clarifies the context and the objectives of the Hiking Band System and details essential terminology and references. 
-2. **Overall description:** This section provides a high-level overview of the SUD (System Under Development). It details the product functionalities, product perspective, constraints and user characteristics. 
+This SRS has three sections:  
+
+1. **Introduction:** This section provides an overview of the entire SRS. It clarifies the context and the objectives of the Hiking Band System and details essential terminology and references.  
+2. **Overall description:** This section provides a high-level overview of the SUD (System Under Development). It details the product functionalities, product perspective, constraints and user characteristics.  
 3. **Specific Requirements:** This section delves deeper into the technical details of the SUD. It defines the performance requirements, design constraints, software-system attributes and security considerations. 
 
 ### Organization of the SRS
 
-This SRS follows the structure recommended in IEEE 830:1998. Each section builds upon previous sections, ensuring that readers gain solid understanding of the System Under Design (SUD). 
+This SRS follows the structure recommended in IEEE 830:1998. Each section builds upon previous sections, ensuring that readers gain solid understanding of the System Under Design (SUD).  
 
-1. **Introduction:** Gives an overview of the product, key terminology and details the purpose and the scope of this SRS
-2. **Overall description:** Provides an extensive overview of the systems requirements and constraints 
+1. **Introduction:** Gives an overview of the product, key terminology and details the purpose and the scope of this SRS  
+2. **Overall description:** Provides an extensive overview of the systems requirements and constraints  
 3. **Specific Requirements:** Breaks the system down into requirements that can be measured and verified based on preset metrics, ensuring that meeting the requirements can be verified during development and testing stages. 
 
 
