@@ -56,6 +56,8 @@ The system consists of two hardware components: the Raspberry Pi and the LilyGo 
 
 ## Definitions, acronyms and abbreviations
 
+### Definitions
+
 **1.user:** the person, or persons, who operate or interract directly with the product.  
 
 **2.hiking session:** an event during which activity data such as step count, travelled distance and average speed are recorded on the LilyGO smartwatch. The event begins when user pushes "Start" button and ends when user presses "End" button in hiking session view  
@@ -72,38 +74,28 @@ The system consists of two hardware components: the Raspberry Pi and the LilyGo 
 
 **8.burned calories:** an approximation of calories burned. The approximation MUST be based on count of steps and MAY additionally be based on average speed during the trip.  
 
-## Defnitions, acronyms, and abbreviations
+**9.web application:** The application running on the Raspberry Pi including the database and hosting services.  
 
+**10.LilyGo application:** The firmware and applications running on the LilyGo T-Watch smartwatch.  
 
-### Abbreviations and Definitions
+**11.System:**  The whole system including Raspberry Pi, LilyGo T-Watch smartwatch and relevant interfaces.  
 
-|     Abbreviation or Word      |      Definition                                                |
-| ----------------------------- | -------------------------------------------------------------- |
-| System                        | The whole system including Rpi, LilyGo and relevant interfaces |
-| Hiking Band System            | System                                                         |
-| RPi                           | Raspberry Pi V3+                                               |
-| LilyGo                        | Lilygo T-Watch V2                                              |
-| LilyGo application            | The firmware and applications running on the LilyGo            |
-| Web application               | The Web-based application running on the RPi                   |
-| SUD                           | System Under Development                                       |
+**12.SUD:**  System Under Development.  
 
+### Requirement levels
 
+This document uses requirement level keywords "MUST", "MUST NOT", "SHOULD", "SHOULD NOT" and "MAY". The keywords are used to coherently indicate blocking functionalities and requirements from optional and "nice to have" features. The keyword definitions respect the IETF RFC-2119 [2] standard:
 
-### Unites of measure
+**1.MUST:** Absolute requirement for the specification.  
 
-The step
+**2.MUST NOT:** Absolute prohibition of the specification.  
 
-### Keywords
+**3.SHOULD:** Can be ignored with valid reasons.  
 
-The specification follows the requirement level keywords defined in [RFC-2119](https://datatracker.ietf.org/doc/html/rfc2119):
+**4.SHOULD NOT:** Can be implemented with valid reasons.  
 
-|     Keyword      |      Description for the specification     |
-| ---------------- | ------------------------------------------ |
-| MUST             | Absolute requirement for the specification |
-| MUST NOT         | Absolute prohibition of the specification  |
-| SHOULD           | Can be ignored with valid reasons          |
-| SHOULD NOT       | Can be implemented with valid reasons      |
-| MAY              | Optional, extra                            |
+**5.MAY:** Optional, extra.  
+
 
 
 
@@ -146,25 +138,81 @@ This SRS follows the structure recommended in IEEE 830:1998. Each section builds
 
 
 
-## Overview schematic
-
-The image below details an overview of the system concept. 
-
-![Initial Concept Overview](dev-doc/consept-overview.png "Initial Concept Overview")
-
 # Overall description
 
 ## Product perspective
 
-### System interfaces
+The product perspective states individual components and their connections within the system. 
 
-This subsection expands and defines the frontends of the Web Application and LilyGO functionalities defined in [Functional Requirements](#functional-requirements).
+![Block diagram showing the major components of the full system and the interconnections between its components. ](dev-doc/consept-overview.png "Block diagram of the system.")
+
+> Note: In the above image, naming and other visualizations used MAY not convey the actual final product. However the interconnections and protocols SHOULD represent the actual system.
+
+Using the above block diagram of the whole system we can divide the interfaces to subsections:
+
+The [System interfaces](#system-interfaces) section lists the methods for software to interact with external systems and between major components. 
 
 The [User interfaces](#user-interfaces) section lists the characteristics between the software and the user. 
 
 The [Hardware interfaces](#hardware-interfaces) section lists the characteristics between hardware and software.
 
 The [Software interfaces](#software-interfaces) section lists the characteristics between different software and applications within the system.
+
+The [Communications interfaces](#communications-interfaces) section lists the externally defined communication protocols and their version used within the system.
+
+### System interfaces
+
+The data exchange between the major components MUST happen with structured and coherent application level protocols:
+
+- HTTP and tcp/ip protocols between the web browser and the Web Application
+- HTTP-like protocol between the Web Application and the LilyGo Application
+
+The Web Application and the LilyGo Application SHOULD use json format to exchange information.
+
+The LilyGo Application SHOULD use the json structure for the retrieved data when applicable:
+
+![json structure for mini restful to communicate with the LilyGo Application  ](dev-doc/mini_restful_jsonstructure.png "Mini restful.")
+
+For example for /tripdata/4:
+```console
+{
+    "Context": "/tripdata/4",
+    "Description": "Individual trip data overview.",
+    "Data": {
+        "ID": 4,
+        "StartTimestamp": "0",
+        "EndTimestamp": "0",
+        "Steps": 0,
+        "AvgSpeed": "0.000000",
+        "GeoLocationPath": null
+    }
+}
+```
+
+The communication between Web Application and LilyGo Application MUST use commands like GET and POST to inform the nature of the communication.
+
+The communication between Web Application and LilyGo Application SHOULD use the command structure:
+
+![Command structure for mini restful to communicate with the LilyGo Application ](dev-doc/mini_restful_commandstructure.png "Mini restful.")
+
+Example for GET (example might not be applicable in the final product):
+```console
+GET /tripdata/4
+```
+
+Example for POST (example might not be applicable in the final product):
+```console
+POST {} /tripdata/4/clear
+```
+
+The communication between Web Application and LilyGo Application SHOULD use the filestructure:
+
+![File structure for mini restful to communicate with the LilyGo Application  ](dev-doc/mini_restful_filestructure.png "Mini restful.")
+
+
+The LilyGo Application SHOULD NOT execute its functions without interaction from the user or the Web Application. This means the LilyGo Application has only slave-like properties within the system.
+
+The Web Application SHOULD be able to interact with its resources and the system independently.
 
 ### User interfaces
 
@@ -202,17 +250,17 @@ The LilyGO application MUST use the touchScreen FT6336 using the pinout defined 
 - SCL: 32 pin
 - Interrupt: 38 pin
 
-The LilyGO application SHOULD use the BMA423 using the pinout defined by LilyGO hardware:
+The LilyGO application MUST use the BMA423 using the pinout defined by LilyGO hardware:
 
 - Interrupt: 39 pin
 
-The WebUI HTML layout MUST be viewable in a web browser on Rapsberry Pi. In this context viewable means that the user MUST be able to read all information rendered on a web page
+The WebUI HTML layout MUST be viewable in a web browser on Raspberry Pi. In this context viewable means that the user MUST be able to read all information rendered on a web page
 
 The WebUI HTML layout MAY be viewable on a mobile phone screen. 
 
 ### Software interfaces
 
-The LilyGO application SHOULD use LilyWatch maintained TTGO_TWatch_Library for the pin definitions and driver implementation 
+The LilyGO application SHOULD use LilyWatch maintained TTGO_TWatch_Library and Arduino core ESP32 libraries for the pin definitions and driver implementation 
 
 The Web application SHOULD use SQLite to store synchronized data locally on the RPi
 
@@ -220,13 +268,15 @@ The Web application SHOULD use SQLite to store its information
 
 ### Communications interfaces
 
-The synchronization SHOULD be able to happen only after initial setup between RPi and LilyGO
+The BlueTooth capabilities MUST use the BlueTooth version v4.2 or below
 
-The synchronization via BlueTooth between RPi and LilyGO MUST happen via BlueTooth v4.2 or below
+The Web Application MUST use HTTP and TCP/IP procotols to be able to view the WebUI
 
-The WebUI MUST use http protocol within a local TCP/IP network.
+The Web Application MUST have ONE of the following capabilities to view the WebUI:
 
-The RPi MUST be able to connect to a local network OR host its own access point to view the WebUI
+- Able to host its own WiFi access point
+- Connect to a local network via WiFi by configuring the correct SSID information
+- Connect to a local network via Ethernet by acquiring IP and network information from DHCP.
 
 ## Product functions
 This subsection contains the functional requirements for the Hiking Application prototype. As the prototype consists of both LilyGo - application and the Web application to present tracking data, the functional requirements gather requirements for both of these.  
