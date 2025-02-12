@@ -154,15 +154,33 @@ The product perspective states individual components and their connections withi
 
 > Note: In the above image, naming and other visualizations used MAY not convey the actual final product. However the interconnections and protocols SHOULD represent the actual system.
 
-### System interfaces
+Using the above block diagram of the whole system we can divide the interfaces to subsections:
 
-This subsection expands and defines the frontends of the Web Application and LilyGO Application functionalities defined in [Functional Requirements](#functional-requirements).
+The [System interfaces](#system-interfaces) section lists the methods for software to interact with external systems and major components. 
 
 The [User interfaces](#user-interfaces) section lists the characteristics between the software and the user. 
 
 The [Hardware interfaces](#hardware-interfaces) section lists the characteristics between hardware and software.
 
 The [Software interfaces](#software-interfaces) section lists the characteristics between different software and applications within the system.
+
+The [Communications interfaces](#communications-interfaces) section lists the characteristics between different software and applications within the system.
+
+### System interfaces
+
+The system MUST be accessible by the use of the external resources:
+
+- Local network
+- Web Browser
+
+The data exchange between the major components MUST happen with structured and coherent application level protocol:
+
+- HTTP and tcp/ip protocols between the web browser and the Web Application
+- HTTP-like protocol between the Web Application and the LilyGo Application
+
+The LilyGo Application SHOULD NOT execute its functions without interaction from the user or the Web Application. This means the LilyGo Application has only slave-like properties within the system.
+
+The Web Application SHOULD be able to interact with its resources and the system independently.
 
 ### User interfaces
 
@@ -200,11 +218,11 @@ The LilyGO application MUST use the touchScreen FT6336 using the pinout defined 
 - SCL: 32 pin
 - Interrupt: 38 pin
 
-The LilyGO application SHOULD use the BMA423 using the pinout defined by LilyGO hardware:
+The LilyGO application MUST use the BMA423 using the pinout defined by LilyGO hardware:
 
 - Interrupt: 39 pin
 
-The WebUI HTML layout MUST be viewable in a web browser on Rapsberry Pi. In this context viewable means that the user MUST be able to read all information rendered on a web page
+The WebUI HTML layout MUST be viewable in a web browser on Raspberry Pi. In this context viewable means that the user MUST be able to read all information rendered on a web page
 
 The WebUI HTML layout MAY be viewable on a mobile phone screen. 
 
