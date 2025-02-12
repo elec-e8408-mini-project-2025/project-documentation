@@ -72,38 +72,28 @@ The system consists of two hardware components: the Raspberry Pi and the LilyGo 
 
 **8.burned calories:** an approximation of calories burned. The approximation MUST be based on count of steps and MAY additionally be based on average speed during the trip.  
 
-## Defnitions, acronyms, and abbreviations
+**9.burned calories:** an approximation of calories burned. The approximation MUST be based on count of steps and MAY additionally be based on average speed during the trip.  
 
+**10.web application:** The application running on the Raspberry Pi including the database and hosting services.  
 
-### Abbreviations and Definitions
+**11.LilyGo application:** The firmware and applications running on the LilyGo T-Watch smartwatch.  
 
-|     Abbreviation or Word      |      Definition                                                |
-| ----------------------------- | -------------------------------------------------------------- |
-| System                        | The whole system including Rpi, LilyGo and relevant interfaces |
-| Hiking Band System            | System                                                         |
-| RPi                           | Raspberry Pi V3+                                               |
-| LilyGo                        | Lilygo T-Watch V2                                              |
-| LilyGo application            | The firmware and applications running on the LilyGo            |
-| Web application               | The Web-based application running on the RPi                   |
-| SUD                           | System Under Development                                       |
+**12.System:**  The whole system including Raspberry Pi, LilyGo T-Watch smartwatch and relevant interfaces.  
 
+## Requirement levels
 
+This document uses requirement level keywords "MUST", "MUST NOT", "SHOULD", "SHOULD NOT" and "MAY". The keywords are used to coherently indicate blocking functionalities and requirements from optional and "nice to have" features. The keyword definitions respect the IETF [RFC-2119](https://datatracker.ietf.org/doc/html/rfc2119) standard which are:
 
-### Unites of measure
+**1.MUST:** Absolute requirement for the specification.  
 
-The step
+**2.MUST NOT:** Absolute prohibition of the specification.  
 
-### Keywords
+**3.SHOULD:** Can be ignored with valid reasons.  
 
-The specification follows the requirement level keywords defined in [RFC-2119](https://datatracker.ietf.org/doc/html/rfc2119):
+**4.SHOULD NOT:** Can be implemented with valid reasons.  
 
-|     Keyword      |      Description for the specification     |
-| ---------------- | ------------------------------------------ |
-| MUST             | Absolute requirement for the specification |
-| MUST NOT         | Absolute prohibition of the specification  |
-| SHOULD           | Can be ignored with valid reasons          |
-| SHOULD NOT       | Can be implemented with valid reasons      |
-| MAY              | Optional, extra                            |
+**5.MAY:** Optional, extra.  
+
 
 
 
