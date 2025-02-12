@@ -56,6 +56,8 @@ The system consists of two hardware components: the Raspberry Pi and the LilyGo 
 
 ## Definitions, acronyms and abbreviations
 
+### Definitions
+
 **1.user:** the person, or persons, who operate or interract directly with the product.  
 
 **2.hiking session:** an event during which activity data such as step count, travelled distance and average speed are recorded on the LilyGO smartwatch. The event begins when user pushes "Start" button and ends when user presses "End" button in hiking session view  
@@ -80,7 +82,7 @@ The system consists of two hardware components: the Raspberry Pi and the LilyGo 
 
 **12.System:**  The whole system including Raspberry Pi, LilyGo T-Watch smartwatch and relevant interfaces.  
 
-## Requirement levels
+### Requirement levels
 
 This document uses requirement level keywords "MUST", "MUST NOT", "SHOULD", "SHOULD NOT" and "MAY". The keywords are used to coherently indicate blocking functionalities and requirements from optional and "nice to have" features. The keyword definitions respect the IETF RFC-2119 [2] standard:
 
