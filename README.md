@@ -21,7 +21,7 @@ numbersections: true
     ii. [Scope](#scope)
     iii. [Definitions, acronyms, abbreviations](#definitions-acronyms-and-abbreviations)
     iv. [References](#references)
-    v. [Context Diagram and Overview](#context-diagram-and-overview)
+    v. [Overview](#overview)
 2. [Overall description](#overall-description)
     i. [Product Perspective](#product-perspective)
     ii. [Product functions](#product-functions)
@@ -72,7 +72,7 @@ The system consists of two hardware components: the Raspberry Pi and the LilyGo 
 
 **8.burned calories:** an approximation of calories burned. The approximation MUST be based on count of steps and MAY additionally be based on average speed during the trip.  
 
-## Overview
+## Defnitions, acronyms, and abbreviations
 
 
 ### Abbreviations and Definitions
