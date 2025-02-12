@@ -156,7 +156,7 @@ The product perspective states individual components and their connections withi
 
 Using the above block diagram of the whole system we can divide the interfaces to subsections:
 
-The [System interfaces](#system-interfaces) section lists the methods for software to interact with external systems and major components. 
+The [System interfaces](#system-interfaces) section lists the methods for software to interact with external systems and between major components. 
 
 The [User interfaces](#user-interfaces) section lists the characteristics between the software and the user. 
 
@@ -164,19 +164,57 @@ The [Hardware interfaces](#hardware-interfaces) section lists the characteristic
 
 The [Software interfaces](#software-interfaces) section lists the characteristics between different software and applications within the system.
 
-The [Communications interfaces](#communications-interfaces) section lists the characteristics between different software and applications within the system.
+The [Communications interfaces](#communications-interfaces) section lists the externally defined communication protocols and their version used within the system.
 
 ### System interfaces
 
-The system MUST be accessible by the use of the external resources:
-
-- Local network
-- Web Browser
-
-The data exchange between the major components MUST happen with structured and coherent application level protocol:
+The data exchange between the major components MUST happen with structured and coherent application level protocols:
 
 - HTTP and tcp/ip protocols between the web browser and the Web Application
 - HTTP-like protocol between the Web Application and the LilyGo Application
+
+The Web Application and the LilyGo Application SHOULD use json format to exchange information.
+
+The LilyGo Application SHOULD use the json structure for the retrieved data when applicable:
+
+![json structure for mini restful to communicate with the LilyGo Application  ](dev-doc/mini_restful_jsonstructure.png "Mini restful.")
+
+For example for /tripdata/4:
+```console
+{
+    "Context": "/tripdata/4",
+    "Description": "Individual trip data overview.",
+    "Data": {
+        "ID": 4,
+        "StartTimestamp": "0",
+        "EndTimestamp": "0",
+        "Steps": 0,
+        "AvgSpeed": "0.000000",
+        "GeoLocationPath": null
+    }
+}
+```
+
+The communication between Web Application and LilyGo Application MUST use commands like GET and POST to inform the nature of the communication.
+
+The communication between Web Application and LilyGo Application SHOULD use the command structure:
+
+![Command structure for mini restful to communicate with the LilyGo Application ](dev-doc/mini_restful_commandstructure.png "Mini restful.")
+
+Example for GET (example might not be applicable in the final product):
+```console
+GET /tripdata/4
+```
+
+Example for POST (example might not be applicable in the final product):
+```console
+POST {} /tripdata/4/clear
+```
+
+The communication between Web Application and LilyGo Application SHOULD use the filestructure:
+
+![File structure for mini restful to communicate with the LilyGo Application  ](dev-doc/mini_restful_filestructure.png "Mini restful.")
+
 
 The LilyGo Application SHOULD NOT execute its functions without interaction from the user or the Web Application. This means the LilyGo Application has only slave-like properties within the system.
 
@@ -228,7 +266,7 @@ The WebUI HTML layout MAY be viewable on a mobile phone screen.
 
 ### Software interfaces
 
-The LilyGO application SHOULD use LilyWatch maintained TTGO_TWatch_Library for the pin definitions and driver implementation 
+The LilyGO application SHOULD use LilyWatch maintained TTGO_TWatch_Library and Arduino core ESP32 libraries for the pin definitions and driver implementation 
 
 The Web application SHOULD use SQLite to store synchronized data locally on the RPi
 
@@ -236,13 +274,14 @@ The Web application SHOULD use SQLite to store its information
 
 ### Communications interfaces
 
-The synchronization SHOULD be able to happen only after initial setup between RPi and LilyGO
+The BlueTooth capabilities MUST use the BlueTooth version v4.2 or below
 
-The synchronization via BlueTooth between RPi and LilyGO MUST happen via BlueTooth v4.2 or below
+The Web Application MUST use HTTP and TCP/IP procotols to be able to view the WebUI
 
-The WebUI MUST use http protocol within a local TCP/IP network.
-
-The RPi MUST be able to connect to a local network OR host its own access point to view the WebUI
+The Web Application MUST have ONE of the following capabilities to view the WebUI:
+- Able to host its own WiFi access point
+- Connect to a local network via WiFi by configuring the correct SSID information
+- Connect to a local network via Ethernet by acquiring IP and network information from DHCP.
 
 ## Product functions
 This subsection contains the functional requirements for the Hiking Application prototype. As the prototype consists of both LilyGo - application and the Web application to present tracking data, the functional requirements gather requirements for both of these.  
