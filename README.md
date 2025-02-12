@@ -74,13 +74,13 @@ The system consists of two hardware components: the Raspberry Pi and the LilyGo 
 
 **8.burned calories:** an approximation of calories burned. The approximation MUST be based on count of steps and MAY additionally be based on average speed during the trip.  
 
-**9.burned calories:** an approximation of calories burned. The approximation MUST be based on count of steps and MAY additionally be based on average speed during the trip.  
+**9.web application:** The application running on the Raspberry Pi including the database and hosting services.  
 
-**10.web application:** The application running on the Raspberry Pi including the database and hosting services.  
+**10.LilyGo application:** The firmware and applications running on the LilyGo T-Watch smartwatch.  
 
-**11.LilyGo application:** The firmware and applications running on the LilyGo T-Watch smartwatch.  
+**11.System:**  The whole system including Raspberry Pi, LilyGo T-Watch smartwatch and relevant interfaces.  
 
-**12.System:**  The whole system including Raspberry Pi, LilyGo T-Watch smartwatch and relevant interfaces.  
+**12.SUD:**  System Under Development.  
 
 ### Requirement levels
 
