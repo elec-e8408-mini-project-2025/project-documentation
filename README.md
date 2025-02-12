@@ -138,12 +138,6 @@ This SRS follows the structure recommended in IEEE 830:1998. Each section builds
 
 
 
-## Overview schematic
-
-The image below details an overview of the system concept. 
-
-![Initial Concept Overview](dev-doc/consept-overview.png "Initial Concept Overview")
-
 # Overall description
 
 ## Product perspective
