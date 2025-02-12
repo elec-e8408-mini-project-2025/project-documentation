@@ -148,6 +148,10 @@ The image below details an overview of the system concept.
 
 ## Product perspective
 
+The product perspective states individual components and their connections within the system. 
+
+![Block diagram showing the major components of the full system and the interconnections between its components. ](dev-doc/consept-overview.png "Block diagram of the system.")
+
 ### System interfaces
 
 This subsection expands and defines the frontends of the Web Application and LilyGO functionalities defined in [Functional Requirements](#functional-requirements).
