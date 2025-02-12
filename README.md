@@ -273,6 +273,7 @@ The BlueTooth capabilities MUST use the BlueTooth version v4.2 or below
 The Web Application MUST use HTTP and TCP/IP procotols to be able to view the WebUI
 
 The Web Application MUST have ONE of the following capabilities to view the WebUI:
+
 - Able to host its own WiFi access point
 - Connect to a local network via WiFi by configuring the correct SSID information
 - Connect to a local network via Ethernet by acquiring IP and network information from DHCP.
