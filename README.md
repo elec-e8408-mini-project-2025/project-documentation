@@ -82,7 +82,7 @@ The system consists of two hardware components: the Raspberry Pi and the LilyGo 
 
 ## Requirement levels
 
-This document uses requirement level keywords "MUST", "MUST NOT", "SHOULD", "SHOULD NOT" and "MAY". The keywords are used to coherently indicate blocking functionalities and requirements from optional and "nice to have" features. The keyword definitions respect the IETF [RFC-2119](https://datatracker.ietf.org/doc/html/rfc2119) standard which are:
+This document uses requirement level keywords "MUST", "MUST NOT", "SHOULD", "SHOULD NOT" and "MAY". The keywords are used to coherently indicate blocking functionalities and requirements from optional and "nice to have" features. The keyword definitions respect the IETF RFC-2119 [2] standard:
 
 **1.MUST:** Absolute requirement for the specification.  
 
