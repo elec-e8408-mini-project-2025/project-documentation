@@ -154,7 +154,7 @@ The product perspective states individual components and their connections withi
 
 ### System interfaces
 
-This subsection expands and defines the frontends of the Web Application and LilyGO functionalities defined in [Functional Requirements](#functional-requirements).
+This subsection expands and defines the frontends of the Web Application and LilyGO Application functionalities defined in [Functional Requirements](#functional-requirements).
 
 The [User interfaces](#user-interfaces) section lists the characteristics between the software and the user. 
 
