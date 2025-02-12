@@ -85,6 +85,7 @@ The system consists of two hardware components: the Raspberry Pi and the LilyGo 
 | LilyGo                        | Lilygo T-Watch V2                                              |
 | LilyGo application            | The firmware and applications running on the LilyGo            |
 | Web application               | The Web-based application running on the RPi                   |
+| SUD                           | System Under Development                                       |
 
 
 
@@ -123,13 +124,32 @@ The development team should familiarize with the following documents:
 
 
 
-## Context Diagram and Overview
+## Overview
 
-This document follows the SRS structure detailed in IEEE 830 section 5 [1]. Section 2 of this document lays out the over all description and section 3 the specific requirements, as detailed in IEEE 830. 
+This Software Requirements Specification (SRS) document is structured to provide a comprehensive outline of the Hiking Band System and of its requirements. The structure is based on the IEEE 830:1998 standard and is organized by the best practices introduced in IEEE 830:1998 as described below. 
+
+### Content of the SRS
+
+This SRS has three sections:
+1. **Introduction:** This section provides an overview of the entire SRS. It clarifies the context and the objectives of the Hiking Band System and details essential terminology and references. 
+2. **Overall description:** This section provides a high-level overview of the SUD (System Under Development). It details the product functionalities, product perspective, constraints and user characteristics. 
+3. **Specific Requirements:** This section delves deeper into the technical details of the SUD. It defines the performance requirements, design constraints, software-system attributes and security considerations. 
+
+### Organization of the SRS
+
+This SRS follows the structure recommended in IEEE 830:1998. Each section builds upon previous sections, ensuring that readers gain solid understanding of the System Under Design (SUD). 
+
+1. **Introduction:** Gives an overview of the product, key terminology and details the purpose and the scope of this SRS
+2. **Overall description:** Provides an extensive overview of the systems requirements and constraints 
+3. **Specific Requirements:** Breaks the system down into requirements that can be measured and verified based on preset metrics, ensuring that meeting the requirements can be verified during development and testing stages. 
+
+
+
+## Overview schematic
 
 The image below details an overview of the system concept. 
 
-![Initial Consept Overview](dev-doc/consept-overview.png "Initial Consept Overview")
+![Initial Concept Overview](dev-doc/consept-overview.png "Initial Concept Overview")
 
 # Overall description
 
