@@ -107,7 +107,59 @@ Laplante argues, that the software design phase takes approximately the same amo
       1. failures caused by patching (hotfixes done without adequate design and testing)
       2. failures cause by hardware degradation
       3. experienced users put more strain on advanced feature and begin to use previously unsused features. Dormant undetected bugs may emerge.
+- **correctness**
+  - fundamental difference to reliability is that even a minor deviation from the requirements is strictly considered a failure and hence means the software is incorrect. 
+  - incorrect software may still be reliable! 
+  - in RTS correctness incorporates both correctness of outputs as well as deadline satisfaction
+- **performance**
+  - explicit measure of some required behaviour
+  - common approach based on computational complexity theory
+  - most accurate approach involves directly timing the behaviour of the completed system (with logic analyzer or performance analysis tools)
+- **usability**
+  - ease of use or user friendliness
+  - a measure of how easy and comfortable the software is fo rhumans to use
+  - an elusive definition, difficult to quantify
+  - usability for a novice may differe vastly from usability to expreienced user 
+  - demonstrative prototyping can be used to increase the usability
+- **interoperability**
+  the ability of the software to coexist and cooperate with other relevant software
+  - especially important for 
+    - component based software development
+    - software reuse
+    - network-based software systems
+  - usually straightforward to achieve if decision to communicate is made before software is designed
+  - much more laborious to attain after software has been designed
+  - example: in real-time applications, the software must be able to communicate with various devices using standard bus structures and protocols. 
+  - **related concept: open system**
+    - an extensible collection of independently written application that cooperate to function as an integrated systems
+    - follows open standards for interoperatbility
+    - ensures compability and flexibility
+- **maintainability**
+  - related to the anticipation of change that should guide the software engineer throughout the development project
+  - A software system in which changes are relatively easy to make has a high level of maintainability
+    - connected directly to 
+      - the readability and understandability of the program code
+      - associated documentation
+  - in a long run design for software change 
+    - reduces life cycle costs
+    - improves quality and reputation of manufacturer
+- **portability**
+  - how easily the software can be made to run in different environments (hw platforms)
+  - because of I/O intensive hardware with which the SW closely interacts, special attention must be taken with Embedded Systems to make it portable
+  - hardware portability achieved through a delibirate design strategy
+    - hardware-dependent code is confined to the fewest code units as possible (e.g. device drivers)
+    - works with procedural and OOP languages by using structures and object-oriented design approaches
+  - with ERTSs some standard application program interface (API) is adopted (drawback: potential overhead)
+- **verifiability**
+  - degree to which various qualities, including all of those previously introduced, can be verified
+  - in RTS, verifiability of deadline satisfaction is of the utmost importance
+  - one technique
+    - insertion of special program code that is intended to monitor certain qualities, such as performance correctness
+  - essential throughout the whole software life cycle. 
     
+
+
+
 
 
 
