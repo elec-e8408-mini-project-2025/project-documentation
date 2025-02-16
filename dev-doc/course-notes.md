@@ -204,7 +204,44 @@ Laplante argues, that the software design phase takes approximately the same amo
   - involves decomposition of software behaviour in encapsulated software units
   - can be achieved with both procedural and OO languages
   - the goal is high cohesion and low coupling
-
+  - Seven levels of cohesion (Constantine and Yourdon):
+    1. Coincidental
+    2. Logical
+    3. Temporal
+    4. Procedural
+    5. Communicational
+    6. Sequential
+    7. Functional
+  - low coupling: lower ripple effect on errors
+  - six levels of coupling (with increasing strength)
+    1. None. All modules are unrelated. 
+    2. Data. Every argument is either a simple argument or data structure in which all elements are used by the called module
+    3. Stamp. Data structure is passed to a module, but DS is only partially used. 
+    4. Control. One module explicitly controls the logic of the other by passing an element of control to it. 
+    5. Common. Two modules have access to the same global data. 
+    6. Content. One module directly references the contents of another. 
+- **anticipation of change**
+  - software products are subject to frequent change
+  - high maintainability level is crucial
+  - embedded systems:
+    - anticipation of change can be achieved by adopting a suitable life cycle model and corresponding design methodologies
+- **Incrementality**
+  - software developed in incerements
+    - each increment provides additional functionality
+    - product can be demonstrated to customer in the end of each increment
+- **Traceability**
+  - regarding both documentatin and code (version control)
+  - can coding decisions be traced back to design decision? This should be possible!
+  - especially important in embedded systems:
+    - coding decisions often related to specific hardware constraints. 
+  - important links:
+    - from requirements to stakeholders who proposed the requirements
+    - between dependent requirements
+    - from the requirements to the design
+    - from the design to associated code segments
+    - form the requirements to the test plan
+    - from the test plan to individual test cases
+  - Note: see traceability matrix example (Table 6.3, page 281)
 
 
 
