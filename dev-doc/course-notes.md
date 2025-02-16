@@ -102,6 +102,12 @@ Laplante argues, that the software design phase takes approximately the same amo
     - real-time performance requirements are met consistently
   - Laplante notes that these are difficult to measure
   - Additionally it is unrealistic to expect a system to never to fail, there is always a probability of failure. See p. 269-270 for a equation and an example. 
+    - The equation 6.2 has an interesting approach => failure intensity is higher in early stages of software, and lower in later stages (such as maintenance stage). 
+    - Figure 6.2 highlights an other model useful for ERTSs, a bathtub model. Failure increase in later stages is caused by hardware failures. What cold lead to a bathtub-curve with software failure intensity? Explanations
+      1. failures caused by patching (hotfixes done without adequate design and testing)
+      2. failures cause by hardware degradation
+      3. experienced users put more strain on advanced feature and begin to use previously unsused features. Dormant undetected bugs may emerge.
+    
 
 
 
