@@ -158,6 +158,57 @@ Laplante argues, that the software design phase takes approximately the same amo
   - essential throughout the whole software life cycle. 
     
 
+**Software Qualities and Possible Means for Measuring them**
+
+| Software Quality > Possible Measuerment Approach |
+| --- | --- |
+| Reliability | Probabilistic measures, MTFF, MTBF, heuristic measures |
+| Correctness | Probabilistic measures, MTFF, MTBF |
+| Performance | Algorithmic complexity analysis, simulation, direct measurement |
+| Usability | User feedback from surveys and problem reports |
+| Interoperability | Compliance with relevant open standards |
+| Maintainability | Anecdotal observation of resources spent |
+| Portability | Anecdotal observation of resources spent |
+| Veriﬁability | Insertion of special monitoring code |
+
+
+### Software Engineering Principles
+
+- Software engineering does not share similar theoretical foundation to older engineering disciplines 
+  - software development is a creative human activity related to problem solving
+- In Software engineering there are several fundamental rules that form the basis of sound practices
+
+
+### Sever principles from Rigor and Formality to Traceablity
+
+- **rigor and formality**
+  - rigor requires the use of mathematical techniques
+  - formality is a higher form of rigor
+    - precise, unabiguous
+  - RTS example:
+    - strict formality  would require that there be an underlying algorithmic approach to the specification, design, coding and documentation of the software
+    - because of the inherent difficulty in achieving this, semiformal and informal approaches are needed to complement individual formal approaches. 
+- **separation of concerns**
+  - divide-and-conquer strategy to manage miscellaneous problems related to complexity
+  - in terms of design and coding it is used in object-oriented design and in modularization of procedural code
+  - there may be sepration in time (e.g. predefined scheduling of tasks)
+  - one form is in dealing with individual software qualities (e.g. addressing fault tolerance separately)
+    - it is important to keep in mind that in SW many qualities are interrelated
+    - improving one may deteriorate other qualities
+- **Modularity**
+  - commonly achieved by grouping together logically related elements
+    - statements
+    - procedures
+    - variable declarations 
+    - object attributes
+  - involves decomposition of software behaviour in encapsulated software units
+  - can be achieved with both procedural and OO languages
+  - the goal is high cohesion and low coupling
+
+
+
+
+
 
 
 
