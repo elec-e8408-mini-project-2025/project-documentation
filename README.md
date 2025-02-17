@@ -440,14 +440,11 @@ With the help of the documentation the user MUST be able to know how to
 - The web application is only guaranteed to work on Raspberry Pi3 
 - The clock is either recharged or synchronized regularly between trips to ensure that the real-time clock module is operational. If the clock runs out of battery life, user may not be able to record new hiking sessions. 
 
-
 ## Apportioning of requirements
 
 The proof-of-concept (PoC) MUST include all requirements that have been defined with keywords MUST according to RFC-2119 [2]. All requirements marked with key word MAY are not guaranteed to be implemented in the PoC release. For requirements with keyword SHOULD, design team must be able to justify deviation from SRS. 
 
-
 # Specific Requirements
-
 
 ## Performance Requirements
 
