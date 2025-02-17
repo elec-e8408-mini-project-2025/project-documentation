@@ -443,7 +443,23 @@ The proof-of-concept (PoC) SHALL include all requirements that have been defined
 
 ## Performance Requirements
 
-### MUST have acceptably long data synchronization
+- The RPi shall support at least 1 LilyGo watch at a time.
+
+- The maximum time for trips shall be above 2h.
+
+- The watch shall log the location either every 10 or 30 seconds, depending on memory size.
+
+- The watch shall have room for 5 trips.
+
+- The synchronization for transfering data to the RPi shall not fail 2 times in a row.
+
+- The watch refreshes the screen in the trip view every 0.2 seconds or faster.
+
+- The trip data shall be saved on the watch until it is the oldest trip before being overwritten.
+
+- Trip data shall not be overwritten before it has been synchronized.
+
+- Changing the view on the RPi shall be faster than 0.5 seconds.
 
 ## Design Constraints
 
