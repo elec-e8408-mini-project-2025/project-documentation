@@ -373,15 +373,13 @@ Approximation of burned calories MUST be based on count of steps and MAY additio
 
 ## User characteristics
 
-This SRS details the requirements for the proof-of-concept (poc) version of the system under design (SUD). The system SHOULD be in a stage in which users with intermediate technical skills with Smartwatches, Bluetooth technology and Raspberry Pi product family can use the product indepentently with the help of the project documentation.  
+This Software Requirements Specification details the features for the proof-of-concept (PoC) version of the system under design (SUD). The system SHOULD be in a stage, in which users with intermediate technical skills with Smartwatches, Bluetooth technology and Raspberry Pi product family can use the product indepentently with the help of the project documentation.  
 
-With the help of the documentation the user must be able to know how to 
+With the help of the documentation the user MUST be able to know how to 
 
 - clone source code from remote repository (GitHub)
 - how to set up virtual environment and install dependencies
 - how to flash firmware on LilyGO T-Watch
-
-
 
 ## Constraints
 
@@ -445,7 +443,7 @@ With the help of the documentation the user must be able to know how to
 
 ## Apportioning of requirements
 
-The proof-of-concept (PoC) MUST include all requirements that have been defined with keywords MUST or MUST according to RFC-2119 [2]. All requirements marked with key word MAY are not guaranteed to be implemented in the PoC release. 
+The proof-of-concept (PoC) MUST include all requirements that have been defined with keywords MUST according to RFC-2119 [2]. All requirements marked with key word MAY are not guaranteed to be implemented in the PoC release. For requirements with keyword SHOULD, design team must be able to justify deviation from SRS. 
 
 
 # Specific Requirements
