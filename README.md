@@ -89,15 +89,14 @@ This proof-of-concept system consists of two hardware components: the Raspberry 
 
 This document uses requirement level keywords "MUST", "MUST NOT", "SHOULD", "SHOULD NOT" and "MAY". The keywords are used to coherently indicate blocking functionalities and requirements from optional and "nice to have" features. The keyword definitions respect the IETF RFC-2119 [2] standard:
 
-**1.MUST:** Absolute requirement for the specification.  
 
-**2.MUST NOT:** Absolute prohibition of the specification.  
-
-**3.SHOULD:** Can be ignored with valid reasons.  
-
-**4.SHOULD NOT:** Can be implemented with valid reasons.  
-
-**5.MAY:** Optional, extra.  
+| **Keyword** | **Definition** |
+| --- | --- |
+| MUST | Absolute requirement for the specification. |
+| MUST NOT | Absolute prohibition of the specification. |
+| SHOULD | Can be ignored with valid reasons. |
+| SHOULD NOT | Can be implemented with valid reasons. |
+| MAY | Optional, extra. |
 
 
 
@@ -106,15 +105,17 @@ This document uses requirement level keywords "MUST", "MUST NOT", "SHOULD", "SHO
 
 This Software Requirement Specification shall be used in conjuction with the following publications:
 
-[1] IEEE 830:1998 IEEE Recommended Practice for Software Requirements Specifications. https://ieeexplore.ieee.org/document/720574
+[1] IEEE 830:1998 IEEE Recommended Practice for Software Requirements Specifications. Available at: [https://ieeexplore.ieee.org/document/720574](https://ieeexplore.ieee.org/document/720574)
 
-[2] RFC-2119. Key words for use in RFCs to Indicate Requirement Levels. Published in March, 1997. Available at: https://datatracker.ietf.org/doc/html/rfc2119
+[2] RFC-2119. Keywords for use in RFCs to Indicate Requirement Levels. Published in March, 1997. Available at: [https://datatracker.ietf.org/doc/html/rfc2119](https://datatracker.ietf.org/doc/html/rfc2119)
+
+[3] RFC-7231. Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content. Available at: [https://datatracker.ietf.org/doc/html/rfc7231](https://datatracker.ietf.org/doc/html/rfc7231)
 
 The development team should familiarize with the following documents:
 
-[i.] LilyGo T-Watch. LilyGo T-Watch GitHub repository. Available at: https://github.com/Xinyuan-LilyGO/TTGO_TWatch_Library
+[i.] LilyGo T-Watch. LilyGo T-Watch GitHub repository. Available at: [https://github.com/Xinyuan-LilyGO/TTGO_TWatch_Library](https://github.com/Xinyuan-LilyGO/TTGO_TWatch_Library)
 
-[ii.] ESPRESIF documentation. ESP32 Arduino Core's documentation. Available at: https://docs.espressif.com/projects/arduino-esp32/en/latest/
+[ii.] ESPRESIF documentation. ESP32 Arduino Core's documentation. Available at: [https://docs.espressif.com/projects/arduino-esp32/en/latest/](https://docs.espressif.com/projects/arduino-esp32/en/latest/)
 
 
 
@@ -192,7 +193,7 @@ For example for /tripdata/4:
 }
 ```
 
-The communication between Web Application and LilyGo Application MUST use commands like GET and POST to inform the nature of the communication.
+The communication between Web Application and LilyGo Application MUST adhere to RFC-7231 when using GET and POST methods to inform the nature of the communication.
 
 The communication between Web Application and LilyGo Application SHOULD use the command structure:
 
