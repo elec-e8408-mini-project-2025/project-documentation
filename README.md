@@ -1,5 +1,6 @@
 ---
 title: "Hiking Band: Software Requirements Specification"
+lang: en
 format: gfm
 header-includes:
   - \usepackage{caption}
@@ -38,13 +39,13 @@ numbersections: true
 
 # Introduction
 
-This chapter highlights the purpose and scope of this document, introduces the essential definitions, acronyms and abbreviations and the relevant references. 
+This chapter highlights the purpose and scope of this document, introduces the essential definitions, acronyms and abbreviations, and lists the relevant references. 
 
 ## Purpose
 
-The purpose of this document is to list and provide context and considerations for the Hiking Band product system. This document SHOULD be used within software development, integration and testing of the whole system.  
+The purpose of this document is to list requirements and provide context and considerations for the proof-of-concept Hiking Band product system. This document is intented be used within software development, integration and testing of the whole system.  
 
-The core audiences for this documents are the product development team and the course instructors, who both review this document and review the final system in based on the requirement specification of this document. The final product MUST match this documentation. 
+The core audiences for this documents are the product development team and the course instructors, who both review this document and review the final system based on the requirement specification of this document. The finished deliverable MUST match the specification in this documentation. 
 
 
 ## Scope
