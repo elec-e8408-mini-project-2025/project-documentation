@@ -333,12 +333,6 @@ While hiking session is not active, the touchscreen MAY display step count and t
 
 While hiking sessin is active, the smartwatch touchscreen MAY display the current date (YYYY-MM-DD) 
 
-### Calculating data
-
-Travelled distance MUST be based either on an approximation of the length of an average step or on GPS data   
-
-Approximation of burned calories MUST be based on count of steps and MAY additionally be based on average speed during the trip.   
-
 ### Synchronize and store data with RPi via Bluetooth
 
 The smartwatch application MUST be capable of sending step count and travelled distance via Bluetooth to the web application on RPi  
@@ -370,6 +364,12 @@ The displayed list of past sessions MAY contain date for each session
 The system MAY provide detail view for a chosen session where additional session information is presented
 
 The system MAY provide delete feature for removing past sessions from persistent memory
+
+### Calculating data
+
+Travelled distance MUST be based either on an approximation of the length of an average step or on GPS data   
+
+Approximation of burned calories MUST be based on count of steps and MAY additionally be based on average speed during the trip.   
 
 ## User characteristics
 
