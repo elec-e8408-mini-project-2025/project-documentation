@@ -244,9 +244,42 @@ Laplante argues, that the software design phase takes approximately the same amo
   - Note: see traceability matrix example (Table 6.3, page 281)
 
 
+### Design activity
 
+The design activity is involved in
+- identifying the components of the software design and
+- their interfaces from SRS
 
+Principal artifact of this activity is the Software Design Description (SDD). The standard IEEE Std 1016-2009. The standard defines that
 
+> SDD is a representation of a software design that is to be used for recording design information, addressing various design concerns, and communication that information to the design's stakeholders. 
+
+During the design phase, detailed SDD is created and formally accepted. This is achieved through multiple phases that take the design from initial Architecture design to Final Design review:
+
+1. Architecture Design
+2. Control Design
+3. Data Design
+4. Functional Design
+5. Physical Design
+6. Test Design
+7. Documentation Design
+8. Intermediate Design Reviews (=> internal acceptances)
+9. Detailed Design
+10. Final Design Review
+
+> Note that many of this phases happen in parallel! 
+
+### Procedural Design Approach (an alternative to SDD)
+
+Procedural Design methodologies, like structured design, involve top-down and bottom-up approaches centered on procedural programming languages. Most common apprach used is Parnas partitioning
+
+#### Parnas Partitioning
+
+1. Begin by characterizing the likely changes (consider different time horizons of the life cycle) and their effects.
+2. Estimate the probabilities of each type of change.
+3. Organize the software to conﬁne likely and signiﬁcant changes to a minimum amount of code.
+4. Provide an “abstract interface” that abstracts from the potential differences.
+5. Implement “objects,” that is, abstract data types and modules that hide changeable data and other structures.
 
 
 
