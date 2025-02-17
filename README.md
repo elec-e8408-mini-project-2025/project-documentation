@@ -43,16 +43,16 @@ This chapter highlights the purpose and scope of this document, introduces the e
 
 ## Purpose
 
-The purpose of this document is to list requirements and provide context and considerations for the proof-of-concept Hiking Band product system. This document is intented be used within software development, integration and testing of the whole system.  
 
+The purpose of this document is to list requirements and provide context and considerations for the proof-of-concept Hiking Band product system. This document is intented be used within software development, integration and testing of the whole system.  
 The core audiences for this documents are the product development team and the course instructors, who both review this document and review the final system based on the requirement specification of this document. The finished deliverable MUST match the specification in this documentation. 
 
 
 ## Scope
 
-The LilyGo Hiking band system includes a LilyGO T-Watch smartwatch application for recording hiking trips and a separate application for storing trip information into persistent storage and for displaying trip information on a Web Application.  
+**The LilyGo Hiking band system** includes a LilyGO T-Watch smartwatch application for recording hiking trips and a separate application for storing trip information into persistent storage and for displaying trip information on a Web Application.  
 
-The system consists of two hardware components: the Raspberry Pi and the LilyGo watch. The system includes interactable interfaces, hardware, protocols and functionalities which are required for the system to function. This document defines the requirements in well detail to give a broad understanding of the product and its use case. 
+This proof-of-concept system consists of two hardware components: the Raspberry Pi and the LilyGo watch. The system includes interactable interfaces, hardware, protocols and functionalities which are required for the system to function. This document defines the requirements in detail to give a broad understanding of the product and its use case. 
 
 
 ## Definitions, acronyms and abbreviations
@@ -61,19 +61,19 @@ The system consists of two hardware components: the Raspberry Pi and the LilyGo 
 
 **1.user:** the person, or persons, who operate or interract directly with the product.  
 
-**2.hiking session:** an event during which activity data such as step count, travelled distance and average speed are recorded on the LilyGO smartwatch. The event begins when user pushes "Start" button and ends when user presses "End" button in hiking session view  
+**2.hiking session:** an event during which activity data such as step count, travelled distance and average speed are recorded on the LilyGO smartwatch. The event begins when user pushes "Start" button and ends when user presses "End" button in hiking session view.  
 
-**3.step:** An act or movement of putting one leg in front of the other in walking or running  
+**3.step:** An act or movement of putting one leg in front of the other in walking or running.  
 
-**4.step count:** An approximation of taken steps computed by a step algorithm based on BMA423 accelerometer data  
+**4.step count:** An approximation of taken steps computed by a step algorithm based on BMA423 accelerometer data.  
 
-**5.distance:** An approximation of travelled distance that MUST be based either on an approximation of the length of an average step or on GPS data  
+**5.distance:** An approximation of travelled distance in kilometers.  
 
-**6.duration:** A count of seconds from the moment counting steps began, based on the RTC module of LilyGO  
+**6.duration:** A count of seconds from the moment counting steps began, based on the RTC module of LilyGO.  
 
-**7.average speed:** An average based on the duration of the hiking session and travelled distance  
+**7.average speed:** An average based on the duration of the hiking session and travelled distance.  
 
-**8.burned calories:** an approximation of calories burned. The approximation MUST be based on count of steps and MAY additionally be based on average speed during the trip.  
+**8.burned calories:** an approximation of calories burned.  
 
 **9.web application:** The application running on the Raspberry Pi including the database and hosting services.  
 
@@ -81,7 +81,9 @@ The system consists of two hardware components: the Raspberry Pi and the LilyGo 
 
 **11.System:**  The whole system including Raspberry Pi, LilyGo T-Watch smartwatch and relevant interfaces.  
 
-**12.SUD:**  System Under Development.  
+**12.Proof-of-concept:** a pilot project demonstrating that a design concept is feasible.  
+
+**13.SUD:**  System Under Development.  
 
 ### Requirement levels
 
@@ -330,6 +332,12 @@ While hiking session is not active, the touchscreen MAY display step count and t
 
 While hiking sessin is active, the smartwatch touchscreen MAY display the current date (YYYY-MM-DD) 
 
+### Calculating data
+
+Travelled distance MUST be based either on an approximation of the length of an average step or on GPS data   
+
+Approximation of burned calories MUST be based on count of steps and MAY additionally be based on average speed during the trip.   
+
 ### Synchronize and store data with RPi via Bluetooth
 
 The smartwatch application MUST be capable of sending step count and travelled distance via Bluetooth to the web application on RPi  
@@ -436,7 +444,7 @@ With the help of the documentation the user must be able to know how to
 
 ## Apportioning of requirements
 
-The proof-of-concept (PoC) SHALL include all requirements that have been defined with keywords MUST or SHALL according to RFC-2119 [2]. All requirements marked with key word MAY are not guaranteed to be implemented in the PoC release. 
+The proof-of-concept (PoC) MUST include all requirements that have been defined with keywords MUST or MUST according to RFC-2119 [2]. All requirements marked with key word MAY are not guaranteed to be implemented in the PoC release. 
 
 
 # Specific Requirements
@@ -472,7 +480,7 @@ The proof-of-concept (PoC) SHALL include all requirements that have been defined
 
 - The system MAY use other hardware
 
-- If the clock runs out of sync due to power loss the system SHALL synchronize its time when syncing to the RPi
+- If the clock runs out of sync due to power loss the system MUST synchronize its time when syncing to the RPi
 
 ## Software-system Attributes
 
@@ -483,7 +491,7 @@ The proof-of-concept (PoC) SHALL include all requirements that have been defined
 
 ### Security
 
-- The LilyGo watch SHALL only send hiking data to a paired device
-- The LilyGo watch SHALL only be discoverable during pairing with the RPi
-- The RPi SHALL periodically check if the watch is within range, the LilyGo SHALL NOT attempt to connect to the RPi automatically
+- The LilyGo watch MUST only send hiking data to a paired device
+- The LilyGo watch MUST only be discoverable during pairing with the RPi
+- The RPi MUST periodically check if the watch is within range, the LilyGo MUST NOT attempt to connect to the RPi automatically
 
