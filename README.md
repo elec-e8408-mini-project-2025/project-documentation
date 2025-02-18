@@ -267,9 +267,17 @@ The WebUI HTML layout MAY be viewable on a mobile phone screen.
 
 The LilyGO application SHOULD use LilyWatch maintained TTGO_TWatch_Library and Arduino core ESP32 libraries for the pin definitions and driver implementation 
 
+The LilyGO application SHOULD be implemented with the following state machine for a polling scheduler of 6 orthogonal processes. The timing and prioritization MAY be changed to accommodate other requirements:
+
+![Polling scheduler example for the LilyGO application](/dev-doc/polling-scheduler.png "Polling scheduler example for the LilyGO application")
+
+The Web application SHOULD follow simple polling scheduling of tasks.
+
 The Web application SHOULD use SQLite to store synchronized data locally on the RPi
 
-The Web application SHOULD use SQLite to store its information
+The Web application MUST atleast implement the functionality of the following UML in within the program:
+
+![Minimum SQL database on the Web application](/dev-doc/sql-UML.png "UML of the SQL database on the Web application")
 
 ### Communications interfaces
 
@@ -469,15 +477,33 @@ The proof-of-concept (PoC) MUST include all requirements that have been defined 
 
 ## Design Constraints
 
-### MUST use atleast predefined hardware
+Design constraints specify good to know requirements and constraining factors. These might impose difficulties for the integration and software development. Consider these factors affecting multiple functionalities and requirements.
 
-- The system MUST use T-Watch V2
+### The LilyGo application: Scheduling
 
-- The system MUST use raspberry pi 2, 3 or 3+
+The system handles multiple different tasks from multiple interfaces which MUST be scheduled accordingly so the performance requirements are met.
 
-- The system MAY use other hardware
+### The LilyGo application: Hardware restriction
 
-- If the clock runs out of sync due to power loss the system MUST synchronize its time when syncing to the RPi
+The LilyGo application MUST be carefully crafted to account for the hardware restrictions of the T-Watch V2: 
+
+| Restricting factor | Size |
+| ------------------ | ---- |
+| Flash memory |  16MB |
+| PSRAM |  8 MB |
+| SRAM | 520 KB |
+
+### The Web application: Network access
+
+The network access of the RPi MUST be made easily configurable and NOT hardcoded to work in one network. 
+
+The system is designed so the RPi OS SHOULD be only be interacted by the WebUI. This also imposes difficulty in the configuration of the network access.  
+
+### The Web application: Synchronization 
+
+The bluetooth interaction the minimum requirements SHOULD use the hard coded BlueTooth broadcast name to determine the correct device. It would be a lot more secure if we can do this from the WebUI without hardcoding. However, this requires more precise interaction with the operating system and the Web Application.
+
+If the clock runs out of sync due to power loss the system MUST synchronize its time when syncing to the RPi. The system needs to be aware of this. As the LilyGo application functions has only slavelike properties this requires more action from the RPi.
 
 ## Software-system Attributes
 
