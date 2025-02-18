@@ -281,9 +281,31 @@ Procedural Design methodologies, like structured design, involve top-down and bo
 4. Provide an “abstract interface” that abstracts from the potential differences.
 5. Implement “objects,” that is, abstract data types and modules that hide changeable data and other structures.
 
+> **Note:** Parnas highlighted that though the principles are easy to describe in theory books, practical examples are needed to give examples of how these principles can be implemented
 
 
+**Motivation:** these steps
+- reduce intermodule coupling
+- increase intramodule cohesion
+- information hiding
+  - Parnas partitioning hides
+    - the implementation details of software features, 
+    - design decisions,
+    - low-level hardware drivers,
+    - etc
+  - hiding limts the scope of impact of cuture changes or corrections
+  - this technique is especially applicable and useful in embedded systems:
+    - software directly tied to hardware
+    - important to partition and localize implementation details with a partcular hardware interface
+    - allows easier modifications
+    - minimizes amount of code affected by changes
 
+
+> **Definition:** If in designing the software modules, increasing levels of details are deferrend until later, then the software design approach is called *top-down*
+
+> **Definition:** If the design detail is dealth with first and then increasing levels of abstraction are used to encapsulate those details, the approach is *bottop-up*
+
+> **Note:** in many real-world applications both top-down and bottom-up approaches are used. 
 
 
 
