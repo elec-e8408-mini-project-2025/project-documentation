@@ -45,6 +45,7 @@ This chapter highlights the purpose and scope of this document, introduces the e
 
 
 The purpose of this document is to list requirements and provide context and considerations for the proof-of-concept Hiking Band product system. This document is intented be used within software development, integration and testing of the whole system.  
+
 The core audiences for this documents are the product development team and the course instructors, who both review this document and review the final system based on the requirement specification of this document. The finished deliverable MUST match the specification in this documentation. 
 
 
@@ -103,7 +104,7 @@ This document uses requirement level keywords "MUST", "MUST NOT", "SHOULD", "SHO
 
 ## References
 
-This Software Requirement Specification shall be used in conjuction with the following publications:
+This Software Requirement Specification MUST be used in conjuction with the following publications:
 
 [1] IEEE 830:1998 IEEE Recommended Practice for Software Requirements Specifications. Available at: [https://ieeexplore.ieee.org/document/720574](https://ieeexplore.ieee.org/document/720574)
 
@@ -339,7 +340,7 @@ The smartwatch application MUST be capable of sending step count and travelled d
 
 The smartwatch application MAY also send date of hike and average speed for each recorded hiking session
 
-The smartwatch application MUST be able to connect to RPi with MAC address that is hard coded to RPi
+The smartwatch application MUST at the minimum be able to connect to RPi based on Bluetooth broadcast device name of the LilyGo T-Watch
 
 The smartwatch application MAY be able to connect to RPi with LilyGo enabling Bluetooth discovery
 
@@ -448,23 +449,23 @@ The proof-of-concept (PoC) MUST include all requirements that have been defined 
 
 ## Performance Requirements
 
-- The RPi shall support at least 1 LilyGo watch at a time.
+- The RPi MUST support at least 1 LilyGo watch at a time.
 
-- The maximum time for trips shall be above 2h.
+- The maximum time for trips MUST be above 2h.
 
-- The watch shall log the location either every 10 or 30 seconds, depending on memory size.
+- The watch MUST log the location either every 10 or 30 seconds, depending on memory size.
 
-- The watch shall have room for 5 trips.
+- The watch MUST have room for 5 trips.
 
-- The synchronization for transfering data to the RPi shall not fail 2 times in a row.
+- The synchronization for transfering data to the RPi MUST not fail 2 times in a row.
 
 - The watch refreshes the screen in the trip view every 0.2 seconds or faster.
 
-- The trip data shall be saved on the watch until it is the oldest trip before being overwritten.
+- The trip data MUST be saved on the watch until it is the oldest trip before being overwritten.
 
-- Trip data shall not be overwritten before it has been synchronized.
+- Trip data MUST not be overwritten before it has been synchronized.
 
-- Changing the view on the RPi shall be faster than 0.5 seconds.
+- Changing the view on the RPi MUST be faster than 0.5 seconds.
 
 ## Design Constraints
 
@@ -482,8 +483,8 @@ The proof-of-concept (PoC) MUST include all requirements that have been defined 
 
 ### Reliability
 
-- The system MUST log and save the current activity in periodically (15s)
-- The system MUST NOT miss 2 consecutive loggings
+- In case GPS data is tracked, the system MUST log and save the current location in periodically (15s)
+- In above mentioned case the system MUST NOT miss 2 consecutive loggings of location data
 
 ### Security
 
