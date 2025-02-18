@@ -267,9 +267,17 @@ The WebUI HTML layout MAY be viewable on a mobile phone screen.
 
 The LilyGO application SHOULD use LilyWatch maintained TTGO_TWatch_Library and Arduino core ESP32 libraries for the pin definitions and driver implementation 
 
+The LilyGO application SHOULD be implemented with the following state machine for a polling scheduler of 6 orthogonal processes. The timing and prioritization MAY be changed to accommodate other requirements:
+
+![Polling scheduler example for the LilyGO application](/dev-doc/polling-scheduler.png "Polling scheduler example for the LilyGO application")
+
+The Web application SHOULD follow simple polling scheduling of tasks.
+
 The Web application SHOULD use SQLite to store synchronized data locally on the RPi
 
-The Web application SHOULD use SQLite to store its information
+The Web application MUST atleast implement the functionality of the following UML in within the program:
+
+![Minimum SQL database on the Web application](/dev-doc/sql-UML.png "UML of the SQL database on the Web application")
 
 ### Communications interfaces
 
