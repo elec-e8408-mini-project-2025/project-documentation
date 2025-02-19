@@ -392,6 +392,8 @@ With the help of the documentation the user MUST be able to know how to
 
 ## Constraints
 
+The constraints mentioned are only concerning the software of the application, as they are the only ones liable to change. The hardware specifications are set due to the predefined hardware that will be used and as such would only be repeating what the specifications for the different parts are. The hardware used can be found in the hardware interfaces section.
+
 ### System interfaces
 
 - The TWatch has a touchscreen that works as the user interface
@@ -424,7 +426,7 @@ With the help of the documentation the user MUST be able to know how to
 
 ### Communications interfaces
 
-- The WebUI can be viewed by connecting to the RPi with RealVNC Viewer over the same network using standard network protocols
+- The WebUI can be viewed by connecting to the RPi with RealVNC Viewer over the same network using standard network protocols or by using the display, keyboard and mouse connected to the RPi
 - The RPi and the TWatch communicate over Bluetooth using a JSON format
 
 ### Memory
