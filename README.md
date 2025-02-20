@@ -512,7 +512,7 @@ $$0.00076 km \cdot 56 = 0.04256\,\text{calories}$$
 
 
 
-## Software-system Attributes
+## Software-system attributes
 
 ### Reliability
 
