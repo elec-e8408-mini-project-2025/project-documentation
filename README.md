@@ -112,6 +112,10 @@ This Software Requirement Specification MUST be used in conjuction with the foll
 
 [3] RFC-7231. Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content. Available at: [https://datatracker.ietf.org/doc/html/rfc7231](https://datatracker.ietf.org/doc/html/rfc7231)
 
+[4] Barreira TV, Rowe DA, Kang M. Parameters of walking and jogging in healthy young adults. Int J Exerc Sci. 2010;3(1).
+
+[5] Wilkin LD, Cheryl A, Haddock BL. Energy expenditure comparison between walking and running in average fitness individuals. J Strength Cond Res. 2012 Apr;26(4):1039-44. doi: 10.1519/JSC.0b013e31822e592c. PMID: 22446673.
+
 The development team should familiarize with the following documents:
 
 [i.] LilyGo T-Watch. LilyGo T-Watch GitHub repository. Available at: [https://github.com/Xinyuan-LilyGO/TTGO_TWatch_Library](https://github.com/Xinyuan-LilyGO/TTGO_TWatch_Library)
@@ -506,6 +510,18 @@ The system is designed so the RPi OS SHOULD be only be interacted by the WebUI. 
 The bluetooth interaction the minimum requirements SHOULD use the hard coded BlueTooth broadcast name to determine the correct device. It would be a lot more secure if we can do this from the WebUI without hardcoding. However, this requires more precise interaction with the operating system and the Web Application.
 
 If the clock runs out of sync due to power loss the system MUST synchronize its time when syncing to the RPi. The system needs to be aware of this. As the LilyGo application functions has only slavelike properties this requires more action from the RPi.
+
+
+### Data calculation
+
+In case the optional GPS tracking functionality is not implemented, the length of one step is hard coded as an approximation of average stride length. The value will be based on an equation referenced by Barreira et. al [4]: 42 percent of the person's height. The average height of males in Finland is 180 cm. Thus the average stride length for an average length Finnish male would be $0.42 \cdot 180 cm = 75.6 cm = 0.756 m \approx 0.76 m$.  
+
+In case GPS tracking data is unavailable, travelled distance is simply calculated by $\text{stepCount} \cdot \text{strideLength}$.  
+
+The calory calculation is based on Wilkin et. al. [5] findings on average energy expenditure for young average health adults. Their findings have been applied to suit the metric system and by converting Kilojoules into calories by using the conversion of 1 kilojoule equalling 239 calories. With this process the calory consumption for 1 km hike is estimated to be 56 calories and thus calory consumption per step is $0.00076 km \cdot 56 = 0.04256 \text{calories}$. 
+
+
+
 
 ## Software-system Attributes
 
