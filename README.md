@@ -514,11 +514,17 @@ If the clock runs out of sync due to power loss the system MUST synchronize its 
 
 ### Data calculation
 
-In case the optional GPS tracking functionality is not implemented, the length of one step is hard coded as an approximation of average stride length. The value will be based on an equation referenced by Barreira et. al [4]: 42 percent of the person's height. The average height of males in Finland is 180 cm. Thus the average stride length for an average length Finnish male would be $0.42 \cdot 180 cm = 75.6 cm = 0.756 m \approx 0.76 m$.  
+In case the optional GPS tracking functionality is not implemented, the length of one step is hard coded as an approximation of average stride length. The value will be based on an equation referenced by Barreira et. al [4]: 42 percent of the person's height. The average height of males in Finland is 180 cm. Thus the average stride length for an average length Finnish male would be  
 
-In case GPS tracking data is unavailable, travelled distance is simply calculated by $\text{stepCount} \cdot \text{strideLength}$.  
+$$0.42 \cdot 180 cm = 75.6 cm = 0.756 m \approx 0.76 m$$.  
 
-The calory calculation is based on Wilkin et. al. [5] findings on average energy expenditure for young average health adults. Their findings have been applied to suit the metric system and by converting Kilojoules into calories by using the conversion of 1 kilojoule equalling 239 calories. With this process the calory consumption for 1 km hike is estimated to be 56 calories and thus calory consumption per step is $0.00076 km \cdot 56 = 0.04256 \text{calories}$. 
+In case GPS tracking data is unavailable, travelled distance is simply calculated by  
+
+$$\text{stepCount} \times \text{strideLength}$$.  
+
+The calory calculation is based on Wilkin et. al. [5] findings on average energy expenditure for young average health adults. Their findings have been applied to suit the metric system and by converting Kilojoules into calories by using the conversion of 1 kilojoule equalling 239 calories. With this process the calory consumption for 1 km hike is estimated to be 56 calories and thus calory consumption per step is  
+
+$$0.00076 km \cdot 56 = 0.04256 \text{calories}$$. 
 
 
 
