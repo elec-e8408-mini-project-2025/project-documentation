@@ -1,39 +1,20 @@
 ---
 title: "Hiking Band: Software Requirements Specification"
+author: 
+- name: Holappa, Heidi 
+- name: Lundén, Jaakko-Juhani
+- name: Rislakki, Tuomas
+abstract: ELEC-E8408 Embedded Systems Development, Aalto University. Group I.
 lang: en
 format: gfm
 header-includes:
   - \usepackage{caption}
   - \captionsetup[figure]{font=scriptsize}  # This sets the font size for figure captions.
 numbersections: true
+toc: true
+toc-depth: 2
 # To render document use `quarto render README.md --to pdf`
 ---
-
-**Course:** ELEC-E8408 Embedded Systems Development, Aalto University  
-**Members:** Holappa, Heidi & Lundén, Jaakko-Juhani & Rislakki, Tuomas  
-**Group:** I  
-
-{{< pagebreak >}}
-
-**Table of Contents**
-
-1. [Introduction](#introduction)  
-    i. [Purpose](#purpose)
-    ii. [Scope](#scope)
-    iii. [Definitions, acronyms, abbreviations](#definitions-acronyms-and-abbreviations)
-    iv. [References](#references)
-    v. [Overview](#overview)
-2. [Overall description](#overall-description)
-    i. [Product Perspective](#product-perspective)
-    ii. [Product functions](#product-functions)
-    iii. [User characteristics](#user-characteristics)
-    iv. [Constraints](#constraints)
-    v. [Assumptions and dependencies](#assumptions-and-dependencies)
-    vi. [Apportioning of requirements](#apportioning-of-requirements)
-3. [Specific Requirements](#specific-requirements)
-    i. [Performance requirements](#performance-requirements)
-    ii. [Design constraints](#design-constraints)
-    iii. [Software-system attribtues](#software-system-attributes)
 
 {{< pagebreak >}}
 
@@ -145,7 +126,7 @@ This SRS follows the structure recommended in IEEE 830:1998. Each section builds
 2. **Overall description:** Provides an extensive overview of the systems requirements and constraints  
 3. **Specific Requirements:** Breaks the system down into requirements that can be measured and verified based on preset metrics, ensuring that meeting the requirements can be verified during development and testing stages. 
 
-
+{{< pagebreak >}}
 
 # Overall description
 
@@ -458,6 +439,8 @@ The constraints mentioned are only concerning the software of the application, a
 ## Apportioning of requirements
 
 The proof-of-concept (PoC) MUST include all requirements that have been defined with keywords MUST according to RFC-2119 [2]. All requirements marked with key word MAY are not guaranteed to be implemented in the PoC release. For requirements with keyword SHOULD, design team must be able to justify deviation from SRS. 
+
+{{< pagebreak >}}
 
 # Specific Requirements
 
