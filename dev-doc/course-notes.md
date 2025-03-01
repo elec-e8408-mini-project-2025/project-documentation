@@ -308,6 +308,51 @@ Procedural Design methodologies, like structured design, involve top-down and bo
 > **Note:** in many real-world applications both top-down and bottom-up approaches are used. 
 
 
+### Structured Design
+
+- Structured design (SD) is the **companion methodology** to structured analysis. 
+- A systematic approach concerned with the **specification of the software architecture**
+- involves a number stategies, techniques and tools
+- supports a comprehenseive, easy-to-learn design process, intended to
+  - provide high-quality software
+  - minimize life cycle expences
+  - improve 
+    - reliability
+    - maintainability
+    - portability and 
+    - overall performance of software products
+
+- Structure analysis (SA)
+  - related to SD as 
+    - requirements representation (functional and flat) is related to 
+    - software architecture (modular and hierachical)
+
+- Transition from SA (Structured Analysis) to SD (Structured Design) is manual and requires significant problem-solving.  
+- Involves analyzing and making trade-offs between alternative approaches.  
+- SD typically follows these steps:  
+  - Create a **Context Diagram (CD)** first.  
+  - Develop a hierarchical set of **Data Flow Diagrams (DFDs)**.  
+  - Use DFDs to partition system functions and document the partitioning.  
+- **Level 0 DFD** represents the highest level of system abstraction.  
+- Further DFDs are created through **downward leveling** (top-down design), breaking down processes into more detailed levels.  
+- **Upward leveling** (bottom-up design) is also used by composing smaller processes into larger structures.  
+- Most software designers prefer a **problem-driven mix** of both downward and upward leveling (Yourdon, 1989).
+
+
+- **Context Diagram (CD)**:  
+  - **Rectangles** represent **terminators** (agents, devices, or systems interacting with the system).  
+  - Terminators are labeled with **noun phrases** describing data sources or destinations.  
+  - **Circles** represent **processes** (data transformations) labeled with **verb phrases** describing operations.  
+  - Solid **arrow lines** indicate data flow between terminators and processes, labeled with **noun phrases** describing the data.  
+  - **Parallel lines** represent **data stores**, labeled with noun phrases naming databases, files, or repositories.  
+  - Data stores are linked to processes for hierarchical flow.  
+
+- **Data Flow Diagram (DFD) Guidelines**:  
+  - Each DFD should contain **5 to 9 processes** (Yourdon, 1989).  
+  - **Lowest-level processes** are described using **process specifications (P-SPECs)**.  
+  - P-SPECs can be written in **decision tables, trees, pseudocode, or structured English**.  
+  - Structured English balances **formal programming precision** with **readability** (Yourdon, 1989).  
+  - Figure 6.7 illustrates the **evolution path** from a **context diagram** to **DFDs** and finally to **process specifications**.
 
 ## References
 
