@@ -17,21 +17,19 @@ toc-depth: 2
 ---
 
 
-
+{{< pagebreak >}}
 
 # Introduction
 
-The purpose of this document is to provide Hiking Band's users the required information to successfully setup and use the Hiking Band system. The system consists of two applications: the Raspberry Pi Web Application and LilyGO T-watch smartwatch hiking application. This document contains a section for each application and a section for communication between applications.  
+The purpose of this document is to provide Hiking Band users the required information to successfully setup and use the Hiking Band system. The system consists of two applications: the Raspberry Pi Web Application and LilyGO T-watch smartwatch hiking application. This document contains a section for each application and a section for communication between applications.  
 
-A test plan has been included for both applications for the purpose of detailing to QA specialists how it can be verified that the application works as intended. Additional information for testing can be found from the SRS documentation. Please keep in mind, that the SRS may contain optional features that have not been implemented in the proof-of-concept version. All non-optional features listed in SRS SHOULD be available and optional features MAY be available. 
+A test plan has been included for both applications for the purpose of detailing to QA specialists how it can be verified that the application works as intended. Additional information for testing can be found from the SRS documentation. It is important to highlight, however, that the SRS may contain optional features that have not been implemented in the proof-of-concept version. All non-optional features listed in SRS SHOULD be available and optional features MAY be available. 
 
-
+{{< pagebreak >}}
 
 # LilyGo T-Watch Hiking application
 
-The LilyGo T-Watch Hiking application is a proof-of-concept (later in this section PoC) smartwatch application for tracking hiking trips. The application uses LilyGo T-Watches BMA423 accelerometer to track step count and LilyGo T-Watches M8/M6 GPS Module. Average speed is computed by recording the start time of the hike and calulating average speed from tracked distance and hike duratoin.  Users can also view information from past hikes and configure Bluetooth synchronization from the settings menu. 
-
-Some introductory words here. 
+The LilyGo T-Watch Hiking application is a proof-of-concept (later in this section PoC) smartwatch application for tracking hiking trips. The application uses LilyGo T-Watches BMA423 accelerometer to track step count and LilyGo T-Watches M8/M6 GPS Module. Average speed is computed by recording the start time of the hike and calulating average speed from tracked distance and hike duration.  Users can also view information from past hikes and configure Bluetooth synchronization from the settings menu. 
 
 
 ## Requirements 
@@ -39,21 +37,25 @@ Some introductory words here.
 Before getting started, make sure that you have the following hardware components:
 
 - LilyGO T-Watch V2
-- A Linux or Windows machine
+- A Raspberry Pi 3 with a Linux-based OS
 - A USB-A to micro-USB cable
 
-> The LilyGo hiking application officially supports V2 of the LilyGo T-Watch smartwatch. Additionally the application MAY also work on V3 with configuration changes, but V3 is not officially supported. 
 
+::: {.callout-tip}
+While the LilyGo hiking application officially supports V2 of the LilyGo T-Watch smartwatch, the application MAY also work on V3 with configuration changes. The configuration changes are detailed in the installation instructions. Note that V3 is not officially supported. 
+:::
 
 ## Installation and setup
 
+The following installation instructions were used during the development stage of the LilyGo Hiking application. Please pay careful attention to version numbers to ensure that installation proceeds successfully. 
+
 ### Arduino-cli and esp32 libraries
 
-1. Install arduino-cli:
+1. Install arduino-cli (v.1.1):
 
-https://arduino.github.io/arduino-cli/1.1/
+[https://arduino.github.io/arduino-cli/1.1/](https://arduino.github.io/arduino-cli/1.1/)
 
-2. Install esp32 libraries
+2. Install esp32 libraries (v.2.0.14)
 
 ```console
 arduino-cli core update-index --config-file arduino-cli.yaml
@@ -87,9 +89,17 @@ For example for TWATCH V3:
 ```console
 DEVICE="LILYGO_WATCH_2020_V3"
 FQBN=esp32:esp32:twatch
-arduino-cli compile --fqbn $FQBN --build-path $(pwd)/build --build-property "build.extra_flags=-D $DEVICE -D ESP32" .
-arduino-cli upload -p /dev/ttyUSB0 --fqbn esp32:esp32:esp32-poe-iso --input-dir $(pwd)/build .
+arduino-cli compile --fqbn $FQBN \
+                    --build-path $(pwd)/build \
+                    --build-property "build.extra_flags=-D $DEVICE -D ESP32" .
+arduino-cli upload -p /dev/ttyUSB0 \
+                   --fqbn esp32:esp32:esp32-poe-iso \
+                   --input-dir $(pwd)/build .
 ```
+
+::: {.callout-note}
+The device path may not be `/dev/ttyUSB0`. To verify the name of the USB-device, connect the smartwatch with the cable and use command `ls /dev/tty*`. 
+:::
 
 or 
 
@@ -99,6 +109,13 @@ configure config.ini
 ./install.sh
 ```
 
+
+::: {.callout-tip}
+The config.ini contains LilyGo T-Watch versions V2 and V3. To change the T-Watch version, change which version is uncommented. V3 is not officially supported, but both V2 and V3 T-Watches were used during development stage. 
+
+- When V2 is selected, the GPS module in V2 is used. 
+- With V3 distance is calculated based on an hard coded step length as detailed in the SRS. 
+:::
 
 ### Debugging
 
@@ -122,14 +139,18 @@ screen /dev/ttyUSB0 115200
 
 ## Tutorial
 
+::: {.callout-important}
+Write this section!
+:::
+
 ## Test plan
 
-At this proof-of-concept stage the, test plan relies on manual testing. The functional requirements of the smart watch detailed in the SRS documentation can all be tested manually. A comprehensive list of testable features have been collected to the following subsections. These collections should assist the QA specialists in implementing suistable tests to verify that the functionalities work as intended. 
+At this PoC stage the, test plan relies on manual testing. The functional requirements of the smart watch detailed in the SRS documentation can all be tested manually. A comprehensive list of testable features have been collected to the following subsections. These collections should assist the QA specialists in implementing suitable tests to verify that the functionalities work as intended. 
 
 ### Navigation
 
-- User can navigate from main view to
-  - sessions view
+- User can navigate from main view to:
+  - session view
   - past sessions view
   - settings view
 - user can navigate back to main view from all other views
@@ -138,15 +159,15 @@ At this proof-of-concept stage the, test plan relies on manual testing. The func
 ### Session view
 
 - When user presses start - button
-  - applicatin begins tracking user's movement
-  - the following session data is displayed on the view
+  - application begins tracking user's movement
+  - the session data is displayed on the view, including
     - step count
     - distance
     - average speed
-  - the start button turns red and the button text changes to "stop"
+  - the start button turns red and the button label changes to "stop"
 - When user presses stop - button
   - applicatin stops tracking user's movement
-  - the stop button turns blue and the button text changes to "start"
+  - the stop button turns blue and the button label changes to "start"
 
 
 ### Past sessions view
@@ -160,11 +181,13 @@ At this proof-of-concept stage the, test plan relies on manual testing. The func
 
 ### Settings view
 
-- TODO
+::: {.callout-important}
+TODO: Write this section!
+:::
 
 
 
-
+{{< pagebreak >}}
 
 # Raspberry Pi Web Application
 
@@ -178,9 +201,9 @@ The minimum Python version is 3.10. Versions for dependencies are listed in requ
 
 ## Installation and setup
 
-These instructions assume that the user is using a Linux based Operating System with a bash terminal emulator. 
+These instructions assume that the user is using a Linux based Operating System with a bash terminal emulator. The installation may either be done manually or by using a convenience script provided in the project repository. 
 
-### Manual installation
+### Option 1: Manual installation
 
 First setup the virtual environment
 
@@ -195,11 +218,11 @@ pip install -r requirements.txt
 ```
 
 If you add new dependencies, create an updated `requirements.txt` with the following command:
-```
+```bash
 pip freeze > requirements.txt
 ```
 
-### Convenience script
+### Option 2: Convenience script
 
 Run the installation script with
 
@@ -209,7 +232,9 @@ Run the installation script with
 
 ## Running the application
 
-### Manually
+Running the application may also be done manually or by using a convenience script. 
+
+### Option 1: Manually
 
 To run the app use 
 
@@ -224,7 +249,7 @@ flask --app src/app.py --debug run
 ```
 
 
-### Convenience script
+### Option 2: Convenience script
 
 To run the app use 
 
@@ -238,9 +263,11 @@ To debug:
 ./start-app.sh debug
 ```
 
+## Tutorial
 
-## Tutorial 
-
+::: {.callout-important}
+TODO: Write this section!
+:::
 
 ## Test plan
 
@@ -275,10 +302,14 @@ At this proof-of-concept stage the, test plan relies on manual testing. A compre
 
 ### Configuration view
 
-- TODO 
+::: {.callout-important}
+TODO: Write this section!
+:::
 
 
 # Communication between devices
 
-
+::: {.callout-important}
+TODO: Write this section!
+:::
 
