@@ -144,12 +144,19 @@ This section introduces the basic functionalities of the LilyGo T-Watch.
 ### Starting a hiking session
 
 To start a new hiking session
-1. Press 'Session view' button
+1. In main view press 'Session view' button
+
+![main-view](./img/t-watch-main.png)
+
 2. In Session view press 'Start' button
+
+![session-start](./img/t-watch-session-start.png)
 
 To end a hiking session
 1. Navigate to 'Session view'
 2. Press 'Stop' button
+
+![session-stop](./img/t-watch-session-stop.png)
 
 ::: {.callout-tip}
 While a hiking session is active, you can
@@ -162,7 +169,13 @@ While a hiking session is active, you can
 To view past hiking sessions
 1. Navigate to past session view from the main view
 
+
+![past-sessions](./img/t-watch-past-sessions.png)
+
+::: {.callout-note}
 If there are no previous session, a prompt will indicate that no hikes have been recorded. Otherwise past sessions will be listed. 
+
+:::
 
 
 ### Managing settings 
