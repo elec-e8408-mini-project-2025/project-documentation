@@ -14,6 +14,14 @@ numbersections: true
 toc: true
 toc-depth: 2
 # To render document use `quarto render user-manual.md --to pdf`
+
+
+# Instructions from course assistant:
+# 2. User Manual  
+# The User Manual is an end-user guide providing step-by-step instructions on how to launch, configure, and utilize the application's core functionalities. This document should:  
+# - Cover all primary functional requirements along with any additional bonus features.  
+# - Ensure an intuitive and user-friendly experience with clear textual instructions supported by screenshots.  
+# - Present a structured workflow guiding users through the customer journey from activation to execution of the main features.  
 ---
 
 
@@ -135,7 +143,7 @@ or
 screen /dev/ttyUSB0 115200
 ```
 
-
+{{< pagebreak >}}
 
 ## Tutorial
 
@@ -143,34 +151,38 @@ This section introduces the basic functionalities of the LilyGo T-Watch.
 
 ### Starting a hiking session
 
-To start a new hiking session
+To start a new hiking session:  
+
 1. In main view press 'Session view' button
 
-![LilyGO main view](./img/t-watch-main.png)
+![LilyGO main view](./img/t-watch-main.png){width=30%}  
 
 2. In Session view press 'Start' button
 
-![LilyGO session view before start button is pressed](./img/t-watch-session-start.png)
+![LilyGO session view before start button is pressed](./img/t-watch-session-start.png){width=30%}
 
-To end a hiking session
+To end a hiking session:  
+
 1. Navigate to 'Session view'
 2. Press 'Stop' button
 
-![LilyGO session view after start button has been pressed](./img/t-watch-session-stop.png)
+![LilyGO session view after start button has been pressed](./img/t-watch-session-stop.png){width=30%}
 
 ::: {.callout-tip}
-While a hiking session is active, you can
+While a hiking session is active, you can:  
+
 1. Navigate to other views in the smartwatch application
 2. Toggle the touch screen on/off with the PEK-button
 :::
 
 ### Viewing past hiking sessions
 
-To view past hiking sessions
+To view past hiking sessions:  
+
 1. Navigate to past session view from the main view
 
 
-![LilyGO past sessions view](./img/t-watch-past-sessions.png)
+![LilyGO past sessions view](./img/t-watch-past-sessions.png){width=30%}
 
 ::: {.callout-note}
 If there are no previous session, a prompt will indicate that no hikes have been recorded. Otherwise past sessions will be listed. 
@@ -304,42 +316,47 @@ To debug:
 ./start-app.sh debug
 ```
 
+{{< pagebreak >}}
+
 ## Tutorial
 
 This section details the functionalities the web application provides once it is running locally. Navigate to the application with you browser. By default Flask applications run in port 5000 on localhost. By typing `localhost:5000`(or `127.0.0.1:5000`) to your browser, you should land on the main view. 
 
 ### Main view
 
-The main view has two navigational buttons:
+The main view has two navigational buttons:  
+
 1. Button `Show all hikes` navigates to a view that shows all hikes
 2. Button `Configuration` navigates to a view in which the bluetooth connection can be configures
 
 
-The main view additionally visualizes selected data from past hikes:
-1. Last hike taken
-2. Average values for all hikes in persistent memory
-3. Hike with the longest distance
-4. Hike with the fastest average speed
+The main view additionally visualizes selected data from past hikes:  
 
-![Web application main view](./img/web-app-main-view.png)
+  1. Last hike taken
+  2. Average values for all hikes in persistent memory
+  3. Hike with the longest distance
+  4. Hike with the fastest average speed
+
+![Web application main view](./img/web-app-main-view.png){width=60%}
 
 ### Past hikes view
 
-The past hikes view includes a table that lists all past hikes in persistent memory. For each hike the following information is shown:
-- ID (automatically generated for the database)
-- Date
-- Distance
-- Steps
-- Calories
-- Average Speed
+The past hikes view includes a table that lists all past hikes in persistent memory. For each hike the following information is shown:  
+
+  - ID (automatically generated for the database)
+  - Date
+  - Distance
+  - Steps
+  - Calories
+  - Average Speed
 
 Each table row also includes a `Delete` button, that allows the user to delete the hike in question. 
 
-![Web application past hikes view](./img/web-app-hikes-view.png)
+![Web application past hikes view](./img/web-app-hikes-view.png){width=60%}
 
 Pressing Delete opens a confirmation Monad. By pressing delete, the action is confirmed. By pressing cancel, confirmation Monad is closed and no action is taken.
 
-![Web applicatoin confirm deletion](./img/web-app-delete-hike-monad.png)
+![Web applicatoin confirm deletion](./img/web-app-delete-hike-monad.png){width=60%}
 
 
 
