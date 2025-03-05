@@ -174,7 +174,6 @@ To view past hiking sessions
 
 ::: {.callout-note}
 If there are no previous session, a prompt will indicate that no hikes have been recorded. Otherwise past sessions will be listed. 
-
 :::
 
 
@@ -306,6 +305,45 @@ To debug:
 ```
 
 ## Tutorial
+
+This section details the functionalities the web application provides once it is running locally. Navigate to the application with you browser. By default Flask applications run in port 5000 on localhost. By typing `localhost:5000`(or `127.0.0.1:5000`) to your browser, you should land on the main view. 
+
+### Main view
+
+The main view has two navigational buttons:
+1. Button `Show all hikes` navigates to a view that shows all hikes
+2. Button `Configuration` navigates to a view in which the bluetooth connection can be configures
+
+
+The main view additionally visualizes selected data from past hikes:
+1. Last hike taken
+2. Average values for all hikes in persistent memory
+3. Hike with the longest distance
+4. Hike with the fastest average speed
+
+![web-app-main-view](./img/web-app-main-view.png)
+
+### Past hikes view
+
+The past hikes view includes a table that lists all past hikes in persistent memory. For each hike the following information is shown:
+- ID (automatically generated for the database)
+- Date
+- Distance
+- Steps
+- Calories
+- Average Speed
+
+Each table row also includes a `Delete` button, that allows the user to delete the hike in question. 
+
+![web-app-past-hikes](./img/web-app-hikes-view.png)
+
+Pressing Delete opens a confirmation Monad. By pressing delete, the action is confirmed. By pressing cancel, confirmation Monad is closed and no action is taken.
+
+![web-app-delete-hike](./img/web-app-delete-hike-monad.png)
+
+
+
+### Configuration view
 
 ::: {.callout-important}
 TODO: Write this section!
