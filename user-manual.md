@@ -139,8 +139,36 @@ screen /dev/ttyUSB0 115200
 
 ## Tutorial
 
+This section introduces the basic functionalities of the LilyGo T-Watch. 
+
+### Starting a hiking session
+
+To start a new hiking session
+1. Press 'Session view' button
+2. In Session view press 'Start' button
+
+To end a hiking session
+1. Navigate to 'Session view'
+2. Press 'Stop' button
+
+::: {.callout-tip}
+While a hiking session is active, you can
+1. Navigate to other views in the smartwatch application
+2. Toggle the touch screen on/off with the PEK-button
+:::
+
+### Viewing past hiking sessions
+
+To view past hiking sessions
+1. Navigate to past session view from the main view
+
+If there are no previous session, a prompt will indicate that no hikes have been recorded. Otherwise past sessions will be listed. 
+
+
+### Managing settings 
+
 ::: {.callout-important}
-Write this section!
+TODO
 :::
 
 ## Test plan
@@ -172,11 +200,13 @@ At this PoC stage the, test plan relies on manual testing. The functional requir
 
 ### Past sessions view
 
-- The past session view contains information on stored sessions. 
+- The past session view contains information on stored sessions:
 - For each session the following information is shown:
   - date of the session
   - travelled distance
   - average speed
+- the watch stores at maximum five past hike sessions
+- if five hiking sessions have been recorded, the oldest entry will be overwritten when the next session begins
 
 
 ### Settings view
@@ -184,7 +214,6 @@ At this PoC stage the, test plan relies on manual testing. The functional requir
 ::: {.callout-important}
 TODO: Write this section!
 :::
-
 
 
 {{< pagebreak >}}
