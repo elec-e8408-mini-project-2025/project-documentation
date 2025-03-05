@@ -146,17 +146,17 @@ This section introduces the basic functionalities of the LilyGo T-Watch.
 To start a new hiking session
 1. In main view press 'Session view' button
 
-![main-view](./img/t-watch-main.png)
+![LilyGO main view](./img/t-watch-main.png)
 
 2. In Session view press 'Start' button
 
-![session-start](./img/t-watch-session-start.png)
+![LilyGO session view before start button is pressed](./img/t-watch-session-start.png)
 
 To end a hiking session
 1. Navigate to 'Session view'
 2. Press 'Stop' button
 
-![session-stop](./img/t-watch-session-stop.png)
+![LilyGO session view after start button has been pressed](./img/t-watch-session-stop.png)
 
 ::: {.callout-tip}
 While a hiking session is active, you can
@@ -170,7 +170,7 @@ To view past hiking sessions
 1. Navigate to past session view from the main view
 
 
-![past-sessions](./img/t-watch-past-sessions.png)
+![LilyGO past sessions view](./img/t-watch-past-sessions.png)
 
 ::: {.callout-note}
 If there are no previous session, a prompt will indicate that no hikes have been recorded. Otherwise past sessions will be listed. 
@@ -321,7 +321,7 @@ The main view additionally visualizes selected data from past hikes:
 3. Hike with the longest distance
 4. Hike with the fastest average speed
 
-![web-app-main-view](./img/web-app-main-view.png)
+![Web application main view](./img/web-app-main-view.png)
 
 ### Past hikes view
 
@@ -335,11 +335,11 @@ The past hikes view includes a table that lists all past hikes in persistent mem
 
 Each table row also includes a `Delete` button, that allows the user to delete the hike in question. 
 
-![web-app-past-hikes](./img/web-app-hikes-view.png)
+![Web application past hikes view](./img/web-app-hikes-view.png)
 
 Pressing Delete opens a confirmation Monad. By pressing delete, the action is confirmed. By pressing cancel, confirmation Monad is closed and no action is taken.
 
-![web-app-delete-hike](./img/web-app-delete-hike-monad.png)
+![Web applicatoin confirm deletion](./img/web-app-delete-hike-monad.png)
 
 
 
