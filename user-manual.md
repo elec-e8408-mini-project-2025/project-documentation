@@ -22,6 +22,8 @@ toc-depth: 2
 # - Cover all primary functional requirements along with any additional bonus features.  
 # - Ensure an intuitive and user-friendly experience with clear textual instructions supported by screenshots.  
 # - Present a structured workflow guiding users through the customer journey from activation to execution of the main features.  
+# Test plan here includes scenarios that you execute - as if you are the customers who use the product - to ensure that functionalities that the customers want to see / operate the products are achieved.  
+# user manual in this mini project doesn't ask for setup compile etc instructions, but setup compile etc is usually expected for Readme.
 ---
 
 
@@ -45,7 +47,7 @@ The LilyGo T-Watch Hiking application is a proof-of-concept (later in this secti
 Before getting started, make sure that you have the following hardware components:
 
 - LilyGO T-Watch V2
-- A Raspberry Pi 3 with a Linux-based OS
+- A Raspberry Pi 3B+ with a Linux-based OS
 - A USB-A to micro-USB cable
 
 
@@ -53,95 +55,6 @@ Before getting started, make sure that you have the following hardware component
 While the LilyGo hiking application officially supports V2 of the LilyGo T-Watch smartwatch, the application MAY also work on V3 with configuration changes. The configuration changes are detailed in the installation instructions. Note that V3 is not officially supported. 
 :::
 
-## Installation and setup
-
-The following installation instructions were used during the development stage of the LilyGo Hiking application. Please pay careful attention to version numbers to ensure that installation proceeds successfully. 
-
-### Arduino-cli and esp32 libraries
-
-1. Install arduino-cli (v.1.1):
-
-[https://arduino.github.io/arduino-cli/1.1/](https://arduino.github.io/arduino-cli/1.1/)
-
-2. Install esp32 libraries (v.2.0.14)
-
-```console
-arduino-cli core update-index --config-file arduino-cli.yaml
-
-arduino-cli core install esp32:esp32@2.0.14
-
-python3 -m pip install pyserial
-```
-
-3. Test your board
-
-```console
-arduino-cli board list
-
-Port         Protocol Type              Board Name FQBN Core
-/dev/ttyUSB0 serial   Serial Port (USB) Unknown
-```
-
-### Compilation and upload to esp32
-
-Use the following table to make your compilation:
-
-|  Device                |    Board/FQBN              |
-| ---------------------- | -------------------------- |
-| ESP32_WROOM_32         |  esp32:esp32:esp32-poe-iso |
-| LILYGO_WATCH_2020_V2   |  esp32:esp32:twatch        |
-| LILYGO_WATCH_2020_V3   |  esp32:esp32:twatch        |
-
-For example for TWATCH V3:
-
-```console
-DEVICE="LILYGO_WATCH_2020_V3"
-FQBN=esp32:esp32:twatch
-arduino-cli compile --fqbn $FQBN \
-                    --build-path $(pwd)/build \
-                    --build-property "build.extra_flags=-D $DEVICE -D ESP32" .
-arduino-cli upload -p /dev/ttyUSB0 \
-                   --fqbn esp32:esp32:esp32-poe-iso \
-                   --input-dir $(pwd)/build .
-```
-
-::: {.callout-note}
-The device path may not be `/dev/ttyUSB0`. To verify the name of the USB-device, connect the smartwatch with the cable and use command `ls /dev/tty*`. 
-:::
-
-or 
-
-configure config.ini 
-
-```console
-./install.sh
-```
-
-
-::: {.callout-tip}
-The config.ini contains LilyGo T-Watch versions V2 and V3. To change the T-Watch version, change which version is uncommented. V3 is not officially supported, but both V2 and V3 T-Watches were used during development stage. 
-
-- When V2 is selected, the GPS module in V2 is used. 
-- With V3 distance is calculated based on an hard coded step length as detailed in the SRS. 
-:::
-
-### Debugging
-
-Add read and write access to usb device:
-
-```console
-chmod 777 /dev/ttyUSB0
-```
-
-Read the serial:
-
-```console
-picocom -b 115200 /dev/ttyUSB0
-or
-putty
-or
-screen /dev/ttyUSB0 115200
-```
 
 {{< pagebreak >}}
 
@@ -251,70 +164,6 @@ Some introductory words here.
 The web application and the installation and run scripts have been built on a Linux based Operating System. It is recommended to use the application on a Linux based Operating System.  
 
 The minimum Python version is 3.10. Versions for dependencies are listed in requirements.txt. Use of virtual environment is adviced, as detailed below in installation instructions. 
-
-## Installation and setup
-
-These instructions assume that the user is using a Linux based Operating System with a bash terminal emulator. The installation may either be done manually or by using a convenience script provided in the project repository. 
-
-### Option 1: Manual installation
-
-First setup the virtual environment
-
-```bash
-python3 -m venv venv
-```
-
-Then install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-If you add new dependencies, create an updated `requirements.txt` with the following command:
-```bash
-pip freeze > requirements.txt
-```
-
-### Option 2: Convenience script
-
-Run the installation script with
-
-```bash
-./install.sh
-```
-
-## Running the application
-
-Running the application may also be done manually or by using a convenience script. 
-
-### Option 1: Manually
-
-To run the app use 
-
-```bash
-flask --app src/app.py run
-```
-
-To debug:
-
-```bash
-flask --app src/app.py --debug run
-```
-
-
-### Option 2: Convenience script
-
-To run the app use 
-
-```bash
-./start-app.sh
-```
-
-To debug:
-
-```bash
-./start-app.sh debug
-```
 
 {{< pagebreak >}}
 
