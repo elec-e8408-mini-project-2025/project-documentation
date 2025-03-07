@@ -1,1 +1,5 @@
 hiking-band-srs.*
+*.toc
+*.aux
+*.tex
+*.log
