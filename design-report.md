@@ -66,7 +66,7 @@ In this proof-of-concept Hiking Band system, the web application is built to run
 
 ## LilyGo T-Watch
 
-The LilyGO T-Watch application is a Arduino application. The project officially supports LilyGo T-Watch V2, but also works with V3 with configuration adjustment. Some code segments in source code are dependent on the chosen smartwatch version. 
+The LilyGO T-Watch application is an Arduino application. The project officially supports LilyGo T-Watch V2, but MAY also work with V3 with configuration adjustment. Some code segments in source code are dependent on the chosen smartwatch version. 
 
 The smartwatch development has the following dependencies
 
@@ -79,7 +79,7 @@ The smartwatch development has the following dependencies
 
 ## LilyGO T-Watch: Installation and setup
 
-The following installation instructions were used during the development stage of the LilyGo Hiking application. Please pay careful attention to version numbers to ensure that installation proceeds successfully. 
+Follow these instructions to set up the LilyGo Hiking application. Please pay careful attention to version numbers to ensure that installation proceeds successfully. 
 
 ### Arduino-cli and esp32 libraries
 
@@ -171,7 +171,7 @@ screen /dev/ttyUSB0 115200
 
 ### Requirements 
 
-The web application and the scripts have been designed for a Linux based Operating System. It is recommended to use the application on a Linux based Operating System. The web application officially supports Raspberry Pi3B+ with a Raspian Operating System 
+The web application and the scripts have been designed for a Linux based Operating System. It is recommended to use the application on a Linux based Operating System. The web application officially supports Raspberry Pi3B+ with a Raspian Operating System.  
 
 The minimum Python version is 3.10. Versions for dependencies are listed in requirements.txt. Use of virtual environment is adviced, as detailed below in installation instructions.
 
@@ -203,6 +203,11 @@ Run the installation script with
 ```bash
 ./install.sh
 ```
+
+:::{.callout-tip}
+Using the script is advisable. It for instance verifies that the currently active Python3 installation meets system requirements.
+:::
+
 
 ## Running the application
 
