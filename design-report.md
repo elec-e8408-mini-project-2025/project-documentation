@@ -37,7 +37,7 @@ This document is a comprehensive technical document for future developers and ma
 
 ## Web application
 
-The Web Application is a Python 3.x application that works on versions 3.10 and greater. The dependencies for the application or listed in requirements.txt: 
+The Web Application is a Python 3.x application that works on versions 3.10 and greater. The dependencies for the application are listed below and can be found in requirements.txt: 
 
 - astroid==3.3.8
 - autopep8==2.3.2
@@ -61,12 +61,8 @@ The Web Application is a Python 3.x application that works on versions 3.10 and 
 - Werkzeug==3.1.3
 
 
-In this proof-of-concept Hiking Band system, the web application is built to run on a Raspberry Pi3B+ board with a xxx Operation System. 
+In this proof-of-concept Hiking Band system, the web application is built to run on a Raspberry Pi3B+ board with a Raspian Operation System. The web application requires a network connection to access external style libraries. 
 
-
-:::{.callout-important}
-TODO: Add OS
-:::
 
 ## LilyGo T-Watch
 
