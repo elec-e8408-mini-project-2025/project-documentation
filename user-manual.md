@@ -31,15 +31,15 @@ toc-depth: 2
 
 # Introduction
 
-The purpose of this document is to provide Hiking Band users the required information to successfully setup and use the Hiking Band system. The system consists of two applications: the Raspberry Pi Web Application and LilyGO T-watch smartwatch hiking application. This document contains a section for each application and a section for communication between applications.  
+The purpose of this document is to provide Hiking Band users the required information to successfully launch, configure and utilize the core functionalities of the Hiking Band system. The system consists of two applications: the Raspberry Pi Web Application and LilyGO T-watch smartwatch hiking application. This document contains a section for each application and a section for communication between applications.  
 
 A test plan has been included for both applications for the purpose of detailing to QA specialists how it can be verified that the application works as intended. Additional information for testing can be found from the SRS documentation. It is important to highlight, however, that the SRS may contain optional features that have not been implemented in the proof-of-concept version. All non-optional features listed in SRS SHOULD be available and optional features MAY be available. 
 
 {{< pagebreak >}}
 
-# LilyGo T-Watch Hiking application
+# LilyGO T-Watch Hiking application
 
-The LilyGo T-Watch Hiking application is a proof-of-concept (later in this section PoC) smartwatch application for tracking hiking trips. The application uses LilyGo T-Watches BMA423 accelerometer to track step count and LilyGo T-Watches M8/M6 GPS Module. Average speed is computed by recording the start time of the hike and calulating average speed from tracked distance and hike duration.  Users can also view information from past hikes and configure Bluetooth synchronization from the settings menu. 
+The LilyGO T-Watch Hiking application is a proof-of-concept (later in this section PoC) smartwatch application for tracking hiking trips. The application uses LilyGO T-Watches BMA423 accelerometer to track step count and LilyGO T-Watches M8/M6 GPS Module to track the travelled distance. Average speed is computed by recording the start time of the hike and calulating average speed from tracked distance and hike duration.  Users can also view information from past hikes and configure Bluetooth synchronization from the settings menu. 
 
 
 ## Requirements 
@@ -52,7 +52,7 @@ Before getting started, make sure that you have the following hardware component
 
 
 ::: {.callout-tip}
-While the LilyGo hiking application officially supports V2 of the LilyGo T-Watch smartwatch, the application MAY also work on V3 with configuration changes. The configuration changes are detailed in the installation instructions. Note that V3 is not officially supported. 
+While the LilyGO hiking application officially supports V2 of the LilyGO T-Watch smartwatch, the application MAY also work on V3 with configuration changes. The configuration changes are detailed in the design report. Note that V3 is not officially supported. 
 :::
 
 
@@ -60,7 +60,18 @@ While the LilyGo hiking application officially supports V2 of the LilyGo T-Watch
 
 ## Tutorial
 
-This section introduces the basic functionalities of the LilyGo T-Watch. 
+This section introduces the basic functionalities of the LilyGO T-Watch. 
+
+### Turning on the smartwatch
+
+To turn the smartwatch on or off, press PEK-button for multiple seconds. 
+
+![LilyGO PEK button](./img/t-watch-pek-button.png){width=30%}  
+
+### Toggling smartwatch screen
+
+To toggle smartwatch screen on and off without shutting the smartwatch off, press the PEK button shortly. 
+
 
 ### Starting a hiking session
 
@@ -124,11 +135,12 @@ At this PoC stage the, test plan relies on manual testing. The functional requir
 ### Session view
 
 - When user presses start - button
-  - application begins tracking user's movement
+  - application begins tracking user's movement and incrementing step count
   - the session data is displayed on the view, including
     - step count
     - distance
     - average speed
+  - the session data is updated at maximum within 2 seconds when user is in active movement. 
   - the start button turns red and the button label changes to "stop"
 - When user presses stop - button
   - applicatin stops tracking user's movement
@@ -140,7 +152,7 @@ At this PoC stage the, test plan relies on manual testing. The functional requir
 - The past session view contains information on stored sessions:
 - For each session the following information is shown:
   - date of the session
-  - travelled distance
+  - traveled distance
   - average speed
 - the watch stores at maximum five past hike sessions
 - if five hiking sessions have been recorded, the oldest entry will be overwritten when the next session begins
@@ -157,15 +169,8 @@ TODO: Write this section!
 
 # Raspberry Pi Web Application
 
-Some introductory words here. 
+The purpose of the web application is to store data from hiking trips to persistent memory and to display data in the web application views. The web application has been designed for Raspberry Pi3B+ board with a Raspian Operating System. The Web Application requires a internet connection to work properly, as it uses external dependencies for styling.  
 
-## Requirements 
-
-The web application and the installation and run scripts have been built on a Linux based Operating System. It is recommended to use the application on a Linux based Operating System.  
-
-The minimum Python version is 3.10. Versions for dependencies are listed in requirements.txt. Use of virtual environment is adviced, as detailed below in installation instructions. 
-
-{{< pagebreak >}}
 
 ## Tutorial
 

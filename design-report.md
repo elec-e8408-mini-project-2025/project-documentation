@@ -37,7 +37,7 @@ This document is a comprehensive technical document for future developers and ma
 
 ## Web application
 
-The Web Application is a Python 3.x application that works on versions 3.9 and greater. The dependencies for the application or listed in requirements.txt: 
+The Web Application is a Python 3.x application that works on versions 3.10 and greater. The dependencies for the application or listed in requirements.txt: 
 
 - astroid==3.3.8
 - autopep8==2.3.2
@@ -76,7 +76,7 @@ The smartwatch development has the following dependencies
 
 - arduino-cli v. 1.1
 - esp32 libraries v. 2.0.14
-- python 3.9 or greater
+- python 3.10 or greater
 - pyserial 3.5
 
 # Step-by-step instructions 
@@ -172,6 +172,12 @@ screen /dev/ttyUSB0 115200
 ```
 
 ## Web Application: Installation and setup
+
+### Requirements 
+
+The web application and the scripts have been designed for a Linux based Operating System. It is recommended to use the application on a Linux based Operating System. The web application officially supports Raspberry Pi3B+ with a Raspian Operating System 
+
+The minimum Python version is 3.10. Versions for dependencies are listed in requirements.txt. Use of virtual environment is adviced, as detailed below in installation instructions.
 
 These instructions assume that the user is using a Linux based Operating System with a bash terminal emulator. The installation may either be done manually or by using a convenience script provided in the project repository. 
 
