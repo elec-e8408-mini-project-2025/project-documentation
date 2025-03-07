@@ -66,7 +66,7 @@ This section introduces the basic functionalities of the LilyGO T-Watch.
 
 To turn the smartwatch on or off, press PEK-button for multiple seconds. 
 
-![LilyGO PEK button](./img/t-watch-pek-button.png){width=30%}  
+![LilyGO PEK button](./img/t-watch-pek-button.jpeg){width=30%}  
 
 ### Toggling smartwatch screen
 
