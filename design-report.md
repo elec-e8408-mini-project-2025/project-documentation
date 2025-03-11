@@ -257,3 +257,100 @@ To debug:
 
 
 ## Structural designs 
+
+## Documentation by module
+
+### accelerator
+
+
+
+#### hidden
+
+TFT_eSPI *tft: Currently deprecated value.
+BMA *sensor: Contains the pointer to the accelometers sensor given by the ttgo object.
+bool irqAcc: boolean value depicting if the sensor has executed an interrupt. Is set as false at the beginning.
+
+#### public
+
+void initAccelerator(TTGOClass *ttgo): Initializes the accelerator from the ttgo object.
+uint32_t handleTasksAccelerator(): Function for reading the sensors current steps.
+void resetAccelerator(): Resets the accelerators stepcount.
+
+### bluetooth
+
+#### hidden
+
+#### public
+
+### config
+
+#### public
+
+#define TOUCH_INT: Value needed for compilation. Set as 900909421094219090421.
+#define MAX_CACHED_TRIPS: Used to find out about the maximum amount of cached trips on the clock.
+
+### data
+
+#### public
+
+#define GEO_MAX_SIZE: Int with the size the arrays of the geoData struct are initilized as.
+typedef struct timeStamp: A type containing a timestamp consisting of members year, month, day, hour, minute and second. Year is of type uint16_t and the rest of type uint8_t.
+typedef struct geoData: A type for containing GPS data. Has members lattitude, longitude, datalen and timestamp. Lattitude and longitude are a array of double of size GEO_MAX_SIZE, datalen is of type int and timestamp is of type timeStamp
+typedef struct tripData: A type for storing the data of a single trip. Contains the members tripID of type int, stepCount of type uint32_t, avgSpeed of type float, distance of type float, synced of type bool and timestampStart and timestampStop of type timeStamp.
+typedef struct systemGlobals: A type for storing general information duroing the execution of the program. It has the members step_length of type float, currentTrip of type int, maxTrip of type int and hasActiveSession and GPSavailable of type bool.
+
+### globals
+
+#### public
+
+timeStamp createTimestampFromRTC(RTC_Date date): function converting a RTC_Date object into a timeStamp struct. It transfers the values of year, month, day, hour, minute and second to the members of a timeStamp struct with the same names.
+float getTimeDifference(timeStamp start, timeStamp stop): Returns a float containing the time difference between two timeStamp objects. The unit of measurement is second.
+
+### gps
+
+#### hidden
+
+TinyGPSPlus *gps = nullptr:
+HardwareSerial *GNSS = NULL:
+
+double lastLat = NULL: 
+double lastLon = NULL: 
+
+double avgLat = 0: 
+double avgLon = 0: 
+int avgCount = 0: 
+
+uint32_t last = 0: 
+uint32_t updateTimeout = 0: 
+bool Quectel_L76X_Probe()
+
+#### public
+
+typedef struct GPSPoint
+void initGPS(TTGOClass *ttgo)
+void updateGPS()
+double getLatitude()
+double getLongitude()
+GPSPoint takeStep()
+void setRTCTime(PCF8563_Class *rtc)
+bool isGPSavailable()
+void addValueToAverage()
+GPSPoint takeAverageStep()
+
+### interface
+
+#### hidden
+
+#### public
+
+### restful
+
+#### hidden
+
+#### public
+
+### serial
+
+#### hidden
+
+#### public
