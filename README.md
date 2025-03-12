@@ -14,6 +14,44 @@ numbersections: true
 toc: true
 toc-depth: 2
 # To render document use `quarto render README.md --to pdf`
+
+# 1. Introduction
+
+# Good Points:
+# Clearly defines the purpose of the document, including its role in development, integration, and testing.
+# Explicitly mentions the intended audience, including product developers and course instructors.
+# Scope provides a broad understanding of the product, including both hardware (LilyGo smartwatch, Raspberry Pi) and software components.
+# Definitions, acronyms, and abbreviations are detailed and well-organized.
+# References are properly cited, with standards like IEEE 830 and RFC-2119 included.
+
+# Missing Elements / Areas for Improvement:
+# The purpose section could clarify how the document will be maintained or updated during the project's lifecycle.
+# The definitions section could include technical terms related to data storage, synchronization, and security protocols.
+# The references should follow a consistent format, specifying document titles, dates, and sources.
+
+# 2. Overall Description
+
+# Good Points:
+# The product perspective is well-defined, showing interactions between hardware and software.
+# Includes a block diagram to illustrate system components and interconnections.
+# Defines user characteristics, distinguishing between technical and non-technical users.
+# Lists constraints, including hardware limitations and communication protocols.
+
+# Missing Elements / Areas for Improvement:
+# The assumptions and dependencies section should state how the system handles failures in connectivity or power loss.
+# Apportioning requirements should be more informative regarding the later stage design implementation.
+
+# 3. Specific Requirements
+
+# Good Points:
+# Functional requirements are structured for both smartwatch and web application.
+# Requirements use clear keywords (MUST, SHOULD, MAY), making priorities explicit.
+# Performance requirements include measurable values, such as screen refresh rates and synchronization limits.
+# Reliability and security considerations are included.
+
+# Missing Elements / Areas for Improvement:
+# No mention of traceability, linking each requirement to testable criteria.
+# Lack of specific security protocols (e.g., Bluetooth encryption, authentication mechanisms).
 ---
 
 {{< pagebreak >}}
@@ -24,7 +62,10 @@ This chapter highlights the purpose and scope of this document, introduces the e
 
 ## Purpose
 
-
+<!-- 
+  Area of improvement
+  The purpose section could clarify how the document will be maintained or updated during the project's lifecycle. 
+-->
 The purpose of this document is to list requirements and provide context and considerations for the proof-of-concept Hiking Band product system. This document is intented be used within software development, integration and testing of the whole system.  
 
 The core audiences for this documents are the product development team and the course instructors, who both review this document and review the final system based on the requirement specification of this document. The finished deliverable MUST match the specification in this documentation. 
@@ -40,6 +81,11 @@ This proof-of-concept system consists of two hardware components: the Raspberry 
 ## Definitions, acronyms and abbreviations
 
 ### Definitions
+
+<!--
+  Area of improvement
+  The definitions section could include technical terms related to data storage, synchronization, and security protocols.
+-->
 
 **1.user:** the person, or persons, who operate or interract directly with the product.  
 
@@ -84,6 +130,11 @@ This document uses requirement level keywords "MUST", "MUST NOT", "SHOULD", "SHO
 
 
 ## References
+
+<!--
+  Area of improvement
+  The references should follow a consistent format, specifying document titles, dates, and sources.
+-->
 
 This Software Requirement Specification MUST be used in conjuction with the following publications:
 
@@ -431,6 +482,11 @@ The constraints mentioned are only concerning the software of the application, a
 
 ## Assumptions and dependencies
 
+<!--
+  Area of improvement
+  The assumptions and dependencies section should state how the system handles failures in connectivity or power loss.
+-->
+
 - The LilyGo hiking application requires LilyGO T-Watch V2
 - The Web Application requires Python 3.10 or higher
 - The web application is only guaranteed to work on Raspberry Pi3 
@@ -438,11 +494,22 @@ The constraints mentioned are only concerning the software of the application, a
 
 ## Apportioning of requirements
 
+<!--
+  Area of improvement:
+  Apportioning requirements should be more informative regarding the later stage design implementation.
+-->
+
 The proof-of-concept (PoC) MUST include all requirements that have been defined with keywords MUST according to RFC-2119 [2]. All requirements marked with key word MAY are not guaranteed to be implemented in the PoC release. For requirements with keyword SHOULD, design team must be able to justify deviation from SRS. 
 
 {{< pagebreak >}}
 
 # Specific Requirements
+
+<!--
+  Areas of improvement:
+  No mention of traceability, linking each requirement to testable criteria.
+  Lack of specific security protocols (e.g., Bluetooth encryption, authentication mechanisms).
+-->
 
 ## Performance Requirements
 
