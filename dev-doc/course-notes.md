@@ -308,7 +308,7 @@ Procedural Design methodologies, like structured design, involve top-down and bo
 > **Note:** in many real-world applications both top-down and bottom-up approaches are used. 
 
 
-### Structured Design
+#### Structured Design
 
 - Structured design (SD) is the **companion methodology** to structured analysis. 
 - A systematic approach concerned with the **specification of the software architecture**
@@ -353,6 +353,28 @@ Procedural Design methodologies, like structured design, involve top-down and bo
   - P-SPECs can be written in **decision tables, trees, pseudocode, or structured English**.  
   - Structured English balances **formal programming precision** with **readability** (Yourdon, 1989).  
   - Figure 6.7 illustrates the **evolution path** from a **context diagram** to **DFDs** and finally to **process specifications**.
+
+
+### Object-Oriented Design Approach
+
+- **Object-Oriented Design Principles:**  
+  - Based on **data abstraction, inheritance, polymorphism, and messaging**.  
+  - **Encapsulation** ensures information hiding by restricting access to an object's state and behavior through a defined interface.  
+  - **Inheritance** allows new objects to inherit properties from existing ones.  
+  - **Polymorphism** enables functions to behave differently depending on the object's type.  
+  - **Messaging** allows objects to communicate and invoke supported methods.  
+
+- **Encapsulation in Object-Oriented Languages:**  
+  - Objects contain **state, data, and behavior**, accessible only via a **published interface or private methods**.  
+  - Example: A **class "accelerometer"** could encapsulate its physical attributes and methods for output and compensation algorithms.  
+
+- **Object-Oriented Design Approach:**  
+  - Views **system components as objects**, encapsulating data processes, control processes, and data stores.  
+  - Early development aimed to integrate **structured methodologies** (e.g., data flow and entity-relationship diagrams) within an object-oriented framework.  
+  - **Unified Modeling Language (UML)** standardized in the late 1990s.  
+  - Latest UML revision: **UML 2.3 (released May 2010)**.  
+
+
 
 ## References
 

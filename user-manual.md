@@ -79,18 +79,18 @@ To start a new hiking session:
 
 1. In main view press 'Session view' button
 
-![LilyGO main view](./img/t-watch-main.png){width=30%}  
+![LilyGO main view](./img/t-watch-main.jpeg){width=30%}  
 
 2. In Session view press 'Start' button
 
-![LilyGO session view before start button is pressed](./img/t-watch-session-start.png){width=30%}
+![LilyGO session view before start button is pressed](./img/t-watch-session-start.jpeg){width=30%}
 
 To end a hiking session:  
 
 1. Navigate to 'Session view'
 2. Press 'Stop' button
 
-![LilyGO session view after start button has been pressed](./img/t-watch-session-stop.png){width=30%}
+![LilyGO session view after start button has been pressed](./img/t-watch-session-stop.jpeg){width=30%}
 
 ::: {.callout-tip}
 While a hiking session is active, you can:  
@@ -106,7 +106,7 @@ To view past hiking sessions:
 1. Navigate to past session view from the main view
 
 
-![LilyGO past sessions view](./img/t-watch-past-sessions.png){width=30%}
+![LilyGO past sessions view](./img/t-watch-past-sessions.jpeg){width=30%}
 
 ::: {.callout-note}
 If there are no previous session, a prompt will indicate that no hikes have been recorded. Otherwise past sessions will be listed. 
