@@ -121,7 +121,7 @@ TODO
 
 ## Test plan
 
-At this PoC stage the, test plan relies on manual testing. The functional requirements of the smart watch detailed in the SRS documentation can all be tested manually. A comprehensive list of testable features have been collected to the following subsections. These collections should assist the QA specialists in implementing suitable tests to verify that the functionalities work as intended. 
+At this PoC stage the, test plan relies on manual testing. The functional requirements of the smart watch detailed in the SRS documentation can all be tested manually. A comprehensive list of testable features have been collected to the following subsections. These collections should assist the QA specialists in implementing suitable tests to verify that the functionalities work as intended. This section assumes that the QA specialist is performing black-box testing, i.e. testing a then functional and non-functional requirements on system or acceptance test level.
 
 ### Navigation
 
@@ -213,25 +213,68 @@ Pressing Delete opens a confirmation Monad. By pressing delete, the action is co
 ![Web applicatoin confirm deletion](./img/web-app-delete-hike-monad.png){width=60%}
 
 
+{{< pagebreak >}}
 
 ### Configuration view
 
-::: {.callout-important}
-TODO: Write this section!
-:::
+In the configuration view user can 
+
+- pair a new LilyGO T-Watch device with the Web Applicatoin
+- Synchornize data from the LilyGO T-Watch to the persistent data storage on the Web Application 
+
+#### Pairing a new device
+
+Before pairing, the configuration view indicates that no T-Watch has been paired with the Web Application
+
+![Configuratoin view, no device paired](./img/web-app-config-pairing-no-pair.png)
+
+{{< pagebreak >}}
+
+To pair a new T-Watch, first ensure that the T-Watch is turned on. Then click the 'Setup new Hiking watch' link. A spinner indicates that an operation is ongoing. Do not leave the view while the spinner is visible
+
+![Pairing a new device in progress](./img/web-app-config-pairing-spinner.png){width=60%}
+
+If the pairing succeeds, the connection information is shown in the card element and a notification of successful operation is shown. 
+
+![Pairing a new device succeeded](./img/web-app-config-pairing-success.png)
+
+If the pairing fails, user is notified with a warning alert. 
+
+![Pairing a new device failed](./img/web-app-config-pairing-failure.png)
+
+{{< pagebreak >}}
+
+#### Synchornizing data 
+
+To synchronize hiking data from the LilyGO T-Watch to the persistent local storage of the Web Application, press the 'Sync data with Hiking watch' link. A spinner indicates that an operation is now ongoing. Do not leave the view while the spinner is visible. 
+
+![Data synchronization in progress](./img/web-app-config-transfer-spinner.png){width=60%}
+
+If the transfer succeeds, a notification will be shown. 
+
+![Data synchronization succeeded](./img/web-app-config-transfer-success.png)
+
+In case of failure, a warning notification is shown and some information on the cause of the failure MAY be shared. 
+
+![Data synchronization failed](./img/web-app-config-transfer-failure.png)
+
+{{< pagebreak >}}
 
 ## Test plan
 
-At this proof-of-concept stage the, test plan relies on manual testing. A comprehensive list of testable features have been collected to the following subsections. These collections should assist the QA specialists in implementing suistable tests to verify that the functionalities work as intended. 
+At this proof-of-concept stage the, test plan relies on manual testing. A comprehensive list of testable features have been collected to the following subsections. These collections should assist the QA specialists in implementing suistable tests to verify that the functionalities work as intended. This section assumes that the QA specialist is performing black-box testing, i.e. testing a then functional and non-functional requirements on system or acceptance test level. 
 
 ### Main view
 
-- The main view contains navigation buttons to hikes view and configuration view
+- The main view contains navigation buttons to 
+  - hikes view and 
+  - configuration view
 - The main view additionally contains some key information from past sessions:
   - The last recorded session
   - The session with longest travelled distance
   - The session with fastest average speed
   - Averages for step count, distance, average speed and burned calories all sessions
+- If no data is in database, data cards are rendered and indicate that no data is available. 
 
 
 ### Hikes view
@@ -249,18 +292,26 @@ At this proof-of-concept stage the, test plan relies on manual testing. A compre
   - burned calories
 - additionally each row contains a Delete button from which the selected entry can be deleted
   - pressing the delete button activates a modal in which user is asked to confirm deletion
-  - after confirmation, entry is deleted and the hikes-view is re-rendered
+  - after confirmation, entry is deleted and the user is redirected to the hikes-view 
 
 ### Configuration view
 
-::: {.callout-important}
-TODO: Write this section!
-:::
+
+- When a LilyGO T-Watch has not been paired, the card element indicates that no device has been paired
+- When user clicks the 'Setup new hiking watch' a spinner element is rendered indicating that an operation is ongoing
+  - If the pairing succeeds user is redirected to the configuration view and an alert element is shown indicating success 
+  - If the pairing fails, user is redirected to the configuration view and an alert element is shown indicating failure
+- When user clicks the 'Sync data from Hiking watch' link, a spinner element is rendered inidicating indicating that an operation is ongoing. 
+  - If data synchornization succeeds, user is redirected to the configuratoin view and an alert element is shown indicating success
+  - If data synchronization fails, user is redirected to the configuratoin view and an alert element is shown indicating failure
+
 
 
 # Communication between devices
 
-::: {.callout-important}
-TODO: Write this section!
+The web application handles communication between the devices. Please follow the instructions in the Web Application settings to pair the Hiking watch with the web application and to synchornize hiking data to the persistent local data storage on the web application. 
+
+::: {.callout-note}
+Remember to turn the Hiking watch on before initiating communication between the devices. 
 :::
 
