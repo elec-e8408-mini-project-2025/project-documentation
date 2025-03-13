@@ -87,11 +87,6 @@ This proof-of-concept system consists of two hardware components: the Raspberry 
 
 ### Definitions
 
-<!--
-  Area of improvement
-  The definitions section could include technical terms related to data storage, synchronization, and security protocols.
--->
-
 **1.user:** the person, or persons, who operate or interract directly with the product.  
 
 **2.hiking session:** an event during which activity data such as step count, travelled distance and average speed are recorded on the LilyGO smartwatch. The event begins when user pushes "Start" button and ends when user presses "End" button in hiking session view.  
@@ -117,6 +112,25 @@ This proof-of-concept system consists of two hardware components: the Raspberry 
 **12.Proof-of-concept:** a pilot project demonstrating that a design concept is feasible.  
 
 **13.SUD:**  System Under Development.  
+
+**14.data storage:** A local database created and accessed by the Web Application. The purpose of the data storage is to store data for past hiking sessions and the information of the paired LilyGO T-Watch.   
+
+**15.session data:** Information stored from one hiking session, such as step count and distance in kilometers. 
+
+**16.data tranfer:** A process in which session data is copied from LilyGO T-Watch application to persistent data storage on Web Application.
+
+**17.polling:** An action in which client sends a request to a server. 
+
+**18.request:** A communication from client to server in which client requests an operation from server. In context of Hiking Band system, the Web Application requests data from the LilyGO T-Watch application and the smartwatch application responds by sending data from hiking trips. 
+
+**19.client:** A client is a device communicating with a server
+
+**20.server:** Server is software service that listens to incoming requests and responds to them. 
+
+**21.pairing:** A process in which two devices form an initial connection to enable communication
+
+**22.synchronization:** An operation causing a set of data elements to remain identical in multiple locations. In the context of Hiking Band system synchronization means that session data from LilyGO T-Watch application is copied to persisten data storage on Web Application. Not all data on the persistent data storage MAY NOT be in the LilyGO T-Watch. 
+
 
 ### Requirement levels
 
