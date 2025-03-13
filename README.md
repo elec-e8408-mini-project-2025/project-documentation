@@ -70,6 +70,11 @@ The purpose of this document is to list requirements and provide context and con
 
 The core audiences for this documents are the product development team and the course instructors, who both review this document and review the final system based on the requirement specification of this document. The finished deliverable MUST match the specification in this documentation. 
 
+The SRS is maintained in GitHub remote repository that provides version control. Each release of the Hiking Band system is tagged with a version number and this includes the documentation as well. This way the documentation is also version controlled and the revision history can be efficiently be reviewed with `git blame`, which shows change history and author of each change, with timestamps.  
+
+For each release the SRS SHOULD be updated and represent the current version of the system. The SRS SHOULD also align with User Manual and Design Report in each release. With version control it is also easy to review removed sections of SRS. The SRS should have an Appendix that lists deprecated sections and in which release these sections were removed from the SRS. This way it is easy to find the deprecated sections from past releases, when necessary. 
+
+
 
 ## Scope
 
