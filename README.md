@@ -38,8 +38,8 @@ toc-depth: 2
 # Lists constraints, including hardware limitations and communication protocols.
 
 # Missing Elements / Areas for Improvement:
-# The assumptions and dependencies section should state how the system handles failures in connectivity or power loss.
-# Apportioning requirements should be more informative regarding the later stage design implementation.
+# DONE: The assumptions and dependencies section should state how the system handles failures in connectivity or power loss.
+# DONE: Apportioning requirements should be more informative regarding the later stage design implementation.
 
 # 3. Specific Requirements
 
@@ -359,7 +359,9 @@ The system MAY prevent starting a new hiking session, if real-time clock of the 
 
 The system MUST allow user to record multiple hiking sessions to smartwatch memory 
 
-The system MUST store at minimum 5 last sessions in persistent memory of the smartwatch
+The system MUST store at minimum 5 last sessions in running memory of the smartwatch
+
+The system MAY store at minimum 5 last sessions in persistent memory of the smartwatch
 
 The system MAY support storing more than 5 last sessions on the smartwatch
 
@@ -502,10 +504,29 @@ The constraints mentioned are only concerning the software of the application, a
   The assumptions and dependencies section should state how the system handles failures in connectivity or power loss.
 -->
 
+### Operational assumptions
+
+- The clock is either recharged or synchronized regularly between trips to ensure that the real-time clock module is operational. If the clock runs out of battery life, user may not be able to record new hiking sessions. 
+- The Raspberry Pi is connected to a home network with an IP address.
+- The home network does not restrict the use of TCP port 5000
+- The Raspberry Pi has access to internet
+- All software and firmware has been installed according to the provided installation manual
+- The versions of the web application and the hiking application are the same
+- The Web application handles the listed exceptions and errors without system failure:
+
+| Exception name | Description | Responsible platform |
+| -------------- | ----------- | -------------------- |
+| Bluetooth out of range | When smartwatch application is out of range during synchronization. System SHOULD normally carry on operation. | Web Application |
+| Bluetooth setup incomplete | Incorrect or wrong MAC or new smartwatch application. Renewing Bluetooth setup is required. | Web Application |
+| Power outage | Web Application is forced to restart by power loss | Web Application |
+| smartwatch application out of battery | This will not affect the system. Smartwatch application related data SHOULD be reset. Web Application knows which data is already synced from marking. | Web Application / smartwatch application |
+
+
+### Hardware assumptions
+
 - The LilyGo hiking application requires LilyGO T-Watch V2
 - The Web Application requires Python 3.10 or higher
 - The web application is only guaranteed to work on Raspberry Pi3 
-- The clock is either recharged or synchronized regularly between trips to ensure that the real-time clock module is operational. If the clock runs out of battery life, user may not be able to record new hiking sessions. 
 
 ## Apportioning of requirements
 
@@ -513,8 +534,23 @@ The constraints mentioned are only concerning the software of the application, a
   Area of improvement:
   Apportioning requirements should be more informative regarding the later stage design implementation.
 -->
+Apportioning of requirements subsection conveys late stage considerations related to the requirement levels. Requirements follow the selected keywords defined in the [Requirement levels](#Requirement-levels) subsection. 
+
+### Requirement prioritization
 
 The proof-of-concept (PoC) MUST include all requirements that have been defined with keywords MUST according to RFC-2119 [2]. All requirements marked with key word MAY are not guaranteed to be implemented in the PoC release. For requirements with keyword SHOULD, design team must be able to justify deviation from SRS. 
+
+In the later stage design and initial releases, careful attention MUST be given to these aspects of this document:
+
+1. Synchronization: Fluent, does not give any errors unknown error to the user and the other requirements are carefully inspected.
+2. Web Application UI: Usage is fluent, database entries are easily inspected and deleted, database is clearly visualized and the other requirements are carefully inspected. 
+3. Smartwatch application: Clock is easily usable, data collected is correct, timestamps are correct, synchronization is fluent and the other requirements are carefully inspected. 
+
+Difficult but convenient requirements that SHOULD be carefully considered in the initial releases due to time constraints:
+
+1. GPS and other related functionality
+2. Persistent storage on the smartwatch application
+3. Clock / timestamp offset related on the smartwatch application
 
 {{< pagebreak >}}
 
