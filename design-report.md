@@ -257,3 +257,148 @@ To debug:
 
 
 ## Structural designs 
+
+## Documentation by module
+
+### accelerator
+
+
+
+#### hidden
+
+TFT_eSPI *tft: Currently deprecated value.
+BMA *sensor: Contains the pointer to the accelometers sensor given by the ttgo object.
+bool irqAcc: boolean value depicting if the sensor has executed an interrupt. Is set as false at the beginning.
+
+#### public
+
+void initAccelerator(TTGOClass *ttgo): Initializes the accelerator from the ttgo object.
+uint32_t handleTasksAccelerator(): Function for reading the sensors current steps.
+void resetAccelerator(): Resets the accelerators stepcount.
+
+### bluetooth
+
+#### hidden
+
+#### public
+
+### config
+
+#### public
+
+#define TOUCH_INT: Value needed for compilation. Set as 900909421094219090421.
+#define MAX_CACHED_TRIPS: Used to find out about the maximum amount of cached trips on the clock.
+
+### data
+
+#### public
+
+#define GEO_MAX_SIZE: Int with the size the arrays of the geoData struct are initilized as.
+typedef struct timeStamp: A type containing a timestamp consisting of members year, month, day, hour, minute and second. Year is of type uint16_t and the rest of type uint8_t.
+typedef struct geoData: A type for containing GPS data. Has members lattitude, longitude, datalen and timestamp. Lattitude and longitude are a array of double of size GEO_MAX_SIZE, datalen is of type int and timestamp is of type timeStamp
+typedef struct tripData: A type for storing the data of a single trip. Contains the members tripID of type int, stepCount of type uint32_t, avgSpeed of type float, distance of type float, synced of type bool and timestampStart and timestampStop of type timeStamp.
+typedef struct systemGlobals: A type for storing general information duroing the execution of the program. It has the members step_length of type float, currentTrip of type int, maxTrip of type int and hasActiveSession and GPSavailable of type bool.
+
+### globals
+
+#### public
+
+timeStamp createTimestampFromRTC(RTC_Date date): function converting a RTC_Date object into a timeStamp struct. It transfers the values of year, month, day, hour, minute and second to the members of a timeStamp struct with the same names.
+float getTimeDifference(timeStamp start, timeStamp stop): Returns a float containing the time difference between two timeStamp objects. The unit of measurement is second.
+
+### gps
+
+#### hidden
+
+TinyGPSPlus *gps: Pointer to store the gps object from the ttgo object.
+HardwareSerial *GNSS: Pointer to the hardware serial of the ttgo.
+
+double lastLat: Double value containing the latitude of the last step.
+double lastLon: Double value containing the longitude of the last step.
+
+double avgLat: Double value containing a sum of the latitudes that will be used to calculate the average latitude of a time period.
+double avgLon: Double value containing a sum of the longitude that will be used to calculate the average longitude of a time period.
+int avgCount: Counter for determining the amount of points in calculating the average.
+
+uint32_t last: Deprecated variable containing the millis() result when initializing the gps.
+uint32_t updateTimeout: Deprecated variable.
+bool Quectel_L76X_Probe(): Function cerifying that the gps settings are correct.
+
+#### public
+
+typedef struct GPSPoint: Contains latitude of type double, longitude of type double and dist of type double. The lat and lon are the the latitude and longitude of a point and dist is the distance from the last point.
+void initGPS(TTGOClass *ttgo): Function initializing the GPS. Uses the ttgo object.
+void updateGPS(): Function to update the gps values.
+double getLatitude(): Gets the latest latitude from the gps.
+double getLongitude(): Gets the latest longitude from the gps.
+GPSPoint takeStep(): Function to take a step in the trip. Returns a GPSPoint with the current latitude and longitude of the position and the distance to the last step.
+void setRTCTime(PCF8563_Class *rtc): Function to set the current RTC time of the clock to the current GPS time.
+bool isGPSavailable(): Checks if the gps has been updated and the value is valid.
+void addValueToAverage(): Adds the current latitude and longitude to the avgLat and avgLon variables. Additionally adds 1 to the avgCount.
+GPSPoint takeAverageStep(): Function to take a step in the trip using average values. It returns a GPSPoint containing the avgLat and avgLon divided by avgCount. The distance is the distance between the average coordinates and the last step.
+
+### interface
+
+#### hidden
+
+bool displayOn: Variable tracking if the display is on or off.
+bool irqPEK: Variable tracking if the PEK button is pressed.
+bool GPSavailable: Deprecated variable.
+uint32_t stepCount: Variable for saving the current stepcount.
+float step_length: Variable containing the length of a step.
+float avgSpeed: Variable containing the current average speed.
+float distance: Variable containing the current distance.
+timeStamp sessionStartTime: Variable containing the start time of the session.
+timeStamp currentTime: Deprecated variable for containing the current time.
+bool hasActiveSession: Variable for tracking if a session is currently active.
+uint32_t nOfTrips: Variable containing the amount of taken trips.
+tripData *pastTrips: Variable containing a pointer to the tripdata object.
+interfaceEvent returnData: InterfaceEvent containing the current event.
+
+There are a lot of variables of type lv_obj_t* containing the pointers to different interface elements like the views, buttons and labels.
+
+Variables of type lv_style_t are for saving different styles.
+
+static void event_handler(lv_obj_t *obj, lv_event_t event): Function for handling interface events.
+void refreshSessionView(): Function for updating the session view.
+void init_global_styles(): Function for setting the global style configuration.
+void loopWakeUpFormTouchScreen(TTGOClass *ttgo): Function for handling turning the screen on and off using the PEK button.
+void setupToggleScreen(TTGOClass *ttgo): Function for setting up screen on and off functionality.
+
+#### public
+
+typedef enum interfaceEventType: Enum containing the different types of interface events.
+typedef struct interfaceEvent: Struct containing a interfaceEventType of the value of the event and a char pointer to a null terminated string containing a message.
+void createMainMenuView(): Function creating the view of the main menu.
+void createSessionView(): Function creating the view for the current session.
+void createSettingsView(): Function creatig the view for the settings menu.
+void createPastSessionsView(): Function creating the view for the past session.
+void updatePastSessionData(): Function for updating the view of the past sessions.
+void initInterface(TTGOClass *ttgo): Function for initializing the interface variables.
+interfaceEvent handleTasksInterface(TTGOClass *ttgo, tripData * trip, systemGlobals * systemVariables, bool isRefreshSessionView, tripData * trips): Function for handling tasks concerning the interce and updating it.
+
+### restful
+
+#### hidden
+
+#### public
+
+### serial
+
+#### hidden
+
+bool commandFinishedSer = 0;
+int byteCountSer = 0;
+char rxDataSer[SERIAL_BUFFER_SIZE]; 
+
+#### public
+
+typedef enum serialStatus: Enum depicting the status of the serial interface.
+typedef struct serialBuffer: Struct containing buf of type char*, bufLen of type int and status of type serialStatus.
+void initSerial(): Function initializing the serial functionality.
+serialBuffer handleSerialByte(): Function reading a byte per call and append to a buffer.
+void writeSerialString(char * data): Writes the data variables contents to serial.
+void writeSerial(char * data, int dataLen): Writes the data variables contents to serial up to datalen.
+void writeSerialRTCTime(): Deprecated function for writing the RTC time to serial.
+void writeSerialRTCDateObj(RTC_Date date): Function writing the date objects information to serial.
+void writeSerialRTCDateObj(timeStamp date): Function writing the date objects information to serial.
