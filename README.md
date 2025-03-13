@@ -25,9 +25,9 @@ toc-depth: 2
 # References are properly cited, with standards like IEEE 830 and RFC-2119 included.
 
 # Missing Elements / Areas for Improvement:
-# The purpose section could clarify how the document will be maintained or updated during the project's lifecycle.
-# The definitions section could include technical terms related to data storage, synchronization, and security protocols.
-# The references should follow a consistent format, specifying document titles, dates, and sources.
+# DONE: The purpose section could clarify how the document will be maintained or updated during the project's lifecycle.
+# DONE: The definitions section could include technical terms related to data storage, synchronization, and security protocols.
+# DONE: The references should follow a consistent format, specifying document titles, dates, and sources.
 
 # 2. Overall Description
 
@@ -62,10 +62,6 @@ This chapter highlights the purpose and scope of this document, introduces the e
 
 ## Purpose
 
-<!-- 
-  Area of improvement
-  The purpose section could clarify how the document will be maintained or updated during the project's lifecycle. 
--->
 The purpose of this document is to list requirements and provide context and considerations for the proof-of-concept Hiking Band product system. This document is intented be used within software development, integration and testing of the whole system.  
 
 The core audiences for this documents are the product development team and the course instructors, who both review this document and review the final system based on the requirement specification of this document. The finished deliverable MUST match the specification in this documentation. 
