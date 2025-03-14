@@ -50,8 +50,8 @@ toc-depth: 2
 # Reliability and security considerations are included.
 
 # Missing Elements / Areas for Improvement:
-# No mention of traceability, linking each requirement to testable criteria.
-# Lack of specific security protocols (e.g., Bluetooth encryption, authentication mechanisms).
+#DONE: No mention of traceability, linking each requirement to testable criteria.
+#DONE: Lack of specific security protocols (e.g., Bluetooth encryption, authentication mechanisms).
 ---
 
 {{< pagebreak >}}
@@ -102,6 +102,8 @@ This proof-of-concept system consists of two hardware components: the Raspberry 
 **9.web application:** The application running on the Raspberry Pi including the database and hosting services.  
 
 **10.LilyGo application:** The firmware and applications running on the LilyGo T-Watch smartwatch.  
+
+**11.smartwatch application:** The same as LilyGo applicaiton
 
 **11.System:**  The whole system including Raspberry Pi, LilyGo T-Watch smartwatch and relevant interfaces.  
 
@@ -176,6 +178,7 @@ The development team should familiarize with the following documents:
 
 This Software Requirements Specification (SRS) document is structured to provide a comprehensive outline of the Hiking Band System and of its requirements. The structure is based on the IEEE 830:1998 standard and is organized by the best practices introduced in IEEE 830:1998 as described below. 
 
+<!--
 ### Content of the SRS
 
 This SRS has three sections:  
@@ -183,6 +186,7 @@ This SRS has three sections:
 1. **Introduction:** This section provides an overview of the entire SRS. It clarifies the context and the objectives of the Hiking Band System and details essential terminology and references.  
 2. **Overall description:** This section provides a high-level overview of the SUD (System Under Development). It details the product functionalities, product perspective, constraints and user characteristics.  
 3. **Specific Requirements:** This section delves deeper into the technical details of the SUD. It defines the performance requirements, design constraints, software-system attributes and security considerations. 
+-->
 
 ### Organization of the SRS
 
@@ -221,13 +225,13 @@ The [Communications interfaces](#communications-interfaces) section lists the ex
 The data exchange between the major components MUST happen with structured and coherent application level protocols:
 
 - HTTP and tcp/ip protocols between the web browser and the Web Application
-- HTTP-like protocol between the Web Application and the LilyGo Application
+- HTTP-like protocol between the Web Application and the smartwatch application
 
-The Web Application and the LilyGo Application SHOULD use json format to exchange information.
+The Web Application and the smartwatch application SHOULD use json format to exchange information.
 
-The LilyGo Application SHOULD use the json structure for the retrieved data when applicable:
+The smartwatch application SHOULD use the json structure for the retrieved data when applicable:
 
-![json structure for mini restful to communicate with the LilyGo Application  ](dev-doc/mini_restful_jsonstructure.png "Mini restful.")
+![json structure for mini restful to communicate with the smartwatch application  ](dev-doc/mini_restful_jsonstructure.png "Mini restful.")
 
 For example for /tripdata/4:
 ```console
@@ -245,11 +249,11 @@ For example for /tripdata/4:
 }
 ```
 
-The communication between Web Application and LilyGo Application MUST adhere to RFC-7231 when using GET and POST methods to inform the nature of the communication.
+The communication between Web Application and smartwatch application MUST adhere to RFC-7231 when using GET and POST methods to inform the nature of the communication. Nature meaning that the content might be different but the act GET and POST act the same way.  
 
-The communication between Web Application and LilyGo Application SHOULD use the command structure:
+The communication between Web Application and smartwatch application SHOULD use the command structure:
 
-![Command structure for mini restful to communicate with the LilyGo Application ](dev-doc/mini_restful_commandstructure.png "Mini restful.")
+![Command structure for mini restful to communicate with the smartwatch application ](dev-doc/mini_restful_commandstructure.png "Mini restful.")
 
 Example for GET (example might not be applicable in the final product):
 ```console
@@ -261,18 +265,18 @@ Example for POST (example might not be applicable in the final product):
 POST {} /tripdata/4/clear
 ```
 
-The communication between Web Application and LilyGo Application SHOULD use the filestructure:
+The communication between Web Application and smartwatch application SHOULD use the filestructure:
 
-![File structure for mini restful to communicate with the LilyGo Application  ](dev-doc/mini_restful_filestructure.png "Mini restful.")
+![File structure for mini restful to communicate with the smartwatch application  ](dev-doc/mini_restful_filestructure.png "Mini restful.")
 
 
-The LilyGo Application SHOULD NOT execute its functions without interaction from the user or the Web Application. This means the LilyGo Application has only slave-like properties within the system.
+The smartwatch application SHOULD NOT execute its functions without interaction from the user or the Web Application. This means the smartwatch application has only slave-like properties within the system.
 
 The Web Application SHOULD be able to interact with its resources and the system independently.
 
 ### User interfaces
 
-The LilyGO interface user MUST be able to interact with the functionalities:
+The LilyGO / smartwatch interface user MUST be able to interact with the functionalities:
 
 - "start a hiking session"
 - "stop a hiking session"
@@ -281,9 +285,9 @@ The LilyGO interface user MUST be able to interact with the functionalities:
 - "record step count"
 - Enable BlueTooth capabilities 
 
-The LilyGO interface SHOULD follow the given interface layout:
+The LilyGO  / smartwatch interface SHOULD follow the given interface layout:
 
-![LilyGo Views](/dev-doc/app_views.png "concept of app views")
+![LilyGo / smartwatch Views](/dev-doc/app_views.png "concept of app views")
 
 
 > Note: the GUI of the final product may not be a one to one match with the early visualization draft represented here. It will however meet the requirements for functionalities.
@@ -298,19 +302,19 @@ The Web UI interface SHOULD follow the given interface layout:
 
 ![Web UI views](/dev-doc/web_ui_view.png "concept of web view")
 
-The LilyGo interface MUST refresh current hiking session every 0.2 seconds or faster.
+The LilyGo / smartwatch interface MUST refresh current hiking session every 0.2 seconds or faster.
 
 Changing the view on the Web Application MUST be faster than 0.5 seconds.
 
 ### Hardware interfaces
 
-The LilyGO application MUST use the touchScreen FT6336 using the pinout defined by LilyGO hardware:
+The smartwatch application MUST use the touchScreen FT6336 using the pinout defined by LilyGO / smartwatch hardware:
 
 - SDA: 23 pin
 - SCL: 32 pin
 - Interrupt: 38 pin
 
-The LilyGO application MUST use the BMA423 using the pinout defined by LilyGO hardware:
+The smartwatch application MUST use the BMA423 using the pinout defined by LilyGO / smartwatch hardware:
 
 - Interrupt: 39 pin
 
@@ -320,11 +324,11 @@ The WebUI HTML layout MAY be viewable on a mobile phone screen.
 
 ### Software interfaces
 
-The LilyGO application SHOULD use LilyWatch maintained TTGO_TWatch_Library and Arduino core ESP32 libraries for the pin definitions and driver implementation 
+The smartwatch application SHOULD use LilyWatch maintained TTGO_TWatch_Library and Arduino core ESP32 libraries for the pin definitions and driver implementation 
 
-The LilyGO application SHOULD be implemented with the following state machine for a polling scheduler of 6 orthogonal processes. The timing and prioritization MAY be changed to accommodate other requirements:
+The smartwatch application SHOULD be implemented with the following state machine for a polling scheduler of 6 orthogonal processes. The timing and prioritization MAY be changed to accommodate other requirements:
 
-![Polling scheduler example for the LilyGO application](/dev-doc/polling-scheduler.png "Polling scheduler example for the LilyGO application")
+![Polling scheduler example for the smartwatch application](/dev-doc/polling-scheduler.png "Polling scheduler example for the smartwatch application")
 
 The Web application SHOULD follow simple polling scheduling of tasks.
 
@@ -347,9 +351,9 @@ The Web Application MUST have ONE of the following capabilities to view the WebU
 - Connect to a local network via Ethernet by acquiring IP and network information from DHCP.
 
 ## Product functions
-This subsection contains the functional requirements for the Hiking Application prototype. As the prototype consists of both LilyGo - application and the Web application to present tracking data, the functional requirements gather requirements for both of these.  
+This subsection contains the functional requirements for the Hiking Application prototype. As the prototype consists of both LilyGo / smartwatch - application and the Web application to present tracking data, the functional requirements gather requirements for both of these.  
 
-### LilyGo application: Start & stop hiking sessions
+### Smartwatch Application: Start & stop hiking sessions
 
 The system MUST allow user to start a hiking session  
 
@@ -359,7 +363,7 @@ The system MAY allow user to continue stopped hiking session
 
 The system MAY prevent starting a new hiking session, if real-time clock of the smartwatch is compromized. In this case, the smartwatch must be first synchronized with RPi to synchronize the real-time clock. 
 
-### LilyGo application: Recording multiple hiking sessions
+### Smartwatch Application: Recording multiple hiking sessions
 
 The system MUST allow user to record multiple hiking sessions to smartwatch memory 
 
@@ -385,13 +389,13 @@ In case GPS data is tracked, the system MUST log and save the current location i
 
 In case GPS data is tracked, the system MUST NOT miss 2 consecutive loggings of location data
 
-### LilyGo application: Record steps count and convert into travelled distance during the session
+### Smartwatch Application: Record steps count and convert into travelled distance during the session
 
 While hiking session is active, the system MUST record steps count  
 
 While hiking session is active, the system MUST convert steps count into travelled distance every time data is rendered on touchscreen
 
-### LilyGo application: Display this data on a smartwatch screen
+### Smartwatch Application: Display this data on a smartwatch screen
 
 While hiking session is active, the system MUST display step count on display  
 
@@ -413,9 +417,9 @@ The smartwatch application MUST be capable of sending step count and travelled d
 
 The smartwatch application MAY also send date of hike and average speed for each recorded hiking session
 
-The smartwatch application MUST at the minimum be able to connect to RPi based on Bluetooth broadcast device name of the LilyGo T-Watch
+The smartwatch application MUST at the minimum be able to connect to RPi based on Bluetooth broadcast device name of the smartwatch application
 
-The smartwatch application MAY be able to connect to RPi with LilyGo enabling Bluetooth discovery
+The smartwatch application MAY be able to connect to RPi with smartwatch application enabling Bluetooth discovery
 
 The smartwatch application MAY be able connect to RPi by configured Wi-Fi connection
 
@@ -499,23 +503,23 @@ The constraints mentioned are only concerning the software of the application, a
 
 - The bluetooth interaction the minimum requirements SHOULD use the hard coded BlueTooth broadcast name to determine the correct device. It would be a lot more secure if we can do this from the WebUI without hardcoding. However, this requires more precise interaction with the operating system and the Web Application.
 
-- If the clock runs out of sync due to power loss the system MUST synchronize its time when syncing to the RPi or some there needs to be another way to obtain the sync. The system needs to be aware of this. As the LilyGo application functions has only slavelike properties this requires more action from the RPi.
+- If the clock runs out of sync due to power loss the system MUST synchronize its time when syncing to the RPi or some there needs to be another way to obtain the sync. The system needs to be aware of this. As the smartwatch application functions has only slavelike properties this requires more action from the RPi.
 
 - The network access of the RPi MUST be made easily configurable and NOT hardcoded to work in one network. 
 
 - The system is designed so the RPi OS SHOULD be only be interacted by the WebUI. This also imposes difficulty in the configuration of the network access.  
 
-- The LilyGo watch MUST only send hiking data to a paired device
+- The smartwatch application watch MUST only send hiking data to a paired device
 
-- The LilyGo watch MUST only be discoverable during pairing with the RPi
+- The smartwatch application watch MUST only be discoverable during pairing with the RPi
 
 ### Memory
 
 - The TWatch will only save 5 trips before it starts rewriting the previous information
 
-- The trips MUST be stored in the internal flash memory for the LilyGo application if persistent memory is used.
+- The trips MUST be stored in the internal flash memory for the smartwatch application if persistent memory is used.
 
-- The LilyGo application MUST be carefully crafted to account for the hardware restrictions of the TWatch: 
+- The smartwatch application MUST be carefully crafted to account for the hardware restrictions of the TWatch: 
 
 | Restricting factor | Size |
 | ------------------ | ---- |
@@ -576,7 +580,7 @@ $$0.00076 km \cdot 56 = 0.04256\,\text{calories}$$
 
 ### Hardware assumptions
 
-- The LilyGo hiking application requires LilyGO T-Watch V2
+- The smartwatch application requires LilyGO T-Watch V2
 - The Web Application requires Python 3.10 or higher
 - The web application is only guaranteed to work on Raspberry Pi3 
 
@@ -594,7 +598,7 @@ The proof-of-concept (PoC) MUST include all requirements that have been defined 
 
 In the later stage design and initial releases, careful attention MUST be given to these aspects of this document:
 
-1. Synchronization: Fluent, does not give any errors unknown error to the user and the other requirements are carefully inspected.
+1. Synchronization: Fluent, does not give any unknown errors to the user and the other requirements are carefully inspected.
 2. Web Application UI: Usage is fluent, database entries are easily inspected and deleted, database is clearly visualized and the other requirements are carefully inspected. 
 3. Smartwatch application: Smartwatch is easily usable, data collected is correct, timestamps are correct, synchronization is fluent and the other requirements are carefully inspected. 
 
