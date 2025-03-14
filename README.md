@@ -298,6 +298,10 @@ The Web UI interface SHOULD follow the given interface layout:
 
 ![Web UI views](/dev-doc/web_ui_view.png "concept of web view")
 
+The LilyGo interface MUST refresh current hiking session every 0.2 seconds or faster.
+
+Changing the view on the Web Application MUST be faster than 0.5 seconds.
+
 ### Hardware interfaces
 
 The LilyGO application MUST use the touchScreen FT6336 using the pinout defined by LilyGO hardware:
@@ -543,7 +547,6 @@ The calory calculation is based on Wilkin et. al. [5] findings on average energy
 
 $$0.00076 km \cdot 56 = 0.04256\,\text{calories}$$ 
 
-
 ## Assumptions and dependencies
 
 <!--
@@ -656,6 +659,18 @@ Expected results:
 2. Synchronized data is visible in the past sessions page.
 3. The past sessions page data (timestamp, steps) is the same as in the smartwatch application.
 
+### System performance
+
+Execution steps:
+
+1. Press buttons on the Smartwatch repeatedly as fast as possible while evaluating the smartwatch refresh rate. 
+2. Start a session and walk constantly while evaluating the smartwatch refresh rate
+3. Press buttons on the Web application repeatedly as fast as possible while evaluating the view refresh rate.
+
+Expected results:
+
+1. Make sure the refresh rates approximately match the expected refresh rates and thresholds defined in [User Interfaces](#user-interfaces)
+
 ## Functions
 
 This subsections lists all tests which tests the internal functionality of the system. Execute the tests in the given order. The tested requirements are defined for this subsection in [System interfaces](#system-interfaces), [Software Interfaces](#software-interfaces) and [Hardware interfaces](#hardware-interfaces).
@@ -703,6 +718,5 @@ Expected results:
 
 1. The output should not include any syntax or operation errors.
 2. If the logs include relevant information of the operation. Make sure they match the input.
-3. Manually calculate that the calory and distance calculation matches closely to the equations in [Data Calculation](#data-calculation)
-
+3. Manually calculate that the calory and distance calculation matches closely to the equations in [Data Calculation](#data-conversion-and-formulas)
 
