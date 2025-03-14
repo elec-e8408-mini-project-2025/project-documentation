@@ -445,7 +445,7 @@ Travelled distance MUST be based either on an approximation of the length of an 
 
 Approximation of burned calories MUST be based on count of steps and MAY additionally be based on average speed during the trip.
 
-The equations for calory and distance SHOULD use the defined formulas in subsection [Data Calculation](#data-calculation).
+The equations for calory and distance SHOULD use the defined formulas in subsection [Data conversion and formulas](#data-conversion-and-formulas).
 
 ## User characteristics
 
@@ -512,7 +512,8 @@ The constraints mentioned are only concerning the software of the application, a
 ### Memory
 
 - The TWatch will only save 5 trips before it starts rewriting the previous information
-- The trips will be saved in flash memory
+
+- The trips MUST be stored in the internal flash memory for the LilyGo application if persistent memory is used.
 
 - The LilyGo application MUST be carefully crafted to account for the hardware restrictions of the TWatch: 
 
@@ -615,7 +616,7 @@ Difficult but convenient requirements that SHOULD be carefully considered in the
 
 The subsection specific requirement conveys each previously listed requirement as a testable criteria. This subsection MAY be used as the baseline for the designer or the tester for testing in between releasable versions of the system. 
 
-Before executing the specific requirement tests it is required to install Web application and Smartwatch Application according to the released installation guides which come with the software. The Smartwatch Application version should match the same version as the Web Application. 
+Before executing the specific requirement tests it is required to install Web application and Smartwatch Application according to the released installation guides which come with the software. The Smartwatch Application version should match the same version as the Web Application. This prerequisite tests the [User characteristics](#user-characteristics)
 
 ## External Interfaces
 
@@ -718,5 +719,111 @@ Expected results:
 
 1. The output should not include any syntax or operation errors.
 2. If the logs include relevant information of the operation. Make sure they match the input.
-3. Manually calculate that the calory and distance calculation matches closely to the equations in [Data Calculation](#data-conversion-and-formulas)
+3. Manually calculate that the calory and distance calculation matches closely to the equations in [Data Conversion and Formulas](#data-conversion-and-formulas)
 
+## Design constraints
+
+This subsections lists all tests which show that the constraints for the system are met. Execute the tests in the given order. The tested requirements are defined for this subsection in [Constraints](#constraints).
+
+Some of these requirements are already tested in [External Interfaces](#external-interfaces) for example storing multiple trips or synchronization. Also it is assumed that to get this far the memory requirements are met as the installation was succesful. This subsection will focus on standards and other externally imposed restrictions for example used formats.
+
+### Standards Compliance
+
+Execution steps:
+
+1. Make sure smartwatch application is running.
+2. Use a serial bluetooth terminal or putty and use bluetooth pair "HIKING_WATCH" or relevant name which relates to your smartwatch (can be downloaded for android). You can also use the serial interface using Putty or Picocom.
+3. In the selected serial communication execute command: GET /
+4. From the output json locate "Paths" lists and recursively execute GET "PATH" for each found path.
+5. Copy and paste the output to a terminal verify the json format is up to standard. Example using linux commandline:
+
+```console
+echo "COPYPASTED JSON OUTPUT" | jq
+ ```
+
+Expected results:
+
+1. The selected json verification tool does not report any errors.
+
+### Realtime Clock Compliance
+
+Execution steps:
+
+1. Reset the smartwatch application.
+2. Use a serial bluetooth terminal or putty and use bluetooth pair "HIKING_WATCH" or relevant name which relates to your smartwatch (can be downloaded for android). You can also use the serial interface using Putty or Picocom.
+3. Synchronize clock multiple times by navigating through the Smartwatch application or the web application.
+4. Make a new trip and after taking a few steps stop the trip
+5. In the selected serial communication execute command: GET /tripdata/0 or similar by navigating the "mini restful" paths.
+
+Expected results:
+1. The output of the "mini restful" should include a timestamp that matches reallife date time 
+
+### HTML and javascript compliance
+
+Execution steps:
+
+1. Use web browser to connect to the Web Application
+2. Press f12 and navigate through all pages
+
+Expected results:
+1. The web browser debugger should not show any significant or unexpected errors.
+
+## Software System Attributes
+
+This subsections lists all tests which show that the constraints are also met in edge cases. Some tests check for compliance widely accross the requirements within this document. Especially the listed edge cases in [Assumptions and Dependencies](#assumptions-and-dependencies) are checked.
+
+This also lists good unviersal tests related to embedded system security and maintainability. These are not necessarily explicitly listed requirements in this document but good checks for system operatibility and security.
+
+### Reliability 
+
+Execution steps:
+
+1. Make sure the watch has charged for more than 2 hours. Startup the smartwatch Application from the power button.
+2. Enable all capabilities and push every button on available atleast once.
+3. Explore the user interface and start a hiking session
+4. Walk atleast 2 hours
+5. Make sure the values are still changing when walking
+6. End the hiking session. 
+7. Shutdown the Smartwatch application
+8. Try synchronizing from the Web Application while the smartwatch is turned off
+9. Turn off the Raspberry Pi as if there was an power outage
+10. Wait 10 seconds
+11. Turn on the Raspberry Pi and the Hiking watch application
+12. The web application should automatically load. Try setupping the Hiking Watch
+13. Start a hiking session and after small time period try to synchronize data
+
+Expected results:
+
+1. The system does not crash or shutdown during the 2 hour walk.
+3. The trip distance for the first trip does not exceed 15% more of the expected walk distance
+4. The other trips step amount does not exceed 15% more of the expected step count.
+5. When hiking watch is turned off: the synchronization should fail expectedly but the system should continue working.
+6. The Web Application should automatically load up
+7. When hiking session isongoing atleast the current session should not be synchronized.
+
+If the test succeeds it complies with the tested edge cases in [Operational Assumptions](#operational-assumptions).
+
+### Security
+
+Execution steps:
+
+1. Setup a new Smart Watch in the Web Application while the Smart watch is turned on
+2. Recompile and upload new image to Smart Watch
+3. Create multiple new sessions by starting and stopping a new session.
+4. Try to synchronize new device
+
+Expected results:
+
+1. The synchronization should fail as the new smart watch doesn't have the correct MAC-address which is used as a password for the system.
+
+### Maintainability
+
+Execution steps:
+
+1. Scroll through the code for Smart Watch application and see for duplicates of variables.
+2. Scroll through the code for Smart Watch application and that the main function (scheduler) is responsible for all interactions between modules.
+3. Scroll through the code for the Web Application and make sure differnet functionalities are in their seperate code and include helpful docstrings.
+
+Expected results:
+
+1. The code should be modular and different features should be in their own header files. The main function clearly shows the behaviour of the application
