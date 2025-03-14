@@ -160,10 +160,7 @@ At this PoC stage the, test plan relies on manual testing. The functional requir
 
 ### Settings view
 
-::: {.callout-important}
-TODO: Write this section!
-:::
-
+- When "Sync Time" button is pressed the time offset should correct.
 
 {{< pagebreak >}}
 
