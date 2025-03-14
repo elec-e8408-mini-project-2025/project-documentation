@@ -81,7 +81,9 @@ The smartwatch development has the following dependencies
 
 Follow these instructions to set up the LilyGo Hiking application. Please pay careful attention to version numbers to ensure that installation proceeds successfully. 
 
-### Arduino-cli and esp32 libraries
+### Option 1
+
+#### Arduino-cli and esp32 libraries
 
 1. Install arduino-cli (v.1.1):
 
@@ -106,7 +108,7 @@ Port         Protocol Type              Board Name FQBN Core
 /dev/ttyUSB0 serial   Serial Port (USB) Unknown
 ```
 
-### Compilation and upload to esp32
+#### Compilation and upload to esp32
 
 Use the following table to make your compilation:
 
@@ -133,7 +135,8 @@ arduino-cli upload -p /dev/ttyUSB0 \
 The device path may not be `/dev/ttyUSB0`. To verify the name of the USB-device, connect the smartwatch with the cable and use command `ls /dev/tty*`. 
 :::
 
-or 
+
+### Option 2
 
 configure config.ini 
 
@@ -141,6 +144,7 @@ configure config.ini
 ./install.sh
 ```
 
+This convenience script provides the option to enable the web application to start on startup so it is usually recommended to be used.
 
 ::: {.callout-tip}
 The config.ini contains LilyGo T-Watch versions V2 and V3. To change the T-Watch version, change which version is uncommented. V3 is not officially supported, but both V2 and V3 T-Watches were used during development stage. 
