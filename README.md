@@ -544,13 +544,13 @@ In the later stage design and initial releases, careful attention MUST be given 
 
 1. Synchronization: Fluent, does not give any errors unknown error to the user and the other requirements are carefully inspected.
 2. Web Application UI: Usage is fluent, database entries are easily inspected and deleted, database is clearly visualized and the other requirements are carefully inspected. 
-3. Smartwatch application: Clock is easily usable, data collected is correct, timestamps are correct, synchronization is fluent and the other requirements are carefully inspected. 
+3. Smartwatch application: Smartwatch is easily usable, data collected is correct, timestamps are correct, synchronization is fluent and the other requirements are carefully inspected. 
 
 Difficult but convenient requirements that SHOULD be carefully considered in the initial releases due to time constraints:
 
 1. GPS and other related functionality
 2. Persistent storage on the smartwatch application
-3. Clock / timestamp offset related on the smartwatch application
+3. Clock / timestamp on the Smartwatch application may use any way to synchronize the clock. Best practice would be to use the clock from the Web Application.
 
 {{< pagebreak >}}
 
@@ -610,7 +610,7 @@ The system is designed so the RPi OS SHOULD be only be interacted by the WebUI. 
 
 The bluetooth interaction the minimum requirements SHOULD use the hard coded BlueTooth broadcast name to determine the correct device. It would be a lot more secure if we can do this from the WebUI without hardcoding. However, this requires more precise interaction with the operating system and the Web Application.
 
-If the clock runs out of sync due to power loss the system MUST synchronize its time when syncing to the RPi. The system needs to be aware of this. As the LilyGo application functions has only slavelike properties this requires more action from the RPi.
+If the clock runs out of sync due to power loss the system MUST synchronize its time when syncing to the RPi or some other way to obtain the sync. The system needs to be aware of this. As the LilyGo application functions has only slavelike properties this requires more action from the RPi.
 
 
 ### Data calculation
