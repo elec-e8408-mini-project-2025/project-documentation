@@ -373,6 +373,14 @@ The system MAY prohibit starting new session before memory capacity is released
 
 The system MAY override the oldest stored session when persistent memory is full
 
+The maximum time for trips MUST be above 2h.
+
+The watch MUST log the location either every 10 or 30 seconds, depending on memory size if GPS tracking is used.
+
+In case GPS data is tracked, the system MUST log and save the current location in periodically (15s)
+
+In case GPS data is tracked, the system MUST NOT miss 2 consecutive loggings of location data
+
 ### LilyGo application: Record steps count and convert into travelled distance during the session
 
 While hiking session is active, the system MUST record steps count  
@@ -431,7 +439,9 @@ The system MAY provide delete feature for removing past sessions from persistent
 
 Travelled distance MUST be based either on an approximation of the length of an average step or on GPS data   
 
-Approximation of burned calories MUST be based on count of steps and MAY additionally be based on average speed during the trip.   
+Approximation of burned calories MUST be based on count of steps and MAY additionally be based on average speed during the trip.
+
+The equations for calory and distance SHOULD use the defined formulas in subsection [Data Calculation](#data-calculation).
 
 ## User characteristics
 
@@ -452,6 +462,7 @@ The constraints mentioned are only concerning the software of the application, a
 - The TWatch has a touchscreen that works as the user interface
 - The RPi has a monitor, mouse and keyboard setup that works as a user interface
 - The interface between the RPi and TWatch is a Bluetooth connection
+- the both system components might handle multiple different tasks from multiple interfaces which MUST be scheduled accordingly so other requirements are met.
 
 ### User interfaces
 
@@ -482,10 +493,31 @@ The constraints mentioned are only concerning the software of the application, a
 - The WebUI can be viewed by connecting to the RPi with RealVNC Viewer over the same network using standard network protocols or by using the display, keyboard and mouse connected to the RPi
 - The RPi and the TWatch communicate over Bluetooth using a JSON format
 
+- The bluetooth interaction the minimum requirements SHOULD use the hard coded BlueTooth broadcast name to determine the correct device. It would be a lot more secure if we can do this from the WebUI without hardcoding. However, this requires more precise interaction with the operating system and the Web Application.
+
+- If the clock runs out of sync due to power loss the system MUST synchronize its time when syncing to the RPi or some there needs to be another way to obtain the sync. The system needs to be aware of this. As the LilyGo application functions has only slavelike properties this requires more action from the RPi.
+
+- The network access of the RPi MUST be made easily configurable and NOT hardcoded to work in one network. 
+
+- The system is designed so the RPi OS SHOULD be only be interacted by the WebUI. This also imposes difficulty in the configuration of the network access.  
+
+- The LilyGo watch MUST only send hiking data to a paired device
+
+- The LilyGo watch MUST only be discoverable during pairing with the RPi
+
 ### Memory
 
 - The TWatch will only save 5 trips before it starts rewriting the previous information
 - The trips will be saved in flash memory
+
+- The LilyGo application MUST be carefully crafted to account for the hardware restrictions of the TWatch: 
+
+| Restricting factor | Size |
+| ------------------ | ---- |
+| Flash memory |  16MB |
+| PSRAM |  8 MB |
+| SRAM | 520 KB |
+
 
 ### Operations
 
@@ -520,6 +552,7 @@ The constraints mentioned are only concerning the software of the application, a
 | Bluetooth setup incomplete | Incorrect or wrong MAC or new smartwatch application. Renewing Bluetooth setup is required. | Web Application |
 | Power outage | Web Application is forced to restart by power loss | Web Application |
 | smartwatch application out of battery | This will not affect the system. Smartwatch application related data SHOULD be reset. Web Application knows which data is already synced from marking. | Web Application / smartwatch application |
+| Ongoing session is not synced | Ongoing session is not ready for persistent memory, so it MUST not be synced | Smartwatch application |
 
 
 ### Hardware assumptions
@@ -534,7 +567,7 @@ The constraints mentioned are only concerning the software of the application, a
   Area of improvement:
   Apportioning requirements should be more informative regarding the later stage design implementation.
 -->
-Apportioning of requirements subsection conveys late stage considerations related to the requirement levels. Requirements follow the selected keywords defined in the [Requirement levels](#Requirement-levels) subsection. 
+Apportioning of requirements subsection conveys late stage considerations related to the requirement levels. Requirements follow the selected keywords defined in the [Requirement levels](#requirement-levels) subsection. 
 
 ### Requirement prioritization
 
@@ -546,7 +579,7 @@ In the later stage design and initial releases, careful attention MUST be given 
 2. Web Application UI: Usage is fluent, database entries are easily inspected and deleted, database is clearly visualized and the other requirements are carefully inspected. 
 3. Smartwatch application: Smartwatch is easily usable, data collected is correct, timestamps are correct, synchronization is fluent and the other requirements are carefully inspected. 
 
-Difficult but convenient requirements that SHOULD be carefully considered in the initial releases due to time constraints:
+Difficult but convenient requirements that SHOULD be carefully considered in the initial releases due to possible constraints:
 
 1. GPS and other related functionality
 2. Persistent storage on the smartwatch application
@@ -562,55 +595,105 @@ Difficult but convenient requirements that SHOULD be carefully considered in the
   Lack of specific security protocols (e.g., Bluetooth encryption, authentication mechanisms).
 -->
 
-## Performance Requirements
+The subsection specific requirement conveys each previously listed requirement as a testable criteria. This subsection MAY be used as the baseline for the designer or the tester for testing in between releasable versions of the system. 
 
-- The RPi MUST support at least 1 LilyGo watch at a time.
+Before executing the specific requirement tests it is required to install Web application and Smartwatch Application according to the released installation guides which come with the software. The Smartwatch Application version should match the same version as the Web Application. 
 
-- The maximum time for trips MUST be above 2h.
+## External Interfaces
 
-- The watch MUST log the location either every 10 or 30 seconds, depending on memory size.
+This subsections lists all tests which can be executed from the end user perspective. Execute the tests in the given order. The tested requirements are defined for this subsection in [Product Functions](#product-functions), [Communications interfaces](#communications-interfaces) and [User Interfaces](#user-interfaces).
 
-- The watch MUST have room for 5 trips.
+### Smartwatch
 
-- The synchronization for transfering data to the RPi MUST not fail 2 times in a row.
+Execution steps:
 
-- The watch refreshes the screen in the trip view every 0.2 seconds or faster.
+1. Make sure the watch has charged for more than 2 hours. Startup the smartwatch Application from the power button.
+2. Enable all capabilities and push every button on available atleast once.
+3. Explore the user interface and start a hiking session
+4. Walk atleast 1km
+5. Stop a hiking session 
+6. Start another hiking session
+7. Walk 100 steps
+8. Stop the hiking session
+9. Repeat steps 7-8 three times so that the clock has the information of 5 trips. 
 
-- The trip data MUST be saved on the watch until it is the oldest trip before being overwritten.
+Expected results:
 
-- Trip data MUST not be overwritten before it has been synchronized.
+1. The system does not crash.
+2. Past sessions displays all 5 trips.
+3. The trip distance for the first trip does not exceed 15% more of the expected walk distance
+4. The other trips step amount does not exceed 15% more of the expected step count.
 
-- Changing the view on the RPi MUST be faster than 0.5 seconds.
+### Web Application
+
+Execution steps:
+
+1. Setup the Raspberry pi with the Web Application installed to a local network your preferred way (ethernet, wifi (might require use of vnc or external display)). Make sure to note the ip address of the raspberry pi.
+2. Make sure the smartwatch has the previously collected data and it hasn't been turned off. Also make sure the smartwatch is near the Raspberry Pi
+3. From another end device (for example another computer) open a web browser and connect to the ip address of the raspberry pi. Make sure to include the port 5000. For example: http://192.168.0.4:5000 if the ip of the raspberry pi is 192.168.0.4.
+3. From the web page locate the setup device and follow the instructions to setup a new device.
+4. After setupping the new device. Locate the button to synchronize data between the Web Application and the Smartwatch application.
+5. Locate past sessions view from the web browser.
+
+Expected results:
+
+1. The Web application recognizes the new smartwatch and its mac address
+2. Synchronized data is visible in the past sessions page.
+3. The past sessions page data (timestamp, steps) is the same as in the smartwatch application.
+
+## Functions
+
+This subsections lists all tests which tests the internal functionality of the system. Execute the tests in the given order. The tested requirements are defined for this subsection in [System interfaces](#system-interfaces), [Software Interfaces](#software-interfaces) and [Hardware interfaces](#hardware-interfaces).
+
+For hardware interfaces it is assumed that after running the following tests the hardware components are deemed working.
+
+### SmartWatch bluetooth communication 
+
+Execution steps:
+
+1. Make sure smartwatch application is running.
+2. Use a serial bluetooth terminal and use bluetooth pair "HIKING_WATCH" or relevant name which relates to your smartwatch (can be downloaded for android) 
+3. In the serial bluetooth terminal execute command: GET /
+4. From the output json locate "Paths" lists and recursively execute GET "PATH" for each found path.
+5. If in the input json is any "Actions" lists. Execute POST {} "ACTION".
+
+Expected results:
+
+1. Make sure all paths do not return an error if it isn't specifically the error path.
+2. Make sure any POST method does what the post method name suggests. For example if there is some action related to tagging. Some tag is set after the POST method.
+3. Make sure that at the very least all trips and their data is accessible.
+
+### SmartWatch scheduling and operation
+
+Execution steps:
+
+1. Connect to the serial port of the smartwatch via USB cable
+2. Click all buttons atleast once. Press also some buttons multiple times and in fast excession.
+
+Expected results:
+
+1. No errors should be outputted in the serial console
+2. The buttons SHOULD output relevant information in the serial console. The relevant information is not incorrect. A good developer would add these checkpoints within the code.
+
+### Web Application scheduling and operation
+
+Execution steps:
+
+1. Make sure that Smartwatch application has atleast one trip over 1 km
+2. Use vnc, ssh or a seperate display to connect to the raspberry pi
+3. Read the output of the running web application
+4. Press all buttons also testing synchronization and setup capabilities
+
+Expected results:
+
+1. The output should not include any syntax or operation errors.
+2. If the logs include relevant information of the operation. Make sure they match the input.
+3. Manually calculate that the calory and distance calculation matches closely to the equations in [Data Calculation](#data-calculation)
 
 ## Design Constraints
 
 Design constraints specify good to know requirements and constraining factors. These might impose difficulties for the integration and software development. Consider these factors affecting multiple functionalities and requirements.
 
-### The LilyGo application: Scheduling
-
-The system handles multiple different tasks from multiple interfaces which MUST be scheduled accordingly so the performance requirements are met.
-
-### The LilyGo application: Hardware restriction
-
-The LilyGo application MUST be carefully crafted to account for the hardware restrictions of the T-Watch V2: 
-
-| Restricting factor | Size |
-| ------------------ | ---- |
-| Flash memory |  16MB |
-| PSRAM |  8 MB |
-| SRAM | 520 KB |
-
-### The Web application: Network access
-
-The network access of the RPi MUST be made easily configurable and NOT hardcoded to work in one network. 
-
-The system is designed so the RPi OS SHOULD be only be interacted by the WebUI. This also imposes difficulty in the configuration of the network access.  
-
-### The Web application: Synchronization 
-
-The bluetooth interaction the minimum requirements SHOULD use the hard coded BlueTooth broadcast name to determine the correct device. It would be a lot more secure if we can do this from the WebUI without hardcoding. However, this requires more precise interaction with the operating system and the Web Application.
-
-If the clock runs out of sync due to power loss the system MUST synchronize its time when syncing to the RPi or some other way to obtain the sync. The system needs to be aware of this. As the LilyGo application functions has only slavelike properties this requires more action from the RPi.
 
 
 ### Data calculation
@@ -626,20 +709,3 @@ $$\text{stepCount} \times \text{strideLength}$$
 The calory calculation is based on Wilkin et. al. [5] findings on average energy expenditure for young average health adults. Their findings have been applied to suit the metric system and by converting Kilojoules into calories by using the conversion of 1 kilojoule equalling 239 calories. With this process the calory consumption for 1 km hike is estimated to be 56 calories and thus calory consumption per step is  
 
 $$0.00076 km \cdot 56 = 0.04256\,\text{calories}$$ 
-
-
-
-
-## Software-system attributes
-
-### Reliability
-
-- In case GPS data is tracked, the system MUST log and save the current location in periodically (15s)
-- In above mentioned case the system MUST NOT miss 2 consecutive loggings of location data
-
-### Security
-
-- The LilyGo watch MUST only send hiking data to a paired device
-- The LilyGo watch MUST only be discoverable during pairing with the RPi
-- The RPi MUST periodically check if the watch is within range, the LilyGo MUST NOT attempt to connect to the RPi automatically
-
