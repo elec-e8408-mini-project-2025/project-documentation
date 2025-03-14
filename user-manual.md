@@ -115,9 +115,9 @@ If there are no previous session, a prompt will indicate that no hikes have been
 
 ### Managing settings 
 
-::: {.callout-important}
-TODO
-:::
+![LilyGO session view after settings button has been pressed](./img/settings.png){width=30%}
+
+The settings view will include all possible configurable settings. Currently it includes the option to "sync time". This button can be used to correct the offset of the smartwatch. 
 
 ## Test plan
 
