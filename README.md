@@ -44,7 +44,7 @@ toc-depth: 2
 # 3. Specific Requirements
 
 # Good Points:
-# Functional requirements are structured for both smartwatch and web application.
+# Functional requirements are structured for both smartwatch and Web Application.
 # Requirements use clear keywords (MUST, SHOULD, MAY), making priorities explicit.
 # Performance requirements include measurable values, such as screen refresh rates and synchronization limits.
 # Reliability and security considerations are included.
@@ -99,7 +99,7 @@ This proof-of-concept system consists of two hardware components: the Raspberry 
 
 **8.burned calories:** an approximation of calories burned.  
 
-**9.web application:** The application running on the Raspberry Pi including the database and hosting services.  
+**9.Web Application:** The application running on the Raspberry Pi including the database and hosting services.  
 
 **10.LilyGo application:** The firmware and applications running on the LilyGo T-Watch smartwatch.  
 
@@ -164,7 +164,7 @@ This Software Requirement Specification MUST be used in conjuction with the foll
 
 Additionally the development team should familiarize with the following online documents:
 
-[i.] LilyGo T-Watch. LilyGo T-Watch GitHub repository. Cited on 14th of March 2025. Available at: [https://github.com/Xinyuan-LilyGO/TTGO_TWatch_Library](https://github.com/Xinyuan-LilyGO/TTGO_TWatch_Library)
+[i.] LilyGo T-Watch. LilyGo T-Watch GitHub repository. Cited on 14th of March 2025. Available at: [https://github.com/Xinyuan-LilyGO/TTGO_T-Watch_Library](https://github.com/Xinyuan-LilyGO/TTGO_T-Watch_Library)
 
 [ii.] ESPRESIF documentation. ESP32 Arduino Core's documentation. Cited on 14th of March 2025. Available at: [https://docs.espressif.com/projects/arduino-esp32/en/latest/](https://docs.espressif.com/projects/arduino-esp32/en/latest/)
 
@@ -283,7 +283,7 @@ The LilyGO / smartwatch interface user MUST be able to interact with the functio
 - "display step count on display"
 - "display travelled distance on display"
 - "record step count"
-- Enable BlueTooth capabilities 
+- Enable Bluetooth capabilities 
 
 The LilyGO  / smartwatch interface SHOULD follow the given interface layout:
 
@@ -327,7 +327,7 @@ The WebUI HTML layout MAY be viewable on a mobile phone screen.
 
 ### Software interfaces
 
-The smartwatch application SHOULD use LilyWatch maintained TTGO_TWatch_Library and Arduino core ESP32 libraries for the pin definitions and driver implementation 
+The smartwatch application SHOULD use LilyWatch maintained TTGO_T-Watch_Library and Arduino core ESP32 libraries for the pin definitions and driver implementation 
 
 The smartwatch application SHOULD be implemented with the following state machine for a polling scheduler of 6 orthogonal processes. The timing and prioritization MAY be changed to accommodate other requirements:
 
@@ -343,7 +343,7 @@ The Web application MUST atleast implement the functionality of the following UM
 
 ### Communications interfaces
 
-The BlueTooth capabilities MUST use the BlueTooth version v4.2 or below
+The Bluetooth capabilities MUST use the Bluetooth version v4.2 or below
 
 The Web Application MUST use HTTP and TCP/IP procotols to be able to view the WebUI
 
@@ -361,8 +361,7 @@ This subsection contains the functional requirements for the Hiking Application 
 The system MUST allow user to start a hiking session  
 
 The system MUST allow user to stop a hiking session  
-
-The system MAY allow user to continue stopped hiking session
+<!-- The system MAY allow user to continue stopped hiking session -->
 
 The system MAY prevent starting a new hiking session, if real-time clock of the smartwatch is compromized. In this case, the smartwatch must be first synchronized with RPi to synchronize the real-time clock. 
 
@@ -371,16 +370,11 @@ The system MAY prevent starting a new hiking session, if real-time clock of the 
 The system MUST allow user to record multiple hiking sessions to smartwatch memory 
 
 The system MUST store at minimum 5 last sessions in running memory of the smartwatch
-
-The system MAY store at minimum 5 last sessions in persistent memory of the smartwatch
-
-The system MAY support storing more than 5 last sessions on the smartwatch
-
-The system MAY warn user if memory capacity is full (max number of sessions have been stored to persistent memory)
-
-The system MAY ask user to override older sessions  
-
-The system MAY prohibit starting new session before memory capacity is released  
+<!-- The system MAY store at minimum 5 last sessions in persistent memory of the smartwatch -->
+<!-- The system MAY support storing more than 5 last sessions on the smartwatch -->
+<!-- The system MAY warn user if memory capacity is full (max number of sessions have been stored to persistent memory) -->
+<!-- The system MAY ask user to override older sessions  -->
+<!-- The system MAY prohibit starting new session before memory capacity is released -->
 
 The system MAY override the oldest stored session when persistent memory is full
 
@@ -408,25 +402,20 @@ While hiking session is active, the system MAY display average speed on display
 
 While the hiking session is active the step count and travelled distance MUST update regularly 
 
-The update frequency of hiking session information MAY be optimized with best effort based on hardware constraints
-
 While hiking session is not active, the touchscreen MAY display step count and travelled distance for last session on display
-
-While hiking sessin is active, the smartwatch touchscreen MAY display the current date (YYYY-MM-DD) 
+<!-- While hiking sessin is active, the smartwatch touchscreen MAY display the current date (YYYY-MM-DD) -->
+<!-- The update frequency of hiking session information MAY be optimized with best effort based on hardware constraints -->
 
 ### Synchronize and store data with RPi via Bluetooth
 
-The smartwatch application MUST be capable of sending step count and travelled distance via Bluetooth to the web application on RPi  
+The smartwatch application MUST be capable of sending step count and travelled distance via Bluetooth to the Web Application on RPi  
 
 The smartwatch application MAY also send date of hike and average speed for each recorded hiking session
 
 The smartwatch application MUST at the minimum be able to connect to RPi based on Bluetooth broadcast device name of the smartwatch application
-
-The smartwatch application MAY be able to connect to RPi with smartwatch application enabling Bluetooth discovery
-
-The smartwatch application MAY be able connect to RPi by configured Wi-Fi connection
-
-The smartwatch application MAY be able to find RPi with Wi-Fi discovery
+<!-- The smartwatch application MAY be able to connect to RPi with smartwatch application enabling Bluetooth discovery -->
+<!-- The smartwatch application MAY be able connect to RPi by configured Wi-Fi connection -->
+<!-- The smartwatch application MAY be able to find RPi with Wi-Fi discovery -->
 
 ### Calculate estimated amount of calories burned during the session on RPi
 
@@ -441,8 +430,7 @@ The system MUST contain a list of past sessions
 The displayed list of past sessions MUST contain travelled distance, step count and burned calories for each session  
 
 The displayed list of past sessions MAY contain date for each session
-
-The system MAY provide detail view for a chosen session where additional session information is presented
+<!-- The system MAY provide detail view for a chosen session where additional session information is presented -->
 
 The system MAY provide delete feature for removing past sessions from persistent memory
 
@@ -461,26 +449,27 @@ This Software Requirements Specification details the features for the proof-of-c
 With the help of the documentation the user MUST be able to know how to 
 
 - clone source code from remote repository (GitHub)
-- how to set up virtual environment and install dependencies
-- how to flash firmware on LilyGO T-Watch
+- set up virtual environment and install dependencies
+- flash firmware on LilyGO T-Watch
 
 ## Constraints
 
-The constraints mentioned are only concerning the software of the application, as they are the only ones liable to change. The hardware specifications are set due to the predefined hardware that will be used and as such would only be repeating what the specifications for the different parts are. The hardware used can be found in the hardware interfaces section.
+The constraints mentioned are only concerning the software of the application, as they are the only ones liable to change. The hardware specifications are set due to the predefined hardware that will be used and as such would only be repeating what the specifications for the different parts ar
+e. The hardware used can be found in the hardware interfaces section.
 
 ### System interfaces
 
-- The TWatch has a touchscreen that works as the user interface
+- The T-Watch has a touchscreen that works as the user interface
 - The RPi has a monitor, mouse and keyboard setup that works as a user interface
-- The interface between the RPi and TWatch is a Bluetooth connection
+- The interface between the RPi and T-Watch is a Bluetooth connection
 - the both system components might handle multiple different tasks from multiple interfaces which MUST be scheduled accordingly so other requirements are met.
 
 ### User interfaces
 
-#### TWatch touchscreen interfaces.
+#### T-Watch touchscreen interfaces.
 
 - Default interface, has navigation buttons for viewing past sessions, opening the settings menu and moving to the session screen.
-- Settings interface, has buttons for configuring the bluetooth connection
+- Settings interface, has buttons for configuring the Bluetooth connection
 - Past sessions interface, contains the current past 5 sessions
 - Session interface, has the start and stop session buttons. Shows the current stats for the session.
 
@@ -488,12 +477,12 @@ The constraints mentioned are only concerning the software of the application, a
 
 - Home screen shows top and average values of trips and the last trip you have done
 - View with a list of all trips, every trip can be deleted from this view
-- Configuration view where the setup for the BT connection is and with what intervalls the RPi tries to connect to it
+- Configuration view provides features to setup for the BT connection and to transfer data from LilyGO T-Watch to the persistend local data storage on the Web Application
 
 ### Hardware interfaces
 
 - WebUI software will run on a RPi 3 and utilize a standard monitor, mouse and keyboard setup.
-- The hiking app will use a TWatch v2. If modified a bit it can also use the versions v1 and v3, if the GPS is disabled.
+- The hiking app will use a T-Watch v2. If modified a bit it can also use the versions v1 and v3, if the GPS is disabled.
 
 ### Software interfaces
 
@@ -502,9 +491,9 @@ The constraints mentioned are only concerning the software of the application, a
 ### Communications interfaces
 
 - The WebUI can be viewed by connecting to the RPi with RealVNC Viewer over the same network using standard network protocols or by using the display, keyboard and mouse connected to the RPi
-- The RPi and the TWatch communicate over Bluetooth using a JSON format
+- The RPi and the T-Watch communicate over Bluetooth using a JSON format
 
-- The bluetooth interaction the minimum requirements SHOULD use the hard coded BlueTooth broadcast name to determine the correct device. It would be a lot more secure if we can do this from the WebUI without hardcoding. However, this requires more precise interaction with the operating system and the Web Application.
+- The Bluetooth interaction the minimum requirements SHOULD use the hard coded Bluetooth broadcast name to determine the correct device. It would be a lot more secure if we can do this from the WebUI without hardcoding. However, this requires more precise interaction with the operating system and the Web Application.
 
 - If the clock runs out of sync due to power loss the system MUST synchronize its time when syncing to the RPi or some there needs to be another way to obtain the sync. The system needs to be aware of this. As the smartwatch application functions has only slavelike properties this requires more action from the RPi.
 
@@ -518,11 +507,11 @@ The constraints mentioned are only concerning the software of the application, a
 
 ### Memory
 
-- The TWatch will only save 5 trips before it starts rewriting the previous information
+- The T-Watch will only save pre-defined number of trips (by default 5) before it starts rewriting the previous information
 
 - The trips MUST be stored in the internal flash memory for the smartwatch application if persistent memory is used.
 
-- The smartwatch application MUST be carefully crafted to account for the hardware restrictions of the TWatch: 
+- The smartwatch application MUST be carefully crafted to account for the hardware restrictions of the T-Watch: 
 
 | Restricting factor | Size |
 | ------------------ | ---- |
@@ -533,7 +522,7 @@ The constraints mentioned are only concerning the software of the application, a
 
 ### Operations
 
-- The user will have to first setup the connection between the RPi and the TWatch before being able to synchronize them
+- The user will have to first setup the connection between the RPi and the T-Watch before being able to synchronize them
 - The user will have to synchronize the Watch after the battery runs low enough that the system clock becomes unreliable
 - The user will have to synchronize the Watch before they run out of space for trips that have not been synchronized
 
@@ -541,9 +530,12 @@ The constraints mentioned are only concerning the software of the application, a
 
 - The current scope of the project does not see it being used anywhere else, so no additional requirements are necessary
 
+
+{{< pagebreak >}}
+
 ### Data conversion and formulas
 
-In case the optional GPS tracking functionality is not implemented, the length of one step is hard coded as an approximation of average stride length. The value will be based on an equation referenced by Barreira et. al [4]: 42 percent of the person's height. The average height of males in Finland is 180 cm. Thus the average stride length for an average length Finnish male would be  
+In case the optional GPS tracking functionality is not implemented, the length of one step is hard coded as an approximation of average stride length. The value will be based on an equation referenced from Barreira et. al 2010 [4] to be approximately 42 percent of the person's height. The average height of males in Finland is 180 cm. Thus the average stride length for an average length Finnish male would be  
 
 $$0.42 \cdot 180\,cm = 75.6 cm = 0.756\,m \approx 0.76\,m$$  
 
@@ -569,7 +561,7 @@ $$0.00076 km \cdot 56 = 0.04256\,\text{calories}$$
 - The home network does not restrict the use of TCP port 5000
 - The Raspberry Pi has access to internet
 - All software and firmware has been installed according to the provided installation manual
-- The versions of the web application and the hiking application are the same
+- The versions of the Web Application and the hiking application are the same
 - The Web application handles the listed exceptions and errors without system failure:
 
 | Exception name | Description | Responsible platform |
@@ -585,7 +577,7 @@ $$0.00076 km \cdot 56 = 0.04256\,\text{calories}$$
 
 - The smartwatch application requires LilyGO T-Watch V2
 - The Web Application requires Python 3.10 or higher
-- The web application is only guaranteed to work on Raspberry Pi3 
+- The Web Application is only guaranteed to work on Raspberry Pi3 
 
 ## Apportioning of requirements
 
@@ -654,9 +646,9 @@ Expected results:
 
 Execution steps:
 
-1. Setup the Raspberry pi with the Web Application installed to a local network your preferred way (ethernet, wifi (might require use of vnc or external display)). Make sure to note the ip address of the raspberry pi.
+1. Setup the Raspberry pi with the Web Application installed to a local network your preferred way (ethernet, wifi (might require use of vnc or external display)). Make sure to note the ip address of the Raspberry Pi.
 2. Make sure the smartwatch has the previously collected data and it hasn't been turned off. Also make sure the smartwatch is near the Raspberry Pi
-3. From another end device (for example another computer) open a web browser and connect to the ip address of the raspberry pi. Make sure to include the port 5000. For example: http://192.168.0.4:5000 if the ip of the raspberry pi is 192.168.0.4.
+3. From another end device (for example another computer) open a web browser and connect to the ip address of the Raspberry Pi. Make sure to include the port 5000. For example: http://192.168.0.4:5000 if the ip of the Raspberry Pi is 192.168.0.4.
 3. From the web page locate the setup device and follow the instructions to setup a new device.
 4. After setupping the new device. Locate the button to synchronize data between the Web Application and the Smartwatch application.
 5. Locate past sessions view from the web browser.
@@ -685,13 +677,13 @@ This subsections lists all tests which tests the internal functionality of the s
 
 For hardware interfaces it is assumed that after running the following tests the hardware components are deemed working.
 
-### SmartWatch bluetooth communication 
+### SmartWatch Bluetooth communication 
 
 Execution steps:
 
 1. Make sure smartwatch application is running.
-2. Use a serial bluetooth terminal and use bluetooth pair "HIKING_WATCH" or relevant name which relates to your smartwatch (can be downloaded for android) 
-3. In the serial bluetooth terminal execute command: GET /
+2. Use a serial Bluetooth terminal and use Bluetooth pair "HIKING_WATCH" or relevant name which relates to your smartwatch (can be downloaded for android) 
+3. In the serial Bluetooth terminal execute command: GET /
 4. From the output JSON locate "Paths" lists and recursively execute GET "PATH" for each found path.
 5. If in the input JSON is any "Actions" lists. Execute POST {} "ACTION".
 
@@ -718,8 +710,8 @@ Expected results:
 Execution steps:
 
 1. Make sure that Smartwatch application has atleast one trip over 1 km
-2. Use vnc, ssh or a seperate display to connect to the raspberry pi
-3. Read the output of the running web application
+2. Use VNC, SSH or a seperate display to connect to the Raspberry Pi
+3. Read the output of the running Web Application
 4. Press all buttons also testing synchronization and setup capabilities
 
 Expected results:
@@ -739,7 +731,7 @@ Some of these requirements are already tested in [External Interfaces](#external
 Execution steps:
 
 1. Make sure smartwatch application is running.
-2. Use a serial bluetooth terminal or putty and use bluetooth pair "HIKING_WATCH" or relevant name which relates to your smartwatch (can be downloaded for android). You can also use the serial interface using Putty or Picocom.
+2. Use a serial Bluetooth terminal or putty and use Bluetooth pair "HIKING_WATCH" or relevant name which relates to your smartwatch (can be downloaded for android). You can also use the serial interface using Putty or Picocom.
 3. In the selected serial communication execute command: GET /
 4. From the output JSON locate "Paths" lists and recursively execute GET "PATH" for each found path.
 5. Copy and paste the output to a terminal verify the JSON format is up to standard. Example using linux commandline:
@@ -757,15 +749,15 @@ Expected results:
 Execution steps:
 
 1. Reset the smartwatch application.
-2. Use a serial bluetooth terminal or putty and use bluetooth pair "HIKING_WATCH" or relevant name which relates to your smartwatch (can be downloaded for android). You can also use the serial interface using Putty or Picocom.
-3. Synchronize clock multiple times by navigating through the Smartwatch application or the web application.
+2. Use a serial Bluetooth terminal or putty and use Bluetooth pair "HIKING_WATCH" or relevant name which relates to your smartwatch (can be downloaded for android). You can also use the serial interface using Putty or Picocom.
+3. Synchronize clock multiple times by navigating through the Smartwatch application or the Web Application.
 4. Make a new trip and after taking a few steps stop the trip
 5. In the selected serial communication execute command: GET /tripdata/0 or similar by navigating the "mini restful" paths.
 
 Expected results:
 1. The output of the "mini restful" should include a timestamp that matches reallife date time 
 
-### HTML and javascript compliance
+### HTML and JavaScript compliance
 
 Execution steps:
 
@@ -796,7 +788,7 @@ Execution steps:
 9. Turn off the Raspberry Pi as if there was an power outage
 10. Wait 10 seconds
 11. Turn on the Raspberry Pi and the Hiking watch application
-12. The web application should automatically load. Try setupping the Hiking Watch
+12. The Web Application should automatically load. Try setupping the Hiking Watch
 13. Start a hiking session and after small time period try to synchronize data
 
 Expected results:
