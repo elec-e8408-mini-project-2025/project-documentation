@@ -222,14 +222,16 @@ The [Communications interfaces](#communications-interfaces) section lists the ex
 
 The data exchange between the major components MUST happen with structured and coherent application level protocols:
 
-- HTTP and tcp/ip protocols between the web browser and the Web Application
+- HTTP and TCP/IP protocols between the web browser and the Web Application
 - HTTP-like protocol between the Web Application and the smartwatch application
 
-The Web Application and the smartwatch application SHOULD use json format to exchange information.
+The Web Application and the smartwatch application SHOULD use JSON format to exchange information.
 
-The smartwatch application SHOULD use the json structure for the retrieved data when applicable:
+The smartwatch application SHOULD use the JSON structure for the retrieved data when applicable:
 
-![json structure for mini restful to communicate with the smartwatch application  ](dev-doc/mini_restful_jsonstructure.png "Mini restful.")
+![JSON structure for mini restful to communicate with the smartwatch application  ](dev-doc/mini_restful_JSONstructure.png "Mini restful.")
+
+{{< pagebreak >}}
 
 For example for /tripdata/4:
 ```console
@@ -687,8 +689,8 @@ Execution steps:
 1. Make sure smartwatch application is running.
 2. Use a serial bluetooth terminal and use bluetooth pair "HIKING_WATCH" or relevant name which relates to your smartwatch (can be downloaded for android) 
 3. In the serial bluetooth terminal execute command: GET /
-4. From the output json locate "Paths" lists and recursively execute GET "PATH" for each found path.
-5. If in the input json is any "Actions" lists. Execute POST {} "ACTION".
+4. From the output JSON locate "Paths" lists and recursively execute GET "PATH" for each found path.
+5. If in the input JSON is any "Actions" lists. Execute POST {} "ACTION".
 
 Expected results:
 
@@ -736,8 +738,8 @@ Execution steps:
 1. Make sure smartwatch application is running.
 2. Use a serial bluetooth terminal or putty and use bluetooth pair "HIKING_WATCH" or relevant name which relates to your smartwatch (can be downloaded for android). You can also use the serial interface using Putty or Picocom.
 3. In the selected serial communication execute command: GET /
-4. From the output json locate "Paths" lists and recursively execute GET "PATH" for each found path.
-5. Copy and paste the output to a terminal verify the json format is up to standard. Example using linux commandline:
+4. From the output JSON locate "Paths" lists and recursively execute GET "PATH" for each found path.
+5. Copy and paste the output to a terminal verify the JSON format is up to standard. Example using linux commandline:
 
 ```console
 echo "COPYPASTED JSON OUTPUT" | jq
@@ -745,7 +747,7 @@ echo "COPYPASTED JSON OUTPUT" | jq
 
 Expected results:
 
-1. The selected json verification tool does not report any errors.
+1. The selected JSON verification tool does not report any errors.
 
 ### Realtime Clock Compliance
 
