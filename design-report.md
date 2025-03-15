@@ -250,19 +250,42 @@ To debug:
 
 # Technical documentation
 
+Please refer to SRS for technical documentation, including architectural diagrams, database schema, metadata and structural designs.    
+
 
 ## Architectural diagrams
 
+The Software Requirements Specification (SRS) document contains multiple architectural diagrams:
+- Section 2.1 details the major component level
+- Section 2.1.2 details the user interfaces
+- Section 2.1.4 presents the software interfaces
 
 ## Database schema
 
+For this Proof-of-Concept system the database schema is simple. There are two tables with no relation to each other. 
+
+- HIKING_WATCH: Contains the information for the paired LilyGO T-Watch. Currently this table MUST only have one entry
+- TRACKING_DATA: each entry contains information from a single past hike
+
+![Database schema](./img/database-schema.jpg)
 
 ## Metadata
 
+The relevant metadata for API endpoints and transferrable information has been detailed in SRS document section 2.1.1 System interfaces. 
 
 ## Structural designs 
 
-## Documentation by module
+::: {.callout-important}
+TODO: What should be here? 
+
+Ideas:
+- technology stack and justification
+- database justification (why SQL with no relations)
+:::
+
+
+
+## LilyGO Hiking application: Documentation by module
 
 ### accelerator
 

@@ -339,7 +339,7 @@ The Web application SHOULD use SQLite to store synchronized data locally on the 
 
 The Web application MUST atleast implement the functionality of the following UML in within the program:
 
-![Minimum SQL database on the Web application](/dev-doc/sql-UML.png "UML of the SQL database on the Web application")
+![Minimum SQL database on the Web application](./img/database-schema.jpg "UML of the SQL database on the Web application")
 
 ### Communications interfaces
 
