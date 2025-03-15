@@ -103,7 +103,7 @@ This proof-of-concept system consists of two hardware components: the Raspberry 
 
 **10.LilyGo application:** The firmware and applications running on the LilyGo T-Watch smartwatch.  
 
-**11.smartwatch application:** The same as LilyGo applicaiton
+**11.smartwatch application:** The same as LilyGo application
 
 **11.System:**  The whole system including Raspberry Pi, LilyGo T-Watch smartwatch and relevant interfaces.  
 
@@ -148,28 +148,25 @@ This document uses requirement level keywords "MUST", "MUST NOT", "SHOULD", "SHO
 
 ## References
 
-<!--
-  Area of improvement
-  The references should follow a consistent format, specifying document titles, dates, and sources.
--->
 
 This Software Requirement Specification MUST be used in conjuction with the following publications:
 
-[1] IEEE 830:1998 IEEE Recommended Practice for Software Requirements Specifications. Available at: [https://ieeexplore.ieee.org/document/720574](https://ieeexplore.ieee.org/document/720574)
+[1] "IEEE Recommended Practice for Software Requirements Specifications," in IEEE Std 830-1998 , vol., no., pp.1-40, 20 Oct. 1998, doi: 10.1109/IEEESTD.1998.88286. Available at: [https://ieeexplore.ieee.org/document/720574](https://ieeexplore.ieee.org/document/720574)
 
-[2] RFC-2119. Keywords for use in RFCs to Indicate Requirement Levels. Published in March, 1997. Available at: [https://datatracker.ietf.org/doc/html/rfc2119](https://datatracker.ietf.org/doc/html/rfc2119)
+[2] S. Bradner 1997. RFC-2119: Key words for use in RFCs to Indicate Requirement Levels. Doi: 10.17487/RFC2119. [https://datatracker.ietf.org/doc/html/rfc2119](https://datatracker.ietf.org/doc/html/rfc2119)
 
-[3] RFC-7231. Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content. Available at: [https://datatracker.ietf.org/doc/html/rfc7231](https://datatracker.ietf.org/doc/html/rfc7231)
+[3] R. Fielding, J. Reschke 2014. RFC-7231: Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content. Doi: 10.17487/RFC7231. Available at: [https://datatracker.ietf.org/doc/html/rfc7231](https://datatracker.ietf.org/doc/html/rfc7231)
 
-[4] Barreira TV, Rowe DA, Kang M. Parameters of walking and jogging in healthy young adults. Int J Exerc Sci. 2010;3(1).
+[4] Barreira TV, Rowe DA, Kang M. 2010. Parameters of walking and jogging in healthy young adults. Int J Exerc Science 2010;3(1).
 
-[5] Wilkin LD, Cheryl A, Haddock BL. Energy expenditure comparison between walking and running in average fitness individuals. J Strength Cond Res. 2012 Apr;26(4):1039-44. doi: 10.1519/JSC.0b013e31822e592c. PMID: 22446673.
+[5] Wilkin LD, Cheryl A, Haddock BL 2012. Energy expenditure comparison between walking and running in average fitness individuals. J Strength Cond Res. 2012 Apr;26(4):1039-44. doi: 10.1519/JSC.0b013e31822e592c.  
 
-The development team should familiarize with the following documents:
 
-[i.] LilyGo T-Watch. LilyGo T-Watch GitHub repository. Available at: [https://github.com/Xinyuan-LilyGO/TTGO_TWatch_Library](https://github.com/Xinyuan-LilyGO/TTGO_TWatch_Library)
+Additionally the development team should familiarize with the following online documents:
 
-[ii.] ESPRESIF documentation. ESP32 Arduino Core's documentation. Available at: [https://docs.espressif.com/projects/arduino-esp32/en/latest/](https://docs.espressif.com/projects/arduino-esp32/en/latest/)
+[i.] LilyGo T-Watch. LilyGo T-Watch GitHub repository. Cited on 14th of March 2025. Available at: [https://github.com/Xinyuan-LilyGO/TTGO_TWatch_Library](https://github.com/Xinyuan-LilyGO/TTGO_TWatch_Library)
+
+[ii.] ESPRESIF documentation. ESP32 Arduino Core's documentation. Cited on 14th of March 2025. Available at: [https://docs.espressif.com/projects/arduino-esp32/en/latest/](https://docs.espressif.com/projects/arduino-esp32/en/latest/)
 
 
 
@@ -186,9 +183,10 @@ This SRS has three sections:
 1. **Introduction:** This section provides an overview of the entire SRS. It clarifies the context and the objectives of the Hiking Band System and details essential terminology and references.  
 2. **Overall description:** This section provides a high-level overview of the SUD (System Under Development). It details the product functionalities, product perspective, constraints and user characteristics.  
 3. **Specific Requirements:** This section delves deeper into the technical details of the SUD. It defines the performance requirements, design constraints, software-system attributes and security considerations. 
--->
 
 ### Organization of the SRS
+
+-->
 
 This SRS follows the structure recommended in IEEE 830:1998. Each section builds upon previous sections, ensuring that readers gain solid understanding of the System Under Design (SUD).  
 
