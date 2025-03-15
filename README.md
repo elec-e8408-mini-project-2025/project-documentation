@@ -287,7 +287,7 @@ The LilyGO / smartwatch interface user MUST be able to interact with the functio
 
 The LilyGO  / smartwatch interface SHOULD follow the given interface layout:
 
-![LilyGo / smartwatch Views](/dev-doc/app_views.png "concept of app views")
+![LilyGo / smartwatch Views](/dev-doc/app_views.jpg "concept of app views")
 
 
 > Note: the GUI of the final product may not be a one to one match with the early visualization draft represented here. It will however meet the requirements for functionalities.
@@ -297,6 +297,9 @@ The Web UI interface user MUST be able to interact with the functionalities:
 
 - "display a list of past sessions"
 - "display the last session"
+
+
+{{< pagebreak >}}
 
 The Web UI interface SHOULD follow the given interface layout:
 
