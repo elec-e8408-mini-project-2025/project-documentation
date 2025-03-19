@@ -301,28 +301,44 @@ This section details the LilyGO T-Watch Hiking Application code structure by mod
 
 #### hidden
 
-TFT_eSPI *tft: Currently deprecated value.
-BMA *sensor: Contains the pointer to the accelometers sensor given by the ttgo object.
-bool irqAcc: boolean value depicting if the sensor has executed an interrupt. Is set as false at the beginning.
+-`TFT_eSPI *tft`: Currently deprecated value.
+- `BMA *sensor`: Contains the pointer to the accelometers sensor given by the ttgo object.
+- `bool irqAcc`: boolean value depicting if the sensor has executed an interrupt. Is set as false at the beginning.
+- `uint32_t currentSteps`: Value for counting the amount of steps taken.
 
 #### public
 
-void initAccelerator(TTGOClass *ttgo): Initializes the accelerator from the ttgo object.
-uint32_t handleTasksAccelerator(): Function for reading the sensors current steps.
-void resetAccelerator(): Resets the accelerators stepcount.
+- `void initAccelerator(TTGOClass *ttgo)`: Initializes the accelerator from the ttgo object.
+- `uint32_t handleTasksAccelerator()`: Function for reading the sensors current steps.
+- `void resetAccelerator()`: Resets the accelerators stepcount.
 
 ### bluetooth
 
 #### hidden
 
+- `String device_name`: Deprecated variable for device name.
+- `String deviceName`: Variable for storing device name.
+- `BluetoothSerial SerialBT`: Variable for storing the Bluetooth serial object.
+- `bool commandFinishedBT`: Variable depicting if the command has finished or not.
+- `int byteCountBT`: Variable for storing the byte that is currently read from Bluetooth.
+- `char rxDataBT[BLUETOOTH_BUFFER_SIZE]`: Array for storing Bluetooth data.
+
 #### public
+
+- `#define BLUETOOTH_BUFFER_SIZE`: Constant for defining max buffer size for Bluetooth.
+- `typedef enum bluetoothStatus`: Enum for depicting Bluetooth status.
+- `typedef struct bluetoothBuffer`: Struct for implementing the Bluetooth buffer.
+- `#define DEVICE_NAME`: Constant defining the TWatches Bluetooth name.  
+- `void initBluetooth()`: Function initializing Bluetooth.
+- `bluetoothBuffer handleBluetoothByte()`: Reads Bluetooth connection to device.
+- `void writeBluetooth(char * data, int dataLen)`: Writes data to Bluetooth.
 
 ### config
 
 #### public
 
 
-- `#define TOUCH_INT`: Value needed for compilation. Set as 900909421094219090421.  
+- `#define TOUCH_INT`: Value needed for compilation. Set as 900909421094219090421.
 - `#define MAX_CACHED_TRIPS`: Used to find out about the maximum amount of cached trips on the clock.
 
 ### data
@@ -332,9 +348,8 @@ void resetAccelerator(): Resets the accelerators stepcount.
 - `#define GEO_MAX_SIZE` // Int with the size the arrays of the geoData struct are initilized as.
 - `typedef struct timeStamp`: A type containing a timestamp consisting of members year, month, day, hour, minute and second. Year is of type uint16_t and the rest of type uint8_t.
 - `typedef struct geoData`: A type for containing GPS data. Has members lattitude, longitude, datalen and timestamp. Lattitude and longitude are a array of double of size GEO_MAX_SIZE, datalen is of type int and timestamp is of type timeStamp
-- `typedef struct tripData:` A type for storing the data of a single trip. Contains the members tripID of type int, stepCount of type uint32_t, avgSpeed of type float, distance of type float, synced of type bool and timestampStart and timestampStop of type timeStamp.
-- `typedef struct systemGlobals:` A type for storing general information duroing the execution of the program. It has the members step_length of type float, currentTrip of type int, maxTrip of type int and hasActiveSession and GPSavailable of type bool.
-```
+- `typedef struct tripData`: A type for storing the data of a single trip. Contains the members tripID of type int, stepCount of type uint32_t, avgSpeed of type float, distance of type float, synced of type bool and timestampStart and timestampStop of type timeStamp.
+- `typedef struct systemGlobals`: A type for storing general information duroing the execution of the program. It has the members step_length of type float, currentTrip of type int, maxTrip of type int and hasActiveSession and GPSavailable of type bool.
 
 
 ### globals
@@ -349,15 +364,12 @@ void resetAccelerator(): Resets the accelerators stepcount.
 #### hidden
 
 - `TinyGPSPlus *gps`: Pointer to store the gps object from the ttgo object.
-- `HardwareSerial *GNSS`: Pointer to the hardware serial of the ttgo.  
-
+- `HardwareSerial *GNSS`: Pointer to the hardware serial of the ttgo.
 - `double lastLat`: Double value containing the latitude of the last step.
 - `double lastLon`: Double value containing the longitude of the last step.
-
 - `double avgLat`: Double value containing a sum of the latitudes that will be used to calculate the average latitude of a time period.
 - `double avgLon`: Double value containing a sum of the longitude that will be used to calculate the average longitude of a time period.
 - `int avgCount`: Counter for determining the amount of points in calculating the average.
-
 - `uint32_t last`: Deprecated variable containing the millis() result when initializing the gps.
 - `uint32_t updateTimeout`: Deprecated variable.
 - `bool Quectel_L76X_Probe()`: Function cerifying that the gps settings are correct.
@@ -379,19 +391,19 @@ void resetAccelerator(): Resets the accelerators stepcount.
 
 #### hidden
 
-- `bool displayOn`: Variable tracking if the display is on or off.
-- `bool irqPEK`: Variable tracking if the PEK button is pressed.
-- `bool GPSavailable`: Deprecated variable.
-- `uint32_t stepCount`: Variable for saving the current stepcount.
-- `float step_length`: Variable containing the length of a step.
-- `float avgSpeed`: Variable containing the current average speed.
-- `float distance`: Variable containing the current distance.
-- `timeStamp sessionStartTime`: Variable containing the start time of the session.
-- `timeStamp currentTime`: Deprecated variable for containing the current time.
-- `bool hasActiveSession`: Variable for tracking if a session is currently active.
-- `uint32_t nOfTrips`: Variable containing the amount of taken trips.
-- `tripData *pastTrips`: Variable containing a pointer to the tripdata object.
-- `interfaceEvent returnData`: InterfaceEvent containing the current event.
+- `bool displayOn`: Variable tracking if the display is on or off.  
+- `bool irqPEK`: Variable tracking if the PEK button is pressed.  
+- `bool GPSavailable`: Deprecated variable.  
+- `uint32_t stepCount`: Variable for saving the current stepcount.  
+- `float step_length`: Variable containing the length of a step.  
+- `float avgSpeed`: Variable containing the current average speed.  
+- `float distance`: Variable containing the current distance.  
+- `timeStamp sessionStartTime`: Variable containing the start time of the session.  
+- `timeStamp currentTime`: Deprecated variable for containing the current time.  
+- `bool hasActiveSession`: Variable for tracking if a session is currently active.  
+- `uint32_t nOfTrips`: Variable containing the amount of taken trips.  
+- `tripData *pastTrips`: Variable containing a pointer to the tripdata object.  
+- `interfaceEvent returnData`: InterfaceEvent containing the current event.  
 
 There are a lot of variables of type lv_obj_t* containing the pointers to different interface elements like the views, buttons and labels.
 
@@ -419,15 +431,49 @@ Variables of type lv_style_t are for saving different styles.
 
 #### hidden
 
+- `httpType restfulParseType(const char* data, const int *dataLen)`: Function for determining the type of restful request.
+- `int restfulParseAddress(restfulPacket * packet, char * data, const int * dataLen)`: Function for returning the restful path from a request. 
+- `int parseRestfulPacket(restfulPacket * packet, char * data, const int * dataLen)`: Function parsing the packet.
+- `int setResponseError(restfulPacket * packet)`: Function for setting the return as an error.
+- `int setResponseMainView(restfulPacket * packet)`: Function for returning the main view in the response.
+- `int setResponseTrips(restfulPacket * packet)`: Function for returning the trips view in the response.
+- `int setResponseOneTrip(restfulPacket * packet, tripData *trips)`: Function for returning the trip data for one trip in the response.
+- `int getAddressContent(restfulPacket * packet, tripData *trips)`: Function for getting the address content of a query.
+- `int setResponseSuccessAction(restfulPacket * packet)`: Function setting the response to a success.
+- `int setTag(restfulPacket * packet, tripData *trips)`: Function for setting the tag on a trip.
+- `int postAddressContent(restfulPacket * packet, tripData *trips)`: Function for posting the content of the restful package.
+
 #### public
+
+- `#define MAX_RESTFUL_RESPONSE_SIZE`: Constant for maximum size of restful response.
+- `#define MAX_RESTFUL_REQUEST_SIZE`: Constant for maximum size of requests.
+- `#define RESTFUL_MAIN_VIEW_PATH`: Path for main view in restful.
+- `#define RESTFUL_MAIN_VIEW`: Restful main view.
+- `#define RESTFUL_TRIPS_VIEW_PATH`: Path to trip view in restful.
+- `#define RESTFUL_TRIPS_VIEW`: Restful trips view.
+- `#define RESTFUL_TRIPS_VIEW_PATHS_LIST_ENTRY`: Path to individual trip in restful.
+- `#define RESTFUL_ONE_TRIP_VIEW_PATH`: Path to getting trip data.
+- `#define RESTFUL_ONE_TRIP_VIEW`: Restful view for trips.
+- `#define RESTFUL_GEODATA_VIEW_PATH`: Path for getting geodata in restful.
+- `#define RESTFUL_ERROR_PATH`: Path to restful error.
+- `#define RESTFUL_ERROR_VIEW`: Restful view for errors.
+- `#define RESTFUL_TRIP_ACTION_SET_TAG`: Restful command for setting the tag on a trip.
+- `#define RESTFUL_SUCCESS_ACTION`: Response for performing a successful action in restful.
+- `enum restfulTripStatus`: Enum for the different states a trip can have.
+- `typedef struct restfulTripData`: Struct for storing trip data for restful queries.
+- `typedef struct restfulGeolocation`: Struct for storing geolocation data for restful queries.
+- `typedef enum httpType`: Enum for the different http request types.
+- `typedef struct restfulPacket`: Struct representing a restful query.
+- `restfulPacket restfulHandlePacket(char *data, const int *dataLen, tripData *trips)`: Function processing restful queries.
+
 
 ### serial
 
 #### hidden
 
-- `bool commandFinishedSer = 0;`
-- `int byteCountSer = 0;`
-- `char rxDataSer[SERIAL_BUFFER_SIZE];`
+- `bool commandFinishedSer`: Variable for storing if a command has finished.
+- `int byteCountSer`: Number of the current byte that is being processed.
+- `char rxDataSer[SERIAL_BUFFER_SIZE]`: Array for buffering data.
 
 #### public
 
