@@ -33,13 +33,20 @@ toc-depth: 2
 
 The purpose of this document is to provide Hiking Band users the required information to successfully launch, configure and utilize the core functionalities of the Hiking Band system. The system consists of two applications: the Raspberry Pi Web Application and LilyGO T-watch smartwatch hiking application. This document contains a section for each application and a section for communication between applications.  
 
-A test plan has been included for both applications for the purpose of detailing to QA specialists how it can be verified that the application works as intended. Additional information for testing can be found from the SRS documentation. It is important to highlight, however, that the SRS may contain optional features that have not been implemented in the proof-of-concept version. All non-optional features listed in SRS SHOULD be available and optional features MAY be available. 
+A test plan has been included for both applications for the purpose of detailing to QA specialists how it can be verified that the application works as intended. Additional information for testing can be found from the Software Requirements Specificatin (SRS) and Design Report. 
+
+::: {.callout-important}  
+It is important to highlight, however, that the SRS document may contain optional features that have not been implemented in the proof-of-concept version. 
+
+- All non-optional features listed in SRS as MUST are available.
+- Features listed as SHOULD are implemented, but implementation may differ from SRS specification. - Features listed as MAY are optional and may or may not be available in the proof-of-concept version.  
+:::
 
 {{< pagebreak >}}
 
 # LilyGO T-Watch Hiking application
 
-The LilyGO T-Watch Hiking application is a proof-of-concept (later in this section PoC) smartwatch application for tracking hiking trips. The application uses LilyGO T-Watches BMA423 accelerometer to track step count and LilyGO T-Watches M8/M6 GPS Module to track the travelled distance. Average speed is computed by recording the start time of the hike and calulating average speed from tracked distance and hike duration.  Users can also view information from past hikes and configure Bluetooth synchronization from the settings menu. 
+The LilyGO T-Watch Hiking application is a proof-of-concept (later in this section PoC) smartwatch application for tracking hiking trips. The application uses LilyGO T-Watches BMA423 accelerometer to track step count and LilyGO T-Watches M8/M6 GPS Module to track the travelled distance. Average speed is computed by recording the start time of the hike and calulating average speed from tracked distance and hike duration.  Users can also view information from past hikes in the Past Sessions view and synchronize clock time from GPS time in the settings view. 
 
 
 ## Requirements 
@@ -52,7 +59,7 @@ Before getting started, make sure that you have the following hardware component
 
 
 ::: {.callout-tip}
-While the LilyGO hiking application officially supports V2 of the LilyGO T-Watch smartwatch, the application MAY also work on V3 with configuration changes. The configuration changes are detailed in the design report. Note that V3 is not officially supported. 
+While the LilyGO hiking application officially supports V2 of the LilyGO T-Watch smartwatch, the application MAY also work on V3 with configuration changes. The configuration changes are detailed in the design report. Note that V3 is not officially supported and compability with V3 is not guaranteed. 
 :::
 
 
@@ -121,7 +128,7 @@ The settings view will include all possible configurable settings. Currently it 
 
 ## Test plan
 
-At this PoC stage the, test plan relies on manual testing. The functional requirements of the smart watch detailed in the SRS documentation can all be tested manually. A comprehensive list of testable features have been collected to the following subsections. These collections should assist the QA specialists in implementing suitable tests to verify that the functionalities work as intended. This section assumes that the QA specialist is performing black-box testing, i.e. testing a then functional and non-functional requirements on system or acceptance test level.
+At this PoC stage the, test plan relies on manual testing. The functional requirements of the smart watch listed as MUST requirements in the SRS documentation can all be tested manually. A comprehensive list of testable features have been collected to the following subsections. These collections should assist the QA specialists in implementing suitable tests to verify that the functionalities work as intended. This section assumes that the QA specialist is performing black-box testing, i.e. testing a then functional and non-functional requirements on system or acceptance test level.
 
 ### Navigation
 
@@ -149,13 +156,14 @@ At this PoC stage the, test plan relies on manual testing. The functional requir
 
 ### Past sessions view
 
-- The past session view contains information on stored sessions:
+- The past session view contains information on stored sessions
 - For each session the following information is shown:
   - date of the session
   - traveled distance
   - average speed
 - the watch stores at maximum five past hike sessions
 - if five hiking sessions have been recorded, the oldest entry will be overwritten when the next session begins
+- if no sessions have been recorded, the past sessions view will show a prompt instructing no data is available
 
 
 ### Settings view
@@ -178,7 +186,7 @@ This section details the functionalities the web application provides once it is
 The main view has two navigational buttons:  
 
 1. Button `Show all hikes` navigates to a view that shows all hikes
-2. Button `Configuration` navigates to a view in which the bluetooth connection can be configures
+2. Button `Configure Bluetooth` navigates to a view in which the bluetooth connection can be configured
 
 
 The main view additionally visualizes selected data from past hikes:  
@@ -223,7 +231,7 @@ In the configuration view user can
 
 Before pairing, the configuration view indicates that no T-Watch has been paired with the Web Application
 
-![Configuratoin view, no device paired](./img/web-app-config-pairing-no-pair.png)
+![Configuration view, no device paired](./img/web-app-config-pairing-no-pair.png)
 
 {{< pagebreak >}}
 
@@ -306,7 +314,7 @@ At this proof-of-concept stage the, test plan relies on manual testing. A compre
 
 # Communication between devices
 
-The web application handles communication between the devices. Please follow the instructions in the Web Application settings to pair the Hiking watch with the web application and to synchornize hiking data to the persistent local data storage on the web application. 
+The web application handles communication between the devices. Please follow the instructions in the section discussing [Web Application configuration view](#configuration-view) to pair the Hiking watch with the web application and to synchornize hiking data to the persistent local data storage on the web application. 
 
 ::: {.callout-note}
 Remember to turn the Hiking watch on before initiating communication between the devices. 

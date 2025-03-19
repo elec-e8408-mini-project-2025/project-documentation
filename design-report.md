@@ -283,6 +283,10 @@ Ideas:
 - database justification (why SQL with no relations)
 :::
 
+## Visual context of implemented solution
+
+Visual context of implemented system can be reviewed in the User Manual PDF. It contains tutorials with visualizations for both the LilyGO T-Watch Hiking application and the Raspberry Pi Web Application. 
+
 
 
 ## LilyGO Hiking application: Documentation by module
