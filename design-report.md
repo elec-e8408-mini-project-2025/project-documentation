@@ -486,3 +486,63 @@ Variables of type lv_style_t are for saving different styles.
 - `void writeSerialRTCTime()`: Deprecated function for writing the RTC time to serial.
 - `void writeSerialRTCDateObj(RTC_Date date)`: Function writing the date objects information to serial.
 - `void writeSerialRTCDateObj(timeStamp date)`: Function writing the date objects information to serial.
+
+
+## Development methods and tools
+
+This subsection describes some maintaining and development related topics. Certain principles should be followed when developing new features / modules to smartwatch. Also testing and modules require external tools to help develop and test.
+
+### Methods
+
+#### Programming principles for smartwatch codebase
+
+The codebase is based on classes and object oriented coding. This allows a high level access to everything and possibility to very complicated procedures. This allows readability for the frontend web features to relate easily with the backend.
+
+Features should adhere with the current classes within the codebase. Future releases may include new classes if they clearly do not fit the scope of the current classes.
+
+#### Programming principles for web application codebase
+
+Different features should use their own standalone header files (prefix .h). Features using LilyGo libraries needs to be careful and use the same file where the LilyGo library is called. The LilyGO sdk library uses certain shared static functions which should be called only once.
+
+The main file (.ino) describes the scheduling, polling and timings of all modules and features within the firmware. This should be respected to avoid any monolithic growth of the codebase. The codebase is categorized as flat as it is relatively small project:
+
+```console
+├── config.ini
+├── install.sh
+├── lilygo-hiking-application.ino
+└── src
+    ├── accelerator.cpp
+    ├── accelerator.h
+    ├── bluetooth.cpp
+    ├── bluetooth.h
+    ├── ...
+    ├── step.cpp
+    └── step.h
+```
+
+In the above file structure is shown the most important parts of the codebase for code development. The install.sh and the config.ini are for compiling. Main operation is described in .ino and src directory includes all features as header files.
+
+### Developing Tools
+
+The development is best done by running a common linux distribution. Any linux system with working bluetooth should be able to compile, upload, synchronize and host the web application. 
+
+#### Serial access
+
+Modules and functions can be programmed to return strings to be displayed through serial. 
+
+To read serial of the LilyGo hardware these can be used:
+
+1. picocom
+2. minicom
+3. screen
+4. arduino-ide
+
+Also there is a serial monitoring script bundled with the LilyGo hiking application codebase. 
+
+#### Bluetooth access
+
+Good way for testing bluetooth accessibility or the restful is to use a bluetooth serial terminal.
+
+We used the [Serial Bluetooth Terminal](https://play.google.com/store/apps/details?id=de.kai_morich.serial_bluetooth_terminal&hl=en&pli=1) for android:
+
+![Example testing of bluetooth by executing random mini-restful commands](./img/bt-terminal-example.jpeg)
