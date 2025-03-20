@@ -301,7 +301,7 @@ This section details the LilyGO T-Watch Hiking Application code structure by mod
 
 #### hidden
 
--`TFT_eSPI *tft`: Currently deprecated value.
+- `TFT_eSPI *tft`: Currently deprecated value.
 - `BMA *sensor`: Contains the pointer to the accelometers sensor given by the ttgo object.
 - `bool irqAcc`: boolean value depicting if the sensor has executed an interrupt. Is set as false at the beginning.
 - `uint32_t currentSteps`: Value for counting the amount of steps taken.
