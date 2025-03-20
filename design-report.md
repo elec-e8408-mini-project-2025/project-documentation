@@ -361,6 +361,7 @@ Following a include tree of the LilyGo modules.
 - `typedef struct systemGlobals`: A type for storing general information duroing the execution of the program. It has the members step_length of type float, currentTrip of type int, maxTrip of type int and hasActiveSession and GPSavailable of type bool.
 
 
+
 ### globals
 
 #### public
