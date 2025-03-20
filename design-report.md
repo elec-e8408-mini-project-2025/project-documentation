@@ -295,6 +295,11 @@ Visual context of implemented system can be reviewed in the User Manual PDF. It 
 
 This section details the LilyGO T-Watch Hiking Application code structure by module for the version 1.0 release. 
 
+The high level scheduling of the modules is described in the image:
+
+
+![State machine, scheduling and order of the execution diagram for the LilyGO Hiking application](./img/scheduler.png){width=60%} 
+
 ### accelerator
 
 
@@ -504,7 +509,7 @@ Features should adhere with the current classes within the codebase. Future rele
 
 Different features should use their own standalone header files (prefix .h). Features using LilyGo libraries needs to be careful and use the same file where the LilyGo library is called. The LilyGO sdk library uses certain shared static functions which should be called only once.
 
-The main file (.ino) describes the scheduling, polling and timings of all modules and features within the firmware. This should be respected to avoid any monolithic growth of the codebase. The codebase is categorized as flat as it is relatively small project:
+The main file (.ino) describes the scheduling, polling and timings of all modules and features within the firmware. This should be respected to avoid any monolithic growth of the codebase. The codebase is using a flat structure as it is relatively small project:
 
 ```
 |--> config.ini
