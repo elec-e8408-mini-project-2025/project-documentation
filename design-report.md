@@ -506,18 +506,18 @@ Different features should use their own standalone header files (prefix .h). Fea
 
 The main file (.ino) describes the scheduling, polling and timings of all modules and features within the firmware. This should be respected to avoid any monolithic growth of the codebase. The codebase is categorized as flat as it is relatively small project:
 
-```console
-├── config.ini
-├── install.sh
-├── lilygo-hiking-application.ino
-└── src
-    ├── accelerator.cpp
-    ├── accelerator.h
-    ├── bluetooth.cpp
-    ├── bluetooth.h
-    ├── ...
-    ├── step.cpp
-    └── step.h
+```
+|--> config.ini
+|--> install.sh
+|--> lilygo-hiking-application.ino
+|--> src/
+    |--> accelerator.cpp
+    |--> accelerator.h
+    |--> bluetooth.cpp
+    |--> bluetooth.h
+    |--> ...
+    |--> step.cpp
+    |--> step.h
 ```
 
 In the above file structure is shown the most important parts of the codebase for code development. The install.sh and the config.ini are for compiling. Main operation is described in .ino and src directory includes all features as header files.
