@@ -1,5 +1,5 @@
 ---
-title: "Hiking Band: User Manual"
+title: "Hiking Band: Design Report"
 author: 
 - name: Holappa, Heidi 
 - name: Lundén, Jaakko-Juhani
