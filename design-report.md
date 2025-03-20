@@ -295,6 +295,8 @@ Visual context of implemented system can be reviewed in the User Manual PDF. It 
 
 This section details the LilyGO T-Watch Hiking Application code structure by module for the version 1.0 release. 
 
+![Hiking application include diagram](./img/twatch_inheritance_diagram.jpg)
+
 ### accelerator
 
 
