@@ -305,7 +305,7 @@ The Web UI interface SHOULD follow the given interface layout:
 
 ![Web UI views](/dev-doc/web_ui_view.png "concept of web view")
 
-The LilyGo / smartwatch interface MUST refresh current hiking session every 0.2 seconds or faster.
+The LilyGo / smartwatch interface MUST refresh current hiking session every 0.2 seconds or faster. This only applies when when new data is available and can be shown or a button has been pressed.
 
 Changing the view on the Web Application MUST be faster than 0.5 seconds.
 
