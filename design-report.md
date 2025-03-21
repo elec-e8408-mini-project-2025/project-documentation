@@ -34,8 +34,20 @@ This document is a comprehensive technical document for future developers and ma
 This documentation should be used with the SRS and the User Manual, both included in the final submission of Hiking Band System version 1.0 submission. Much of the techical details are documented in the SRS document and the User Manual contains instruction on how to use the system with screenshots providing visual context.  
 
 
+{{< pagebreak >}}
+
 # List of dependencies
 
+## LilyGo T-Watch
+
+The LilyGO T-Watch application is an Arduino application. The project officially supports LilyGo T-Watch V2, but MAY also work with V3 with configuration adjustment. Some code segments in source code are dependent on the chosen smartwatch version. 
+
+The smartwatch development has the following dependencies
+
+- arduino-cli v. 1.1
+- esp32 libraries v. 2.0.14
+- python 3.10 or greater
+- pyserial 3.5
 
 ## Web application
 
@@ -65,17 +77,7 @@ The Web Application is a Python 3.x application that works on versions 3.10 and 
 
 In this proof-of-concept Hiking Band system, the web application is built to run on a Raspberry Pi3B+ board with a Raspian Operation System. The web application requires a network connection to access external style libraries. 
 
-
-## LilyGo T-Watch
-
-The LilyGO T-Watch application is an Arduino application. The project officially supports LilyGo T-Watch V2, but MAY also work with V3 with configuration adjustment. Some code segments in source code are dependent on the chosen smartwatch version. 
-
-The smartwatch development has the following dependencies
-
-- arduino-cli v. 1.1
-- esp32 libraries v. 2.0.14
-- python 3.10 or greater
-- pyserial 3.5
+{{< pagebreak >}}
 
 # Step-by-step instructions 
 
@@ -83,7 +85,7 @@ The smartwatch development has the following dependencies
 
 Follow these instructions to set up the LilyGo Hiking application. Please pay careful attention to version numbers to ensure that installation proceeds successfully. 
 
-### Option 1
+### Option 1: manual installation
 
 #### Arduino-cli and esp32 libraries
 
@@ -120,6 +122,8 @@ Use the following table to make your compilation:
 | LILYGO_WATCH_2020_V2   |  esp32:esp32:twatch        |
 | LILYGO_WATCH_2020_V3   |  esp32:esp32:twatch        |
 
+{{< pagebreak >}}
+
 For example for TWATCH V3:
 
 ```console
@@ -138,18 +142,17 @@ The device path may not be `/dev/ttyUSB0`. To verify the name of the USB-device,
 :::
 
 
-### Option 2
+### Option 2: convenience script
 
-configure config.ini 
+First select the correct smartwatch version from config.ini. Then use the convenience script:
 
 ```console
 ./install.sh
 ```
 
-This convenience script provides the option to enable the web application to start on startup so it is usually recommended to be used.
 
 ::: {.callout-tip}
-The config.ini contains LilyGo T-Watch versions V2 and V3. To change the T-Watch version, change which version is uncommented. V3 is not officially supported, but both V2 and V3 T-Watches were used during development stage. 
+The config.ini contains LilyGo T-Watch versions V2 and V3. To change the T-Watch version, uncomment the version to use and comment the version that is not to be used. V3 is not officially supported, but both V2 and V3 T-Watches were used during development stage. 
 
 - When V2 is selected, the GPS module in V2 is used. 
 - With V3 distance is calculated based on an hard coded step length as detailed in the SRS. 
@@ -162,6 +165,8 @@ Add read and write access to usb device:
 ```console
 chmod 777 /dev/ttyUSB0
 ```
+
+{{< pagebreak >}}
 
 Read the serial:
 
@@ -177,7 +182,7 @@ screen /dev/ttyUSB0 115200
 
 ### Requirements 
 
-The web application and the scripts have been designed for a Linux based Operating System. It is recommended to use the application on a Linux based Operating System. The web application officially supports Raspberry Pi3B+ with a Raspian Operating System.  
+The Hiking Tour Assistant Data Storage web application and the scripts have been designed for a Linux based Operating System. The web application officially supports Raspberry Pi3B+ with a Raspian Operating System.  
 
 The minimum Python version is 3.10. Versions for dependencies are listed in requirements.txt. Use of virtual environment is adviced, as detailed below in installation instructions.
 
@@ -258,13 +263,14 @@ Please refer to SRS for technical documentation, including architectural diagram
 ## Architectural diagrams
 
 The Software Requirements Specification (SRS) document contains multiple architectural diagrams:
+
 - Section 2.1 details the major component level
 - Section 2.1.2 details the user interfaces
 - Section 2.1.4 presents the software interfaces
 
 ## Database schema
 
-For this Proof-of-Concept system the database schema is simple. There are two tables with no relation to each other. 
+For this Proof-of-concept system the database schema is simple. There are two tables with no relation to each other. 
 
 - HIKING_WATCH: Contains the information for the paired LilyGO T-Watch. Currently this table MUST only have one entry
 - TRACKING_DATA: each entry contains information from a single past hike
@@ -277,23 +283,109 @@ The relevant metadata for API endpoints and transferrable information has been d
 
 ## Structural designs 
 
-::: {.callout-important}
-TODO: What should be here? 
+The structural detail has been detailed to some extent in SRS. Here we will focus attention on selected design decisions.  
 
-Ideas:
-- technology stack and justification
-- database justification (why SQL with no relations)
-:::
+As the purpose of this project was to build a proof-of-concept system specifically for the LilyGO T-Watch V2, the decision to use the official LilyGO T-Watch libraries was decided to be a good approach. These libraries have limitations, but for the scope of this project their capabilities were satisfactory. Arduino provided both good support for ESP32 and an easy platform for developers with different levels of experience with C and C++ to engage in the project.  
+
+For the web application we decided to write the application in Python, use flask as a framework and store data into sqlite3 relational database. For the purpose of this project Python was considered to be a good choice. Python excels in quick prototyping of ideas and is easy to use. Flask is a mature framework for building simple, but still robust web applications and suited the needs of the project well.  
+
+A relational database was considered to be a sensible choice for this project. The structure of the data was known before hand and all of the developers had previous experiences with relational data. Due to these reasons, it was quick to setup a relational persistent data storage and all developers were able to work with the databsae with relative ease.  
+
+Both projects included convenience scripts that helped setup environments and to build or run projects. The motivation to maintain these was to enable developers with different expertise to easily participate in different parts of development.  
+
 
 ## Visual context of implemented solution
 
-Visual context of implemented system can be reviewed in the User Manual PDF. It contains tutorials with visualizations for both the LilyGO T-Watch Hiking application and the Raspberry Pi Web Application. 
+### LilyGO T-Watch hiking application
 
+
+The LilyGO T-Watch library provides easy means to access the power control of the smartwatch. The PEK button is programmed to toggle the smartwatch screen on and off. In both states the smartwatch is still powered on and remains at full computational capability. 
+
+![LilyGO PEK button](./img/t-watch-pek-button.jpeg){width=30%}  
+
+
+The LilyGO T-Watch library contains a stripped version of LVGL library. Not all features of LVGL are available and LilyGo libarries documentation is quite limited regarding this. The team found the best way to find available features to be reading the LilyGO T-watch libraries source code.  
+
+The styling of elements is based on styles available in the T-Watch library by default. Colors use high contrast for better accessibility and colors are used to improve user experience. T-Watch libraries LVGL-functions included align-functionalities, which were used to place the elements to fixed positions on each view. 
+
+![LilyGO main view](./img/t-watch-main.jpeg){width=30%}  
+
+{{< pagebreak >}}
+
+The application loop updates the user inteface in preset frequency. The frequency is hard coded into a constant value in the main `ino` file. The Session view is the only view with elements that are updated without user pressing anything on the touch screen: when the hiking session is in progress, the data values on session view are updated frequently.  
+
+Based on documentation, the LVGL library contains useful features that detect changes in rendered elements and re-render just needed parts of the view. 
+
+![LilyGO session view before start button is pressed](./img/t-watch-session-start.jpeg){width=30%}
+
+
+![LilyGO session view after start button has been pressed](./img/t-watch-session-stop.jpeg){width=30%}
+
+{{< pagebreak >}}
+
+The screen size of LilyGO T-Watch smartwatch is quite limited. Due to this, it was decided to show only selected data values on the past sessions view. Additionally the stripped version of LVGL library contains only a limited number of fonts and font sizes. This also constrained the design decisions. 
+
+![LilyGO past sessions view](./img/t-watch-past-sessions.jpeg){width=30%}
+
+The LilyGO T-Watch's Real Time Clock (RTC) module may go out of sync due to power loss. The RTC module informs of this with a flag. Due to this, it was decided to include a functionality to synchronize the time from the GPS data. 
+
+
+![LilyGO session view after settings button has been pressed](./img/settings.jpeg){width=25%}
+
+
+### Web Application: Hiking Tour Assistant Data Storage
+
+For the Web Application it was decided to use Bootstrap CSS framework. Bootstrap provides modern, accessible style elements that work on many platforms. Bootstrap CSS framework may be included as a external dependency requiring an internet connection, or as a standalone local version. For this project it was decided to use the external dependency, as an early assumption was that the Raspberry Pi is connected to the local network with access to internet.  
+
+Each view has been placed in to a container to ensure consistent user experience on each view. The containerized elements also have attributes instructing how to position in different screen configurations. The application is not guaranteed to be responsive, but it has responsive characteristics.   
+
+On the main view button elements and card elements have been used. Cards display selected data values that may be interesting and motivating for the user.  
+
+![Web application main view](./img/web-app-main-view.png){width=60%}
+
+
+The past hikes view contains a simple table element to which data entries in the persistent data store are rendered. 
+
+![Web application past hikes view](./img/web-app-hikes-view.png){width=60%}
+
+Each row contains a delete button that allows user to delete a selected entry. Pressing the delete button activates a modal element that contains a confirmation for the deletion. Note that the modal element is dependent on the Bootstrap JavaScript scripts included in the view. Not all Bootstrap elements require the scripts, but some do. Refer to the Bootstrap documentation for more information on this. 
+
+![Web applicatoin confirm deletion](./img/web-app-delete-hike-monad.png){width=60%}
+
+The configuration view provides users functionalities to pair a new device and to synchronize data from the smartwatch to the persistent data storage on the Web Application. Before pairing has been done, the card element on the view informs user that no device has been paired. 
+
+![Configuration view, no device paired](./img/web-app-config-pairing-no-pair.png)
+
+The links to pair a device and to synchronize data both use the spinner element from the Bootstrap CSS framework. The spinner element is widely used in web applications to indicate that an operation is ongoing. To users this is often communicated as the application "loading". In this application pressing both links sends a HTTP request that then in turn activates related Bluetooth functionalities in the code (either pairing or polling for data transfer). The "loading" in this case contains the whole process of HTTP requests and redirect and the Bluetooth operations that happen in the backend of the application. 
+
+![Pairing a new device in progress](./img/web-app-config-pairing-spinner.png){width=60%}
+
+The configuration view also has the alert element from Bootstrap CSS framework. The alert element uses flash messages that are tied to the current session. Due to this, the application requires sessions to be implemented. Fortunately Flask provides easy tools for basic session management.  
+
+In a success situation a green alert is shown with an informative prompt. 
+
+![Pairing a new device succeeded](./img/web-app-config-pairing-success.png)
+
+If the Bluetooth operation fails, the user is redirected normally, but the alert in this has red background color and an infromative message about the failure. Note that it should be considered carefully what information on the failure should be shared with the user. For instance, too much information may be useful for a malicious actor to misuse the system. 
+
+![Pairing a new device failed](./img/web-app-config-pairing-failure.png)
+
+Similarily with the polling for new data a spinner element is shown. 
+
+![Data synchronization in progress](./img/web-app-config-transfer-spinner.png){width=60%}
+
+If the transfer succeeds, a notification will be shown. 
+
+![Data synchronization succeeded](./img/web-app-config-transfer-success.png)
+
+In case of failure, a warning notification is shown and some information on the cause of the failure MAY be shared. 
+
+![Data synchronization failed](./img/web-app-config-transfer-failure.png)
 
 
 ## LilyGO Hiking application: Documentation by module
 
-This section details the LilyGO T-Watch Hiking Application code structure by module for the version 1.0 release. 
+This section details the LilyGO T-Watch Hiking Application code structure by module for the version 1.1 release. 
 
 The high level scheduling of the modules is described in the image:
 
